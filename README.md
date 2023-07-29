@@ -6,7 +6,9 @@ Generate and open your code documentation inside NeoVim.
 * Doge.vim: Helps you to write code comments inside your comments.
 * Dooku.nvim: It generates the actual `html` documentation, and open it on the browser. Depending the language it will use `Doxygen`, `typedoc`, `rustdoc`, `godoc`, or any other.
 
-| Supported languages | Generator |
+## Supported languages 
+
+| Language | Generator |
 |--|--|
 | `c` | doxygen |
 | `c++` | doxygen |
