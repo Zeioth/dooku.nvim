@@ -15,8 +15,8 @@ Often, people wonder what documentation plugin they should use. Their purpose is
 | `c` | doxygen |
 | `c++` | doxygen |
 | `c# `| doxygen |
-| `java` | doxygen | 
 | `objetive-c` | doxygen |
+| `java` | doxygen | 
 | `python` | doxygen |
 | `php` | doxygen |
 | `javascript` | jdoc |
