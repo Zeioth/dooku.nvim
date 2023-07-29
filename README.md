@@ -23,7 +23,7 @@ Generate and open your code documentation inside NeoVim.
 | `go`| godoc |
 
 ## Required dependencies
-In this example I install them on arch, but you can find them on any distro
+In this example I install them on arch using pacman and yarn, but you can find them on any distro.
 ```
 sudo pacman -S doxygen
 yarn add global jdoc typedoc
