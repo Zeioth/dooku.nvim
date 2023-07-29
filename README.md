@@ -1,4 +1,4 @@
-# Dooku.nvim
+# dooku.nvim
 Generate and open your code documentation inside NeoVim.
 
 ## How to instal
