@@ -25,7 +25,7 @@ Often, people wonder what documentation plugin they should use. Their purpose is
 | `go`| godoc |
 
 ## Required dependencies
-In this example I install them on arch using pacman and yarn, but you can find them on any distro.
+You need the dependencies in order for dooku.nvim to be able to call the documentation generators. In this example I install them on Arch Linux using pacman and yarn, but you can find them on any distro.
 ```sh
 sudo pacman -S doxygen
 yarn add global jdoc typedoc
