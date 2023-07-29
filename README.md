@@ -43,4 +43,4 @@ You don't need to install rustdoc and godoc as they come included on their respe
 ## Configuration options
 
 ## Credits
-This is a lua port of the vim plugin [dooku.vim](https://github.com/Zeioth/vim-dooku).
+This is a lua port of the vim plugin [vim-dooku](https://github.com/Zeioth/vim-dooku).
