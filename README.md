@@ -19,7 +19,7 @@ Often, people wonder what documentation plugin they should use. Their purpose is
 | `java` | doxygen | 
 | `python` | doxygen |
 | `php` | doxygen |
-| `javascript` | jdoc |
+| `javascript` | jsdoc |
 | `typescript` | typedoc |
 | `rust` | rustdoc |
 | `go`| godoc |
