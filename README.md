@@ -4,8 +4,8 @@ Generate and open your code documentation inside NeoVim.
 ## What documentation plugin should I use?
 Often, people wonder what documentation plugin they should use. Their purpose is quite different:
 
-* Doge.vim: Helper to write code comments inside your code.
-* Dooku.nvim: It generates the actual `html` documentation, and open it on your internet browser. Depending the language it will use `Doxygen`, `typedoc`, `rustdoc`, `godoc`, or any other.
+* [Doge.vim](https://github.com/kkoomen/vim-doge): Helper to write code comments inside your code.
+* [Dooku.nvim](https://github.com/Zeioth/dooku.nvim): It generates the actual `html` documentation, and open it on your internet browser. Depending the language it will use `Doxygen`, `typedoc`, `rustdoc`, `godoc`, or any other.
 
 
 ## Supported languages 
