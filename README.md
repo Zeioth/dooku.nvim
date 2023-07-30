@@ -44,7 +44,7 @@ You don't need to install rustdoc and godoc as they come included on their respe
 
 ## Tips
 
-* Dooku.nvim won't work correctly unless you `:cd` your project directory first. You can do this automatically using `project.nvim`.
+* Dooku.nvim won't work correctly unless you `:cd` your project directory first. You can do this automatically by using `project.nvim`.
 
 ## Credits
 This is a lua port of the vim plugin [vim-dooku](https://github.com/Zeioth/vim-dooku).
