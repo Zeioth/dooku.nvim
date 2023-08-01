@@ -1,5 +1,6 @@
 -- Dooku.nivm plugin options.
 local M = {}
+local is_windows = package.config:sub(1, 1) == "\\"
 
 --- Parse user options, or set the defaults
 function M.set(ctx)
@@ -11,15 +12,30 @@ function M.set(ctx)
   M.generate_on_write = ctx.generate_on_bufwrite or true
   M.on_generate_open = ctx.on_generate_open or false
   M.auto_setup = ctx.auto_setup or true
-  M.browser_cmd = ctx.browser_cmd or "xdg-open"
+
+  -- detect default internet browser
+  if is_windows then M.browser_cmd = ctx.browser_cmd or "start"
+  else M.browser_cmd = ctx.browser_cmd or "xdg-open" end
 
   -- Doxygen settings ------------------------------------------------------
-  M.doxygen_filetypes = ctx.doxygen_filetypes or { 'c', 'cpp', 'cs', 'python', 'd', 'fortran', 'java', 'perl', 'vhdl', 'objc', 'php' }
+  M.doxygen_filetypes = ctx.doxygen_filetypes or {
+    'c',
+    'cpp',
+    'cs',
+    'python',
+    'd',
+    'fortran',
+    'java',
+    'perl',
+    'vhdl',
+    'objc',
+    'php'
+  }
 
   -- Doxygen - Open on browser
   M.doxygen_html_file = ctx.doxygen_html_file or "./html/index.html"
 
-  -- Doxygen - auto setup (clone Doxyfile from a repository)
+  -- Doxygen - auto setup (clone Doxyfile from a git repository)
   M.doxygen_clone_config_repo = ctx.doxygen_clone_config_repo or "https://github.com/Zeioth/vim-doxygen-template.git"
   M.doxygen_clone_destiny_dir = ctx.doxygen_clone_destiny_dir or "./doxygen"
 

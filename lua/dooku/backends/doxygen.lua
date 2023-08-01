@@ -22,7 +22,7 @@ function M.generate(is_autocmd)
 
   -- Generate html docs
   if job then uv.process_kill(job, 9) end -- Running already? kill it
-  local proj_root = utils.find_project_root(opts.project_root) .. "/" .. opts.doxygen_clone_destiny_dir
+  local proj_root = utils.osPath(utils.find_project_root(opts.project_root) .. "/" .. opts.doxygen_clone_destiny_dir)
   job = uv.spawn("doxygen", { args = { "Doxyfile" }, cwd = proj_root,  detach = true })
 
   -- Open html docs
@@ -31,7 +31,7 @@ end
 
 M.open = function()
   if opts.notification_on_open then vim.notify("Opening doxygen html docs...", vim.log.levels.INFO) end
-  local proj_root = utils.find_project_root(opts.project_root) .. "/" .. opts.doxygen_clone_destiny_dir
+  local proj_root = utils.osPath(utils.find_project_root(opts.project_root) .. "/" .. opts.doxygen_clone_destiny_dir)
   uv.spawn(opts.browser_cmd, { args = { opts.doxygen_html_file }, cwd = proj_root, detach = true })
 end
 
