@@ -30,14 +30,14 @@ You need the dependencies in order for dooku.nvim to be able to call the documen
 sudo pacman -S doxygen
 yarn add global jdoc typedoc
 ```
-You don't need to install rustdoc and godoc as they come included on their respective languages.
+To check if all the dependencies are correctly installed, run `:checkhealth dooku`
 
 ## How to instal
 lazy.nvim
 ```lua
 {
   "Zeioth/dooku.nvim",
-  cmd = { "DookuGen", "DookuOpen" },
+  cmd = { "DookuGenerate", "DookuOpen" },
   opts = {
     -- your config options here
   }
@@ -45,14 +45,14 @@ lazy.nvim
 },
 ```
 ## How to use
-Use `:DookuGen` to generate the html documentation of your project. Then `:DookuOpen` to open it on your internet browser. 
+Use `:DookuGenerate` to generate the html documentation of your project. Then `:DookuOpen` to open it on your internet browser. 
 
 By default the option `auto_setup` is enabled, so you won't have to manually setup the documentation for your project. If you prefer to do it manually, disable this option.
 
 ## Recommended mappings
 ```
 -- Dooku generate
-vim.api.nvim_buf_set_keymap(0, 'n', '<F6>', "<cmd>DookuGen<cr>", { noremap = true, silent = true })
+vim.api.nvim_buf_set_keymap(0, 'n', '<F6>', "<cmd>DookuGenerate<cr>", { noremap = true, silent = true })
 
 -- Dooku open
 vim.api.nvim_buf_set_keymap(0, 'n', '<S-F6>', "<cmd>DookuOpen<cr>", { noremap = true, silent = true })
@@ -61,7 +61,7 @@ vim.api.nvim_buf_set_keymap(0, 'n', '<S-F6>', "<cmd>DookuOpen<cr>", { noremap = 
 ## Available commands
 | Command | Description|
 |--|--|
-| `:DookuGen` | Generate the HTML documentation using the adecuated generator for the current filetype. |
+| `:DookuGenerate` | Generate the HTML documentation using the adecuated generator for the current filetype. |
 | `:DookuOpen` | Open the HTML documentation using the specified program, or the default internet browser. |
 
 ## Configuration options
@@ -87,7 +87,7 @@ This is a lua port of the vim plugin [vim-dooku](https://github.com/Zeioth/vim-d
 
 ## Roadmap
 * ~~MVP: doxygen~~
-* ~~Windows support~~
+* ~~Windows support.~~
 * Port the other backends: jdoc, typedoc, rustdoc, godoc
-* Porting the manual from vim-doooku, so we can use :help dooku
-* Writing health file, so we can check if dependencies are fulfilled.
+* ~~Porting the manual from vim-doooku, so we can use :help dooku.~~
+* ~~Writing health file, so we can check if dependencies are fulfilled.~~
