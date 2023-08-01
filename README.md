@@ -73,7 +73,7 @@ notification_on_open = true
 generate_on_bufwrite = true
 on_generate_open = false
 auto_setup = true
-browser_cmd = "xdg-open"
+browser_cmd = "xdg-open" -- Write your internet browser here. If unset, it will attempt to detect it automatically.
 
 -- doxygen settings
 doxygen_filetypes o { 'c', 'cpp', 'cs', 'python', 'd', 'fortran', 'java', 'perl', 'vhdl', 'objc', 'php' } -- for this filetypes use doxygen
