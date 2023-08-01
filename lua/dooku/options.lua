@@ -21,7 +21,7 @@ function M.set(ctx)
 
   -- Doxygen - auto setup (clone Doxyfile from a repository)
   M.doxygen_clone_config_repo = ctx.doxygen_clone_config_repo or "https://github.com/Zeioth/vim-doxygen-template.git"
-  M.doxygen_clone_destiny_dir = ctx.doxygen_clone_destiny_dir or "doxygen"
+  M.doxygen_clone_destiny_dir = ctx.doxygen_clone_destiny_dir or "./doxygen"
 
 end
 
