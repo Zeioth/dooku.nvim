@@ -97,6 +97,9 @@ function M.osPath(path)
 end
 
 --- Returns bool if the object exists on the table.
+---@param obj object
+---@param tbl table
+---@return bool
 function M.exists_in_table(obj, tbl)
     for _, value in ipairs(tbl) do
         if value == obj then
@@ -106,13 +109,18 @@ function M.exists_in_table(obj, tbl)
     return false
 end
 
--- Function to find the project root based on a given list of files/directories
+--- Function to find the project root based on a given list of files/directories.
+--  Compatible with UNIX and Windows.
 function M.find_project_root(roots)
     local path = vim.fn.expand("%:p:h") -- Get the directory of the current buffer
 
+    -- Normalize the path separator based on the platform
+    local path_separator = package.config:sub(1, 1)
+    path = path:gsub("[/\\]", path_separator)
+
     while path and path ~= "" do
         for _, root in ipairs(roots) do
-            local root_path = path .. "/" .. root
+            local root_path = path .. path_separator .. root
 
             if vim.fn.isdirectory(root_path) == 1 or vim.fn.filereadable(root_path) == 1 then
                 return path
@@ -126,20 +134,5 @@ function M.find_project_root(roots)
     return nil -- If no root directory is found, return nil
 end
 
---- Deletes a file for UNIX or Windows.
-function M.delete_file(file)
-    return
-end
-
---- Creates a directory for UNIX or Windows.
-function M.create_dir(file)
-    return
-end
-
---- Receives two commands, one for UNIX shell and other for windows Powershell.
---  This function runs them depending the current operative system.
-function M.run_cmd(sh_cmd, ps_cmd)
-    return
-end
 
 return M
