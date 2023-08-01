@@ -1,7 +1,7 @@
 # dooku.nvim
 Generate and open your code documentation inside NeoVim.
 
-## Should I use Doge.vim or Dooku.nvim?
+## Should I use doge or dooku?
 Their purpose is quite different:
 
 * [Doge.vim](https://github.com/kkoomen/vim-doge): Helper to write code comments inside your code.
