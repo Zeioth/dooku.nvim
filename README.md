@@ -50,7 +50,7 @@ Use `:DookuGenerate` to generate the html documentation of your project. Then `:
 By default the option `auto_setup` is enabled, so you won't have to manually setup the documentation for your project. If you prefer to do it manually, disable this option.
 
 ## Recommended mappings
-```
+```lua
 -- Dooku generate
 vim.api.nvim_buf_set_keymap(0, 'n', '<F6>', "<cmd>DookuGenerate<cr>", { noremap = true, silent = true })
 
