@@ -47,7 +47,7 @@ lazy.nvim
 ## How to use
 Use `:DookuGen` to generate the html documentation of your project. Then `:DookuOpen` to open it on your internet browser. 
 
-By default the option `auto_setup` is enabled, so you won't have to enable the documentation for your project. If you prefer to do it manually, disable this option.
+By default the option `auto_setup` is enabled, so you won't have to manually setup the documentation for your project. If you prefer to do it manually, disable this option.
 
 ## Recommended mappings
 ```
