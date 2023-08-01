@@ -12,7 +12,7 @@ function M.setup(ctx)
 
   opts.set(ctx)
 
-  cmd("DookuGen", function() utils.generate() end,
+  cmd("DookuGenerate", function() utils.generate() end,
     { desc = "Generate the HTML documentation using the adecuated generator for the current filetype" })
 
   cmd("DookuOpen", function() utils.open() end,
