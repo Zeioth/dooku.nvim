@@ -1,0 +1,5 @@
+*dooku.txt*                                      html doc generator for neovim.
+
+Help wanted to write readme.md in .txt format.
+
+
