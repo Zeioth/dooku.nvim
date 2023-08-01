@@ -30,6 +30,8 @@ You need the dependencies in order for dooku.nvim to be able to call the documen
 sudo pacman -S doxygen
 yarn add global jdoc typedoc
 ```
+To check if all the dependencies are correctly installed, run `:checkhealth dooku`
+
 You don't need to install rustdoc and godoc as they come included on their respective languages.
 
 ## How to instal
