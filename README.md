@@ -52,5 +52,6 @@ This is a lua port of the vim plugin [vim-dooku](https://github.com/Zeioth/vim-d
 ## Roadmap
 * MVP: doxygen
 * Port the other backends: jdoc, typedoc, rustdoc, godoc
+* Windows support
 * Porting the manual from vim-doooku, so we can use :help dooku
 * Writing health file, so we can check if dependencies are fulfilled.
