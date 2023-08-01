@@ -76,7 +76,7 @@ auto_setup = true
 browser_cmd = "xdg-open" -- Write your internet browser here. If unset, it will attempt to detect it automatically.
 
 -- doxygen settings
-doxygen_filetypes o { 'c', 'cpp', 'cs', 'python', 'd', 'fortran', 'java', 'perl', 'vhdl', 'objc', 'php' } -- for this filetypes use doxygen
+doxygen_filetypes = { 'c', 'cpp', 'cs', 'python', 'd', 'fortran', 'java', 'perl', 'vhdl', 'objc', 'php' } -- for this filetypes use doxygen
 doxygen_html_file = "./html/index.html"                                          -- html file to open with :DookuOpen.
 doxygen_clone_config_repo = "https://github.com/Zeioth/vim-doxygen-template.git" -- repo to clone if auto_setup
 doxygen_clone_destiny_dir = "./doxygen"                                          -- clone into this dir.
