@@ -25,10 +25,10 @@ Their purpose is quite different:
 | `go`| godoc |
 
 ## Required dependencies
-You need the dependencies in order for dooku.nvim to be able to call the documentation generators. In this example I install them on Arch Linux using pacman and yarn, but you can find them on any distro.
+You need the dependencies in order for dooku.nvim to be able to call the documentation generators. In this example I install them on Arch Linux using pacman and npm, but you can find them on any distro.
 ```sh
 sudo pacman -S doxygen
-yarn add global jdoc typedoc
+npm install -g jdoc typedoc
 ```
 To check if all the dependencies are correctly installed, run `:checkhealth dooku`
 
