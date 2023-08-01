@@ -47,7 +47,7 @@ lazy.nvim
 ## How to use
 Use `:DookuGen` to generate the html documentation of your project. Then `:DookuOpen` to open it on your internet browser. 
 
-By default the option `auto_setup` is enabled, so you won't have to enable the documentation for your project. If you prefer to do it manually, disable this option.
+By default the option `auto_setup` is enabled, so you won't have to manually setup the documentation for your project. If you prefer to do it manually, disable this option.
 
 ## Recommended mappings
 ```
@@ -73,7 +73,7 @@ notification_on_open = true
 generate_on_bufwrite = true
 on_generate_open = false
 auto_setup = true
-browser_cmd = "xdg-open"
+browser_cmd = "xdg-open" -- Write your internet browser here. If unset, it will attempt to detect it automatically.
 
 -- doxygen settings
 doxygen_filetypes o { 'c', 'cpp', 'cs', 'python', 'd', 'fortran', 'java', 'perl', 'vhdl', 'objc', 'php' } -- for this filetypes use doxygen
@@ -87,7 +87,7 @@ This is a lua port of the vim plugin [vim-dooku](https://github.com/Zeioth/vim-d
 
 ## Roadmap
 * ~~MVP: doxygen~~
+* ~~Windows support~~
 * Port the other backends: jdoc, typedoc, rustdoc, godoc
-* Windows support
 * Porting the manual from vim-doooku, so we can use :help dooku
 * Writing health file, so we can check if dependencies are fulfilled.
