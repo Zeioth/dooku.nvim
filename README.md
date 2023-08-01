@@ -82,9 +82,6 @@ doxygen_clone_config_repo = "https://github.com/Zeioth/vim-doxygen-template.git"
 doxygen_clone_destiny_dir = "./doxygen"                                          -- clone into this dir.
 ```
 
-## Where do that cheesy name come from?
-From [Star Wars](https://starwars.fandom.com/wiki/Dooku).
-
 ## Credits
 This is a lua port of the vim plugin [vim-dooku](https://github.com/Zeioth/vim-dooku).
 
@@ -94,3 +91,6 @@ This is a lua port of the vim plugin [vim-dooku](https://github.com/Zeioth/vim-d
 * Port the other backends: jdoc, typedoc, rustdoc, godoc
 * ~~Porting the manual from vim-doooku, so we can use :help dooku.~~
 * ~~Writing health file, so we can check if dependencies are fulfilled.~~
+
+## Where do that cheesy name come from?
+From [Star Wars](https://starwars.fandom.com/wiki/Dooku).
