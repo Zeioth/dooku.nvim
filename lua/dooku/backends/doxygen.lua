@@ -13,7 +13,7 @@ local job
 ---                            ignore the option on_generate_open.
 function M.generate(is_autocmd)
   local cwd = utils.os_path(utils.find_project_root(opts.project_root))
-  local doxygen_dir = cwd .. "/" .. opts.doxygen_clone_destiny_dir
+  local doxygen_dir = os_path(cwd .. "/" .. opts.doxygen_clone_destiny_dir)
   local doxygen_dir_exists = vim.fn.isdirectory(doxygen_dir) == 1
 
   -- Auto setup
@@ -28,9 +28,8 @@ function M.generate(is_autocmd)
   end
 
   if job then uv.process_kill(job, 9) end -- Running already? kill it
-  cwd = cwd .. "/" .. opts.doxygen_clone_destiny_dir
   job =
-    uv.spawn("doxygen", { args = { "Doxyfile" }, cwd = cwd, detach = true })
+    uv.spawn("doxygen", { args = { "Doxyfile" }, cwd = doxygen_dir, detach = true })
 
   -- Open html docs
   if is_autocmd == false and opts.on_generate_open then M.open() end
