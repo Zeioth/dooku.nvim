@@ -83,6 +83,9 @@ doxygen_clone_destiny_dir = "./doxygen"                                         
 doxygen_post_clone_cmd = ""                                                      -- optional command to run after cloning the config repo
 ```
 
+## Troubleshooting
+If you have the option `auto_setup` enabled, and you are running `:DookuGenerate` on your project for the first time, you will have to run the command two times. One for auto setup to kick in, and a second one to actually generate the docs.
+
 ## Credits
 This is a lua port of the vim plugin [vim-dooku](https://github.com/Zeioth/vim-dooku).
 
