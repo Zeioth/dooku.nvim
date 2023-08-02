@@ -63,6 +63,7 @@ vim.api.nvim_buf_set_keymap(0, 'n', '<S-F6>', "<cmd>DookuOpen<cr>", { noremap = 
 |--|--|
 | `:DookuGenerate` | Generate the HTML documentation using the adecuated generator for the current filetype. |
 | `:DookuOpen` | Open the HTML documentation using the specified program, or the default internet browser. |
+| `:DookuAutoSetup` | It will download a config template for the documentation generator in your project root directory, so you can run `:DookuGenerate` without having to configure anything. |
 
 ## Configuration options
 ```lua
