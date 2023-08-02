@@ -81,7 +81,6 @@ doxygen_filetypes = { 'c', 'cpp', 'cs', 'python', 'd', 'fortran', 'java', 'perl'
 doxygen_html_file = "./html/index.html"                                          -- html file to open with :DookuOpen.
 doxygen_clone_config_repo = "https://github.com/Zeioth/vim-doxygen-template.git" -- repo to clone if auto_setup
 doxygen_clone_destiny_dir = "./doxygen"                                          -- clone into this dir.
-doxygen_post_clone_cmd = ""                                                      -- optional command to run after cloning the config repo
 ```
 
 ## Troubleshooting
