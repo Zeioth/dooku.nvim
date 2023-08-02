@@ -18,6 +18,8 @@ function M.setup(ctx)
   cmd("DookuOpen", function() utils.open() end,
     { desc = "Open the HTML documentation using the specified program, or the default internet browser" })
 
+  cmd("DookuAutoSetup", function() utils.auto_setup() end,
+    { desc = "If the project doesn't have the documentation enabled, it does it for you." })
 
   autocmd("BufWritePost", {
     desc = "If enabled, generate the HTML docs on write",
