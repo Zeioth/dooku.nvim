@@ -37,7 +37,7 @@ lazy.nvim
 ```lua
 {
   "Zeioth/dooku.nvim",
-  cmd = { "DookuGenerate", "DookuOpen" },
+  cmd = { "DookuGenerate", "DookuOpen", "DookuAutoSetup" },
   opts = {
     -- your config options here
   }
@@ -52,10 +52,10 @@ By default the option `auto_setup` is enabled, so you won't have to manually set
 ## Recommended mappings
 ```lua
 -- Dooku generate
-vim.api.nvim_buf_set_keymap(0, 'n', '<F6>', "<cmd>DookuGenerate<cr>", { noremap = true, silent = true })
+vim.api.nvim_buf_set_keymap(0, 'n', '<F2>', "<cmd>DookuGenerate<cr>", { noremap = true, silent = true })
 
 -- Dooku open
-vim.api.nvim_buf_set_keymap(0, 'n', '<S-F6>', "<cmd>DookuOpen<cr>", { noremap = true, silent = true })
+vim.api.nvim_buf_set_keymap(0, 'n', '<F3>', "<cmd>DookuOpen<cr>", { noremap = true, silent = true })
 ```
 
 ## Available commands
@@ -65,28 +65,43 @@ vim.api.nvim_buf_set_keymap(0, 'n', '<S-F6>', "<cmd>DookuOpen<cr>", { noremap = 
 | `:DookuOpen` | Open the HTML documentation using the specified program, or the default internet browser. |
 | `:DookuAutoSetup` | It will download a config file in your project root directory, so you can run `:DookuGenerate` without having to configure anything. |
 
-## Configuration options
+## Basic configuration options
 ```lua
 -- General settings
 project_root = { '.git', '.hg', '.svn', '.bzr', '_darcs', '_FOSSIL_', '.fslckout' } -- when one of these files is found, consider the directory the project root. Search starts from the current buffer.
-notification_on_generate = true
-notification_on_open = true
-generate_on_bufwrite = true  -- auto run :DookuGenerate when a buffer is written.
-on_generate_open = false     -- auto open when running :DookuGenerate. This options is not triggered by generate_on_bufwrite.
+on_generate_notification = true
+on_open_notification = true
+on_bufwrite_generate = true  -- auto run :DookuGenerate when a buffer is written.
+on_generate_open = false     -- auto open when running :DookuGenerate. This options is not triggered by on_bufwrite_generate.
 auto_setup = true            -- auto download a config for the generator if it doesn't exist in the project.
 browser_cmd = "xdg-open"     -- write your internet browser here. If unset, it will attempt to detect it automatically.
+```
 
+## Advanced configuration options
+99% of the time you won't need these advanced options. This is only for people who want more flexibility.
+
+``` lua
 -- doxygen specific settings
 doxygen_filetypes = { 'c', 'cpp', 'cs', 'python', 'd', 'fortran', 'java', 'perl', 'vhdl', 'objc', 'php' } -- for this filetypes use doxygen
 doxygen_docs_dir = "doxygen"                                                     -- the doxigen dir.
-doxygen_html_file = "html/index.html"                                            -- html file to open with :DookuOpen.
+doxygen_html_file = "html/index.html"                                            -- html file to open with :DookuOpen. This path starts in doxygen_docs_dir, instead of the root directory.
 doxygen_clone_config_repo = "https://github.com/Zeioth/vim-doxygen-template.git" -- repo to clone if auto_setup.
 doxygen_clone_to_dir = "doxygen"                                                 -- clone into this dir.
 doxygen_clone_cmd_post = ""                                                      -- runs a command after cloning.
-```
 
+-- typedoc specific settings
+typedoc_filetypes = { "typescript" }                                             -- for this filetypes use typedoc
+doxygen_docs_dir = "docs"                                                        -- the typedoc dir.
+typedoc_html_file = "index.html"                                                 -- html file to open with :DookuOpen. This path starts in doxygen_docs_dir, instead of the root directory.
+typedoc_clone_config_repo = "https://github.com/Zeioth/vim-typedoc-template.git" -- repo to clone if auto_setup.
+typedoc_clone_to_dir = "vim-typedoc-template"                                    -- clone into this dir.
+typedoc_clone_cmd_post = ""                                                      -- runs a command after cloning. If you set this option manually, make sure you copy 'typedoc.json' from 'typedoc_clone_to_dir', into the root directory here.
+```
 ## Troubleshooting
 If you have the option `auto_setup` enabled, and you are running `:DookuGenerate` on your project for the first time, you will have to run the command two times. One for auto setup to kick in, and a second one to actually generate the docs.
+
+## FAQ
+* **(ADVANCED) Explain `:DookuAutoSetup` to me in detail**: All this command do is to clone a repo `clone_config_repo` into a dir `clone_to_dir` inside your project root, and then run a command `clone_cmd_post` to copy the files from the cloned repo to another location, if needed. Normally you don't need to touch any of these options.
 
 ## Credits
 This is a lua port of the vim plugin [vim-dooku](https://github.com/Zeioth/vim-dooku).
