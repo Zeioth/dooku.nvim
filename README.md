@@ -52,10 +52,10 @@ By default the option `auto_setup` is enabled, so you won't have to manually set
 ## Recommended mappings
 ```lua
 -- Dooku generate
-vim.api.nvim_buf_set_keymap(0, 'n', '<F6>', "<cmd>DookuGenerate<cr>", { noremap = true, silent = true })
+vim.api.nvim_buf_set_keymap(0, 'n', '<F2>', "<cmd>DookuGenerate<cr>", { noremap = true, silent = true })
 
 -- Dooku open
-vim.api.nvim_buf_set_keymap(0, 'n', '<S-F6>', "<cmd>DookuOpen<cr>", { noremap = true, silent = true })
+vim.api.nvim_buf_set_keymap(0, 'n', '<F3>', "<cmd>DookuOpen<cr>", { noremap = true, silent = true })
 ```
 
 ## Available commands
