@@ -68,19 +68,21 @@ vim.api.nvim_buf_set_keymap(0, 'n', '<S-F6>', "<cmd>DookuOpen<cr>", { noremap = 
 ## Configuration options
 ```lua
 -- General settings
-project_root = { '.git', '.hg', '.svn', '.bzr', '_darcs', '_FOSSIL_', '.fslckout' }
+project_root = { '.git', '.hg', '.svn', '.bzr', '_darcs', '_FOSSIL_', '.fslckout' } -- when one of these files is found, consider the directory the project root. Search starts from the current buffer.
 notification_on_generate = true
 notification_on_open = true
-generate_on_bufwrite = true
-on_generate_open = false
-auto_setup = true
-browser_cmd = "xdg-open" -- Write your internet browser here. If unset, it will attempt to detect it automatically.
+generate_on_bufwrite = true  -- auto run :DookuGenerate when a buffer is written.
+on_generate_open = false -- auto open when running :DookuGenerate. It won't be triggered by generate_on_bufwrite.
+auto_setup = true        -- auto download a config for the generator if it doesn't exist in the project.
+browser_cmd = "xdg-open" -- write your internet browser here. If unset, it will attempt to detect it automatically.
 
 -- doxygen specific settings
 doxygen_filetypes = { 'c', 'cpp', 'cs', 'python', 'd', 'fortran', 'java', 'perl', 'vhdl', 'objc', 'php' } -- for this filetypes use doxygen
-doxygen_html_file = "./html/index.html"                                          -- html file to open with :DookuOpen.
-doxygen_clone_config_repo = "https://github.com/Zeioth/vim-doxygen-template.git" -- repo to clone if auto_setup
-doxygen_clone_destiny_dir = "./doxygen"                                          -- clone into this dir.
+doxygen_docs_dir = "doxygen"                                                     -- the doxigen dir.
+doxygen_html_file = "html/index.html"                                            -- html file to open with :DookuOpen.
+doxygen_clone_config_repo = "https://github.com/Zeioth/vim-doxygen-template.git" -- repo to clone if auto_setup.
+doxygen_clone_to_dir = "doxygen"                                                 -- clone into this dir.
+doxygen_clone_cmd_post = ""                                                      -- runs a command after cloning.
 ```
 
 ## Troubleshooting
