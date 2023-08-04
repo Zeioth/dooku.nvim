@@ -24,6 +24,14 @@ Their purpose is quite different:
 | `rust` | rustdoc  (coming soon) |
 | `go`| godoc (coming soon) |
 
+# Not supported yet
+Pull requests are welcome.
+
+| Language | Generator |
+|--|--|
+| `lua` | ldoc |
+| `ruby` | yard |
+
 ## Required dependencies
 You need the dependencies in order for dooku.nvim to be able to call the documentation generators. In this example I install them on Arch Linux using pacman and npm, but you can find them on any distro.
 ```sh
