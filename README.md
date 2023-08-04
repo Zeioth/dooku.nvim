@@ -80,7 +80,7 @@ project_root = { '.git', '.hg', '.svn', '.bzr', '_darcs', '_FOSSIL_', '.fslckout
 on_generate_notification = true
 on_open_notification = true
 on_bufwrite_generate = true  -- auto run :DookuGenerate when a buffer is written.
-on_generate_open = false     -- auto open when running :DookuGenerate. This options is not triggered by on_bufwrite_generate.
+on_generate_open = true      -- auto open when running :DookuGenerate. This options is not triggered by on_bufwrite_generate.
 auto_setup = true            -- auto download a config for the generator if it doesn't exist in the project.
 browser_cmd = "xdg-open"     -- write your internet browser here. If unset, it will attempt to detect it automatically.
 ```
