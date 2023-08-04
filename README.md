@@ -75,7 +75,12 @@ generate_on_bufwrite = true  -- auto run :DookuGenerate when a buffer is written
 on_generate_open = false     -- auto open when running :DookuGenerate. This options is not triggered by generate_on_bufwrite.
 auto_setup = true            -- auto download a config for the generator if it doesn't exist in the project.
 browser_cmd = "xdg-open"     -- write your internet browser here. If unset, it will attempt to detect it automatically.
+```
 
+## Advanced configuration options
+99% of the time you won't need any of these. But you can.
+
+``` lua
 -- doxygen specific settings
 doxygen_filetypes = { 'c', 'cpp', 'cs', 'python', 'd', 'fortran', 'java', 'perl', 'vhdl', 'objc', 'php' } -- for this filetypes use doxygen
 doxygen_docs_dir = "doxygen"                                                     -- the doxigen dir.
@@ -92,7 +97,6 @@ typedoc_clone_config_repo = "https://github.com/Zeioth/vim-typedoc-template.git"
 typedoc_clone_to_dir = "vim-typedoc-template"                                    -- clone into this dir.
 typedoc_clone_cmd_post = ""                                                      -- runs a command after cloning. If you set this option manually, make sure you copy 'typedoc.json' from 'typedoc_clone_to_dir', into the root directory here.
 ```
-
 ## Troubleshooting
 If you have the option `auto_setup` enabled, and you are running `:DookuGenerate` on your project for the first time, you will have to run the command two times. One for auto setup to kick in, and a second one to actually generate the docs.
 
