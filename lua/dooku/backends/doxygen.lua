@@ -18,13 +18,13 @@ function M.generate(is_autocmd)
   local doxyfile_exists = vim.loop.fs_stat(doxyfile) and vim.loop.fs_stat(doxyfile).type == 'file' or false
 
   -- Auto setup doxygen
-  if opts.auto_setup and doxyfile_exists == false then
+  if opts.auto_setup and not doxyfile_exists then
     M.auto_setup()
     return
   end
 
   -- Generate html docs
-  if opts.notification_on_generate then
+  if opts.on_generate_notification then
     vim.notify("Generating doxygen html docs...", vim.log.levels.INFO)
   end
 
@@ -35,7 +35,7 @@ function M.generate(is_autocmd)
   )
 
   -- Open html docs
-  if is_autocmd == false and opts.on_generate_open then M.open() end
+  if not is_autocmd and opts.on_generate_open then M.open() end
 end
 
 --- It opens the html documentation in the specified internet browser.
@@ -46,11 +46,11 @@ M.open = function()
     .. opts.doxygen_docs_dir
   )
   local html_file = cwd .. "/" .. opts.doxygen_html_file
-  local html_exists = vim.loop.fs_stat(html_file) and vim.loop.fs_stat(html_file).type == 'file' or false
+  local html_file_exists = vim.loop.fs_stat(html_file) and vim.loop.fs_stat(html_file).type == 'file' or false
 
-  if opts.notification_on_open and html_exists then
+  if opts.on_open_notification and html_file_exists then
     vim.notify("Opening doxygen html docs...", vim.log.levels.INFO)
-  elseif opts.notification_on_open then
+  elseif opts.on_open_notification then
     vim.notify("HTML file not found:\nTry running :DookuGenerate", vim.log.levels.INFO)
   end
 

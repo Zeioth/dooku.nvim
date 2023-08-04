@@ -16,15 +16,14 @@ function M.generate(is_autocmd)
   local typedoc_file = utils.os_path(cwd .. "/typedoc.json")
   local typedoc_file_exists = vim.loop.fs_stat(typedoc_file) and vim.loop.fs_stat(typedoc_file).type == 'file' or false
 
-
   -- Auto setup typedoc
-  if opts.auto_setup and typedoc_file_exists == false then
+  if opts.auto_setup and not typedoc_file_exists then
     M.auto_setup()
     return
   end
 
   -- Generate html docs
-  if opts.notification_on_generate then
+  if opts.on_generate_notification then
     vim.notify("Generating typedoc html docs...", vim.log.levels.INFO)
   end
 
@@ -34,7 +33,7 @@ function M.generate(is_autocmd)
   )
 
   -- Open html docs
-  if is_autocmd == false and opts.on_generate_open then M.open() end
+  if not is_autocmd and opts.on_generate_open then M.open() end
 end
 
 --- It opens the html documentation in the specified internet browser.
@@ -45,11 +44,11 @@ M.open = function()
     .. opts.typedoc_docs_dir
   )
   local html_file = cwd .. "/" .. opts.typedoc_html_file
-  local html_exists = vim.loop.fs_stat(html_file) and vim.loop.fs_stat(html_file).type == 'file' or false
+  local html_file_exists = vim.loop.fs_stat(html_file) and vim.loop.fs_stat(html_file).type == 'file' or false
 
-  if opts.notification_on_open and html_exists then
+  if opts.on_open_notification and html_file_exists then
     vim.notify("Opening typedoc html docs...", vim.log.levels.INFO)
-  elseif opts.notification_on_open then
+  elseif opts.on_open_notification then
     vim.notify("HTML file not found:\nTry running :DookuGenerate", vim.log.levels.INFO)
   end
 

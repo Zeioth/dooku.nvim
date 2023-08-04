@@ -8,10 +8,10 @@ function M.set(ctx)
 
   -- [GENERAL SETTINGS] ----------------------------------------------------
   M.project_root = ctx.project_root or { '.git', '.hg', '.svn', '.bzr', '_darcs', '_FOSSIL_', '.fslckout' }
-  M.notification_on_generate = ctx.notification_on_generate or true
-  M.notification_on_open = ctx.notification_on_open or true
-  M.generate_on_write = ctx.generate_on_bufwrite or true
-  M.on_generate_open = ctx.on_generate_open or false
+  M.on_generate_notification = ctx.on_generate_notification or true
+  M.on_open_notification = ctx.on_open_notification or true
+  M.on_write_generate = ctx.on_write_generate or true
+  M.on_generate_open = ctx.on_generate_open or true
   M.auto_setup = ctx.auto_setup or true
 
   -- detect default internet browser

@@ -24,10 +24,7 @@ function M.setup(ctx)
   autocmd("BufWritePost", {
     desc = "If enabled, generate the HTML docs on write",
     group = augroup("dooku_genearate_on_write", { clear = true }),
-    callback = function()
-      vim.notify("Generating doxygen html docs...", vim.log.levels.INFO)
-      if opts.generate_on_bufwrite then commands.generate(true) end
-    end,
+    callback = function() if opts.on_write_generate then commands.generate(true) end end,
   })
 end
 
