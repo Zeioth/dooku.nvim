@@ -4,7 +4,7 @@ local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
 local opts = require("dooku.options")
-local utils = require("dooku.utils")
+local commands = require("dooku.commands")
 
 local M = {}
 
@@ -12,13 +12,13 @@ function M.setup(ctx)
 
   opts.set(ctx)
 
-  cmd("DookuGenerate", function() utils.generate() end,
+  cmd("DookuGenerate", function() commands.generate() end,
     { desc = "Generate the HTML documentation using the adecuated generator for the current filetype" })
 
-  cmd("DookuOpen", function() utils.open() end,
+  cmd("DookuOpen", function() commands.open() end,
     { desc = "Open the HTML documentation using the specified program, or the default internet browser" })
 
-  cmd("DookuAutoSetup", function() utils.auto_setup() end,
+  cmd("DookuAutoSetup", function() commands.auto_setup() end,
     { desc = "If the project doesn't have the documentation enabled, it does it for you." })
 
   autocmd("BufWritePost", {
@@ -26,7 +26,7 @@ function M.setup(ctx)
     group = augroup("dooku_genearate_on_write", { clear = true }),
     callback = function()
       vim.notify("Generating doxygen html docs...", vim.log.levels.INFO)
-      if opts.generate_on_bufwrite then utils.generate(true) end
+      if opts.generate_on_bufwrite then commands.generate(true) end
     end,
   })
 end
