@@ -94,7 +94,7 @@ This is a lua port of the vim plugin [vim-dooku](https://github.com/Zeioth/vim-d
 ## Roadmap
 * ~~MVP: doxygen~~
 * ~~Windows support.~~
-* Port the other backends: jdoc, typedoc, rustdoc, godoc
+* Port the other backends: ~~typedoc~~, jsdoc, rustdoc, godoc
 * ~~Porting the manual from vim-doooku, so we can use :help dooku.~~
 * ~~Writing health file, so we can check if dependencies are fulfilled.~~
 
