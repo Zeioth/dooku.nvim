@@ -37,7 +37,7 @@ lazy.nvim
 ```lua
 {
   "Zeioth/dooku.nvim",
-  cmd = { "DookuGenerate", "DookuOpen" },
+  cmd = { "DookuGenerate", "DookuOpen", "DookuAutoSetup" },
   opts = {
     -- your config options here
   }
