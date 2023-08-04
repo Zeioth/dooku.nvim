@@ -83,6 +83,14 @@ doxygen_html_file = "html/index.html"                                           
 doxygen_clone_config_repo = "https://github.com/Zeioth/vim-doxygen-template.git" -- repo to clone if auto_setup.
 doxygen_clone_to_dir = "doxygen"                                                 -- clone into this dir.
 doxygen_clone_cmd_post = ""                                                      -- runs a command after cloning.
+
+-- typedoc specific settings
+typedoc_filetypes = { "typescript" } -- for this filetypes use doxygen
+doxygen_docs_dir = "docs"                                                        -- the typedoc dir.
+typedoc_html_file = "index.html"                                                 -- html file to open with :DookuOpen.
+typedoc_clone_config_repo = "https://github.com/Zeioth/vim-typedoc-template.git" -- repo to clone if auto_setup.
+typedoc_clone_to_dir = "vim-typedoc-template"                                    -- clone into this dir.
+typedoc_clone_cmd_post = ""                                                      -- runs a command after cloning. If you set this option manually, make sure you copy 'typedoc.json' from 'typedoc_clone_to_dir', into the root directory in the command.
 ```
 
 ## Troubleshooting
