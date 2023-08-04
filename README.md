@@ -65,7 +65,7 @@ vim.api.nvim_buf_set_keymap(0, 'n', '<S-F6>', "<cmd>DookuOpen<cr>", { noremap = 
 | `:DookuOpen` | Open the HTML documentation using the specified program, or the default internet browser. |
 | `:DookuAutoSetup` | It will download a config file in your project root directory, so you can run `:DookuGenerate` without having to configure anything. |
 
-## Configuration options
+## Basic configuration options
 ```lua
 -- General settings
 project_root = { '.git', '.hg', '.svn', '.bzr', '_darcs', '_FOSSIL_', '.fslckout' } -- when one of these files is found, consider the directory the project root. Search starts from the current buffer.
