@@ -78,7 +78,7 @@ browser_cmd = "xdg-open"     -- write your internet browser here. If unset, it w
 ```
 
 ## Advanced configuration options
-99% of the time you won't need it. This is only for people who want more flexibility.
+99% of the time you won't need these advanced options. This is only for people who want more flexibility.
 
 ``` lua
 -- doxygen specific settings
