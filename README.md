@@ -24,6 +24,14 @@ Their purpose is quite different:
 | `rust` | rustdoc  (coming soon) |
 | `go`| godoc (coming soon) |
 
+# Not supported yet
+Pull requests are welcome.
+
+| Language | Generator |
+|--|--|
+| `lua` | ldoc |
+| `ruby` | yard |
+
 ## Required dependencies
 You need the dependencies in order for dooku.nvim to be able to call the documentation generators. In this example I install them on Arch Linux using pacman and npm, but you can find them on any distro.
 ```sh
@@ -72,7 +80,7 @@ project_root = { '.git', '.hg', '.svn', '.bzr', '_darcs', '_FOSSIL_', '.fslckout
 on_generate_notification = true
 on_open_notification = true
 on_bufwrite_generate = true  -- auto run :DookuGenerate when a buffer is written.
-on_generate_open = false     -- auto open when running :DookuGenerate. This options is not triggered by on_bufwrite_generate.
+on_generate_open = true      -- auto open when running :DookuGenerate. This options is not triggered by on_bufwrite_generate.
 auto_setup = true            -- auto download a config for the generator if it doesn't exist in the project.
 browser_cmd = "xdg-open"     -- write your internet browser here. If unset, it will attempt to detect it automatically.
 ```
@@ -91,7 +99,7 @@ doxygen_clone_cmd_post = ""                                                     
 
 -- typedoc specific settings
 typedoc_filetypes = { "typescript" }                                             -- for this filetypes use typedoc
-doxygen_docs_dir = "docs"                                                        -- the typedoc dir.
+typedoc_docs_dir = "docs"                                                        -- the typedoc dir.
 typedoc_html_file = "index.html"                                                 -- html file to open with :DookuOpen. This path starts in doxygen_docs_dir, instead of the root directory.
 typedoc_clone_config_repo = "https://github.com/Zeioth/vim-typedoc-template.git" -- repo to clone if auto_setup.
 typedoc_clone_to_dir = "vim-typedoc-template"                                    -- clone into this dir.
@@ -102,6 +110,7 @@ If you have the option `auto_setup` enabled, and you are running `:DookuGenerate
 
 ## FAQ
 * **(ADVANCED) Explain `:DookuAutoSetup` to me in detail**: All this command do is to clone a repo `clone_config_repo` into a dir `clone_to_dir` inside your project root, and then run a command `clone_cmd_post` to copy the files from the cloned repo to another location, if needed. Normally you don't need to touch any of these options.
+* **How can I add support for a new language?** On the `backends` directory, copy the file doxygen.lua, and and use it as base to add your new documentation generator. On `options.lua`, copy all the doxygen specific options, and rename them to the language you are adding. Finally, on `commands.lua`, add your language to the if condition of the functions `generate`, `open`, and `auto_setup`, so your backend is recognized and loaded. Don't forget to send your PR so everyone can benefit from it!
 
 ## Credits
 This is a lua port of the vim plugin [vim-dooku](https://github.com/Zeioth/vim-dooku).
