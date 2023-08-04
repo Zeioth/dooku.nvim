@@ -13,11 +13,7 @@ function M.require_backend(backend)
   local moduleFilePath = localPathDir .. "backends/" .. backend .. ".lua"
   local success, backend = pcall(dofile, moduleFilePath)
 
-  if success then
-    return backend
-  else
-    return nil
-  end
+  if success then return backend else return nil end
 end
 
 --- Generate the HTML documentation.
@@ -28,12 +24,14 @@ function M.generate(is_autocmd)
     M.require_backend("doxygen").generate(is_autocmd)
   elseif utils.exists_in_table(filetype, options.typedoc_filetypes) then
     M.require_backend("typedoc").generate(is_autocmd)
+  elseif utils.exists_in_table(filetype, options.jsdoc_filetypes) then
+    M.require_backend("jsdoc").generate(is_autocmd)
   else
     vim.notify(
       "The filetype "
         .. vim.bo.filetype
         .. " it not supported by Dooku.nvim yet.",
-      vim.log.levels.INFO
+      vim.log.levels.WARN
     )
   end
 end
@@ -46,12 +44,14 @@ function M.open()
     M.require_backend("doxygen").open()
   elseif utils.exists_in_table(filetype, options.typedoc_filetypes) then
     M.require_backend("typedoc").open()
+  elseif utils.exists_in_table(filetype, options.jsdoc_filetypes) then
+    M.require_backend("jsdoc").open()
   else
     vim.notify(
       "The filetype "
         .. vim.bo.filetype
         .. " it not supported by Dooku.nvim yet.",
-      vim.log.levels.INFO
+      vim.log.levels.WARN
     )
   end
 end
@@ -64,12 +64,14 @@ function M.auto_setup()
     M.require_backend("doxygen").auto_setup()
   elseif utils.exists_in_table(filetype, options.typedoc_filetypes) then
     M.require_backend("typedoc").auto_setup()
+  elseif utils.exists_in_table(filetype, options.jsdoc_filetypes) then
+    M.require_backend("jsdoc").auto_setup()
   else
     vim.notify(
       "The filetype "
         .. vim.bo.filetype
         .. " it not supported by Dooku.nvim yet.",
-      vim.log.levels.INFO
+      vim.log.levels.WARN
     )
   end
 end

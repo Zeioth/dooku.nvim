@@ -72,12 +72,18 @@ function M.set(ctx)
   M.jsdoc_filetypes = ctx.jsdoc_filetypes or { 'javascript' }
 
   -- Open on browser
-  M.jsdoc_html_file = ctx.jsdoc_html_file or "html/index.html"
+  -- Defaults: cd 'docs',
+  --           open './index.html' using the default interner browser.
+  M.jsdoc_docs_dir = ctx.jsdoc_htmldocs_dir or utils.os_path("docs")
+  M.jsdoc_html_file = ctx.jsdoc_html_file or utils.os_path("index.html")
 
-  -- auto setup (clone Doxyfile from a git repository)
-  M.jsdoc_clone_config_repo = ctx.jsdoc or "https://github.com/Zeioth/vim-doxygen-template.git"
-  M.jsdoc_clone_destiny_dir = ctx.jsdoc or "doxygen"
-  M.jsdoc_clone_cmd_post = ctx.jsdoc_clone_cmd_post or ""
+  -- auto setup
+  -- Defaults: clone the repo into 'vim-jsdoc-template',
+  --           copy 'jsdoc.json' into the project root,
+  --           delete 'vim-jsdoc-template'.
+  M.jsdoc_clone_config_repo = ctx.jsdoc_clone_config_repo or "https://github.com/Zeioth/vim-jsdoc-template.git"
+  M.jsdoc_clone_to_dir = ctx.jsdoc_clone_to_dir or M.jsdoc_clone_config_repo:match(".+/(.-)%.git") -- URL's repo name
+  M.jsdoc_clone_cmd_post = ctx.jsdoc_clone_cmd_post or (is_windows and "&& copy " .. M.jsdoc_clone_to_dir .. "\\jsdoc.json .\\jsdoc.json && rmdir \\s \\q " .. M.jsdoc_clone_to_dir) or ("&& cp " .. M.jsdoc_clone_to_dir .. "/jsdoc.json ./jsdoc.json && " .. " rm -rf " .. M.jsdoc_clone_to_dir)
 
 
 
