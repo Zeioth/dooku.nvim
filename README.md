@@ -72,9 +72,9 @@ project_root = { '.git', '.hg', '.svn', '.bzr', '_darcs', '_FOSSIL_', '.fslckout
 notification_on_generate = true
 notification_on_open = true
 generate_on_bufwrite = true  -- auto run :DookuGenerate when a buffer is written.
-on_generate_open = false -- auto open when running :DookuGenerate. It won't be triggered by generate_on_bufwrite.
-auto_setup = true        -- auto download a config for the generator if it doesn't exist in the project.
-browser_cmd = "xdg-open" -- write your internet browser here. If unset, it will attempt to detect it automatically.
+on_generate_open = false     -- auto open when running :DookuGenerate. It won't be triggered by generate_on_bufwrite.
+auto_setup = true            -- auto download a config for the generator if it doesn't exist in the project.
+browser_cmd = "xdg-open"     -- write your internet browser here. If unset, it will attempt to detect it automatically.
 
 -- doxygen specific settings
 doxygen_filetypes = { 'c', 'cpp', 'cs', 'python', 'd', 'fortran', 'java', 'perl', 'vhdl', 'objc', 'php' } -- for this filetypes use doxygen
