@@ -19,10 +19,10 @@ Their purpose is quite different:
 | `java` | doxygen | 
 | `python` | doxygen |
 | `php` | doxygen |
-| `javascript` | jsdoc |
+| `javascript` | jsdoc (coming soon) |
 | `typescript` | typedoc |
-| `rust` | rustdoc |
-| `go`| godoc |
+| `rust` | rustdoc  (coming soon) |
+| `go`| godoc (coming soon) |
 
 ## Required dependencies
 You need the dependencies in order for dooku.nvim to be able to call the documentation generators. In this example I install them on Arch Linux using pacman and npm, but you can find them on any distro.
