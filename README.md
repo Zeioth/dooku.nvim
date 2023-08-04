@@ -79,7 +79,7 @@ browser_cmd = "xdg-open"     -- write your internet browser here. If unset, it w
 -- doxygen specific settings
 doxygen_filetypes = { 'c', 'cpp', 'cs', 'python', 'd', 'fortran', 'java', 'perl', 'vhdl', 'objc', 'php' } -- for this filetypes use doxygen
 doxygen_docs_dir = "doxygen"                                                     -- the doxigen dir.
-doxygen_html_file = "html/index.html"                                            -- html file to open with :DookuOpen.
+doxygen_html_file = "html/index.html"                                            -- html file to open with :DookuOpen. This path starts in doxygen_docs_dir, instead of the root directory.
 doxygen_clone_config_repo = "https://github.com/Zeioth/vim-doxygen-template.git" -- repo to clone if auto_setup.
 doxygen_clone_to_dir = "doxygen"                                                 -- clone into this dir.
 doxygen_clone_cmd_post = ""                                                      -- runs a command after cloning.
@@ -87,14 +87,17 @@ doxygen_clone_cmd_post = ""                                                     
 -- typedoc specific settings
 typedoc_filetypes = { "typescript" } -- for this filetypes use doxygen
 doxygen_docs_dir = "docs"                                                        -- the typedoc dir.
-typedoc_html_file = "index.html"                                                 -- html file to open with :DookuOpen.
+typedoc_html_file = "index.html"                                                 -- html file to open with :DookuOpen. This path starts in doxygen_docs_dir, instead of the root directory.
 typedoc_clone_config_repo = "https://github.com/Zeioth/vim-typedoc-template.git" -- repo to clone if auto_setup.
 typedoc_clone_to_dir = "vim-typedoc-template"                                    -- clone into this dir.
-typedoc_clone_cmd_post = ""                                                      -- runs a command after cloning. If you set this option manually, make sure you copy 'typedoc.json' from 'typedoc_clone_to_dir', into the root directory in the command.
+typedoc_clone_cmd_post = ""                                                      -- runs a command after cloning. If you set this option manually, make sure you copy 'typedoc.json' from 'typedoc_clone_to_dir', into the root directory here.
 ```
 
 ## Troubleshooting
 If you have the option `auto_setup` enabled, and you are running `:DookuGenerate` on your project for the first time, you will have to run the command two times. One for auto setup to kick in, and a second one to actually generate the docs.
+
+## FAQ
+* **Explain `:DookuAutoSetup` to me in detail**: All this command do is to clone a repo `clone_config_repo` into a dir `clone_to_dir` inside your project root, and then run a command `clone_cmd_post` to copy the files from the cloned repo to another location, if needed. Normally you don't need to touch any of these options, but you can. This is useful in two scenarios: 1) When you prefer to use your own repo instead of the default ones. 2) If your are working with a project that don't follow the conventions.
 
 ## Credits
 This is a lua port of the vim plugin [vim-dooku](https://github.com/Zeioth/vim-dooku).
