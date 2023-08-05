@@ -117,7 +117,7 @@ rustdoc_filetypes = { "rust" }                                                 -
 rustdoc_docs_dir = "target/doc"                                                -- the rustdoc dir. for rust, this options is only for opening the docs. If you want to change the location where the target directory is created, use the option rustdoc_args.
 rustdoc_html_file = "index.html"                                               -- html file to open with :DookuOpen. This path starts in rustdoc_docs_dir/crate_name, instead of the root directory. crate_name value will be the name of the project root.
 cargo_rustdoc_args = ""                                                        -- optional args to pass after "cargo rustdoc". They will be passed as "cargo rustdoc cargo_rustdoc_args -- rustdoc_args"
-rustdoc_args = ""                                                              -- optional rustdoc args to pass after "cargo rustdoc". They will be passed as "cargo rustdoc cargo_rustdoc_args -- rustdoc_args"
+rustdoc_args = ""                                                              -- optional rustdoc args to pass after "cargo rustdoc". They will be passed as "cargo rustdoc cargo_rustdoc_args -- rustdoc_args". WARNING: Be aware some rustdoc_args do not work correctly and will cause failure. This is a rust thing, not ours. It's a good idea to always run the command manually on the terminal to check if it works correctly with the arguments you are trying to pass before passing them here. That way you can debug it easier.
 ```
 
 ## Troubleshooting
@@ -129,7 +129,7 @@ This is only necessary the first time, and the reason is we run all tasks asynch
 
 ## FAQ
 * **(ADVANCED) Explain `:DookuAutoSetup` to me in detail**: All this command do is to clone a repo `clone_config_repo` into a dir `clone_to_dir` inside your project root, and then run a command `clone_cmd_post` to copy the files from the cloned repo to another location, if needed. Normally you don't need to touch any of these options.
-* **How can I add support for a new language?** On the `backends` directory, copy the file doxygen.lua, and and use it as base to add your new documentation generator. On `options.lua`, copy all the doxygen specific options, and rename them to the language you are adding. Finally, on `commands.lua`, add your language to the if condition of the functions `generate`, `open`, and `auto_setup`, so your backend is recognized and loaded. Don't forget to send your PR so everyone can benefit from it!
+* **How can I add support for a new language?** On the `backends` directory, copy the file `doxygen.lua`, and and use it as base to add your new documentation generator. On `options.lua`, copy all the doxygen specific options, and rename them to the language you are adding. Finally, on `commands.lua`, add your language to the if condition of the functions `generate`, `open`, and `auto_setup`, so your backend is recognized and loaded. Don't forget to send your PR so everyone can benefit from it!
 
 ## Credits
 This is a lua port of the vim plugin [vim-dooku](https://github.com/Zeioth/vim-dooku).
