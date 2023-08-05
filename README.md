@@ -123,6 +123,10 @@ rustdoc_args = ""                                                              -
 ## Troubleshooting
 If you have the option `auto_setup` enabled, and you are running `:DookuGenerate` on your project for the first time, you will have to run the command two times. One for auto setup to kick in, and a second one to actually generate the docs.
 
+If you have the option `on_generate_open`, and it's your first time running `:DookuGenerate` on a project, you will have to run `:DookuGenerate` twice. One for generating the docs, and another one to open them.
+
+This is only the first time. The reason is we run all tasks asynchronously.
+
 ## FAQ
 * **(ADVANCED) Explain `:DookuAutoSetup` to me in detail**: All this command do is to clone a repo `clone_config_repo` into a dir `clone_to_dir` inside your project root, and then run a command `clone_cmd_post` to copy the files from the cloned repo to another location, if needed. Normally you don't need to touch any of these options.
 * **How can I add support for a new language?** On the `backends` directory, copy the file doxygen.lua, and and use it as base to add your new documentation generator. On `options.lua`, copy all the doxygen specific options, and rename them to the language you are adding. Finally, on `commands.lua`, add your language to the if condition of the functions `generate`, `open`, and `auto_setup`, so your backend is recognized and loaded. Don't forget to send your PR so everyone can benefit from it!
