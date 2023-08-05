@@ -1,5 +1,5 @@
 # dooku.nvim
-Generate and open your code documentation inside NeoVim.
+Generate and open your HTML code documentation inside Neovim.
 
 ## Should I use doge or dooku?
 Their purpose is quite different:
@@ -21,7 +21,7 @@ Their purpose is quite different:
 | `php` | doxygen |
 | `javascript` | jsdoc |
 | `typescript` | typedoc |
-| `rust` | rustdoc  (coming soon) |
+| `rust` | rustdoc |
 | `go`| godoc (coming soon) |
 
 # Not supported yet
@@ -48,8 +48,7 @@ lazy.nvim
   cmd = { "DookuGenerate", "DookuOpen", "DookuAutoSetup" },
   opts = {
     -- your config options here
-  }
-  config = function(_, opts) require("dooku").setup(opts) end,
+  },
 },
 ```
 ## How to use
@@ -71,7 +70,7 @@ vim.api.nvim_buf_set_keymap(0, 'n', '<F3>', "<cmd>DookuOpen<cr>", { noremap = tr
 |--|--|
 | `:DookuGenerate` | Generate the HTML documentation using the adecuated generator for the current filetype. |
 | `:DookuOpen` | Open the HTML documentation using the specified program, or the default internet browser. |
-| `:DookuAutoSetup` | It will download a config file in your project root directory, so you can run `:DookuGenerate` without having to configure anything. |
+| `:DookuAutoSetup` | It will download a config file in your project root directory, so you can run `:DookuGenerate` without having to configure anything. Not necessary for `rust` and `go`. |
 
 ## Basic configuration options
 ```lua
@@ -100,13 +99,33 @@ doxygen_clone_cmd_post = ""                                                     
 -- typedoc specific settings
 typedoc_filetypes = { "typescript" }                                             -- for this filetypes use typedoc
 typedoc_docs_dir = "docs"                                                        -- the typedoc dir.
-typedoc_html_file = "index.html"                                                 -- html file to open with :DookuOpen. This path starts in doxygen_docs_dir, instead of the root directory.
+typedoc_html_file = "index.html"                                                 -- html file to open with :DookuOpen. This path starts in typedoc_docs_dir, instead of the root directory.
 typedoc_clone_config_repo = "https://github.com/Zeioth/vim-typedoc-template.git" -- repo to clone if auto_setup.
 typedoc_clone_to_dir = "vim-typedoc-template"                                    -- clone into this dir.
 typedoc_clone_cmd_post = ""                                                      -- runs a command after cloning. If you set this option manually, make sure you copy 'typedoc.json' from 'typedoc_clone_to_dir', into the root directory here.
+
+-- jsdoc specific settings
+jsdoc_filetypes = { "javascript" }                                             -- for this filetypes use jsdoc
+jsdoc_docs_dir = "docs"                                                        -- the typedoc dir.
+jsdoc_html_file = "index.html"                                                 -- html file to open with :DookuOpen. This path starts in jsdoc_docs_dir, instead of the root directory.
+jsdoc_clone_config_repo = "https://github.com/Zeioth/vim-jsdoc-template.git"   -- repo to clone if auto_setup.
+jsdoc_clone_to_dir = "vim-typedoc-template"                                    -- clone into this dir.
+jsdoc_clone_cmd_post = ""                                                      -- runs a command after cloning. If you set this option manually, make sure you copy 'typedoc.json' from 'typedoc_clone_to_dir', into the root directory here.
+
+-- rustdoc specific settings
+rustdoc_filetypes = { "rust" }                                                 -- for this filetypes use rustdoc
+rustdoc_docs_dir = "target/doc"                                                -- the rustdoc dir. for rust, this options is only for opening the docs. If you want to change the location where the target directory is created, use the option rustdoc_args.
+rustdoc_html_file = "index.html"                                               -- html file to open with :DookuOpen. This path starts in rustdoc_docs_dir/crate_name, instead of the root directory. crate_name value will be the name of the project root.
+cargo_rustdoc_args = ""                                                        -- optional args to pass after "cargo rustdoc". They will be passed as "cargo rustdoc cargo_rustdoc_args -- rustdoc_args"
+rustdoc_args = ""                                                              -- optional rustdoc args to pass after "cargo rustdoc". They will be passed as "cargo rustdoc cargo_rustdoc_args -- rustdoc_args"
 ```
+
 ## Troubleshooting
 If you have the option `auto_setup` enabled, and you are running `:DookuGenerate` on your project for the first time, you will have to run the command two times. One for auto setup to kick in, and a second one to actually generate the docs.
+
+If you have the option `on_generate_open` enabled, and it's your first time running `:DookuGenerate` on a project, you will have to run `:DookuGenerate` twice. One for generating the docs, and another one to open them.
+
+This is only necessary the first time, and the reason is we run all tasks asynchronously.
 
 ## FAQ
 * **(ADVANCED) Explain `:DookuAutoSetup` to me in detail**: All this command do is to clone a repo `clone_config_repo` into a dir `clone_to_dir` inside your project root, and then run a command `clone_cmd_post` to copy the files from the cloned repo to another location, if needed. Normally you don't need to touch any of these options.
@@ -118,7 +137,7 @@ This is a lua port of the vim plugin [vim-dooku](https://github.com/Zeioth/vim-d
 ## Roadmap
 * ~~MVP: doxygen~~
 * ~~Windows support.~~
-* Port the other backends: ~~typedoc~~, ~jsdoc~, rustdoc, godoc
+* Port the other backends: ~~typedoc~~, ~~jsdoc~~, ~~rustdoc~~, godoc
 * ~~Porting the manual from vim-doooku, so we can use :help dooku.~~
 * ~~Writing health file, so we can check if dependencies are fulfilled.~~
 
