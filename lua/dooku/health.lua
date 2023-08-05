@@ -51,14 +51,14 @@ function M.check()
       msg = "to call, it typedoc needs to be accessible on your terminal",
     },
     {
-      cmd = { "rustdoc" },
+      cmd = { "cargo" },
       type = "warn",
-      msg = "to call, it rustdoc needs to be accessible on your terminal",
+      msg = "to call, it cargo needs to be accessible on your terminal",
     },
     {
-      cmd = { "godoc" },
+      cmd = { "go" },
       type = "warn",
-      msg = "to call, it godoc needs to be accessible on your terminal",
+      msg = "to call, it go needs to be accessible on your terminal",
     },
   }
 
