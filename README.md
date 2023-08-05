@@ -49,7 +49,6 @@ lazy.nvim
   opts = {
     -- your config options here
   },
-  config = function(_, opts) require("dooku").setup(opts) end,
 },
 ```
 ## How to use
