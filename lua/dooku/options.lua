@@ -91,11 +91,13 @@ function M.set(ctx)
   M.rustdoc_filetypes = ctx.rustdoc_filetypes or { 'rust' }
 
   -- Open on browser
-  -- Defaults: crate name is auto-detected from project root name.
+  -- Defaults : target/doc/crate_name/index.html
+  --            crate_name value will always be 'project root' dir name.
   M.rustdoc_docs_dir = ctx.rustdoc_htmldocs_dir or utils.os_path("target/doc")
   M.rustdoc_html_file = ctx.rustdoc_html_file or "index.html"
 
   -- args for rustdoc
+  M.cargo_rustdoc_args = ctx.cargo_rustdoc_args or ""
   M.rustdoc_args = ctx.rustdoc_args or ""
 
 
@@ -103,12 +105,11 @@ function M.set(ctx)
   M.godoc_filetypes = ctx.godoc_filetypes or { 'go' }
 
   -- Open on browser
-  M.godoc_html_file = ctx.godoc_html_file or "./html/index.html"
+  M.godoc_docs_dir = ctx.godoc_htmldocs_dir or utils.os_path("doc")
+  M.godoc_html_file = ctx.godoc_html_file or "index.html"
 
-  -- auto setup (clone Doxyfile from a git repository)
-  M.godoc_clone_config_repo = ctx.godoc or "https://github.com/Zeioth/vim-doxygen-template.git"
-  M.godoc_clone_destiny_dir = ctx.godoc or "./doxygen"
-  M.godoc_clone_cmd_post = ctx.godoc_clone_cmd_post or ""
+  -- args for godoc
+  M.godoc_args = ctx.godoc_args or ""
 end
 
 return M

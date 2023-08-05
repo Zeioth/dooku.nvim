@@ -19,7 +19,7 @@ function M.generate(is_autocmd)
     if opts.on_generate_notification then
       vim.notify("Generating rustdoc html docs...", vim.log.levels.INFO)
     end
-    vim.fn.jobstart("cargo rustdoc " .. opts.cargo_rustdoc_args .. " -- " .. opts.rustdoc_args, { cwd = cwd, detach = true })
+    vim.fn.jobstart("cargo doc " .. opts.rustdoc_args, { cwd = cwd, detach = true })
 
     -- Open html docs
     if not is_autocmd and opts.on_generate_open then M.open() end
