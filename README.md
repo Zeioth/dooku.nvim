@@ -1,5 +1,5 @@
 # dooku.nvim
-Generate and open your code documentation inside NeoVim.
+Generate and open your HTML code documentation inside Neovim.
 
 ## Should I use doge or dooku?
 Their purpose is quite different:
