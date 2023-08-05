@@ -140,7 +140,7 @@ This is a lua port of the vim plugin [vim-dooku](https://github.com/Zeioth/vim-d
 * Port the other backends: ~~typedoc~~, ~~jsdoc~~, ~~rustdoc~~, godoc
 * ~~Porting the manual from vim-doooku, so we can use :help dooku.~~
 * ~~Writing health file, so we can check if dependencies are fulfilled.~~
-* Once rustdoc provide an option to recursively pass all .rs files of the project, implement "rustdoc" instead of "cargo doc".
+* Once rustdoc provide an option to recursively pass all .rs files of the project, implement "rustdoc" instead of "cargo doc" so users have more control.
 
 ## Where do that cheesy name come from?
 From [Star Wars](https://starwars.fandom.com/wiki/Dooku).
