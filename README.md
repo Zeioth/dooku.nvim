@@ -106,17 +106,17 @@ typedoc_clone_to_dir = "vim-typedoc-template"                                   
 typedoc_clone_cmd_post = ""                                                      -- runs a command after cloning. If you set this option manually, make sure you copy 'typedoc.json' from 'typedoc_clone_to_dir', into the root directory here.
 
 -- jsdoc specific settings
-jsdoc_filetypes = { "typescript" }                                             -- for this filetypes use jsdoc
+jsdoc_filetypes = { "javascript" }                                             -- for this filetypes use jsdoc
 jsdoc_docs_dir = "docs"                                                        -- the typedoc dir.
 jsdoc_html_file = "index.html"                                                 -- html file to open with :DookuOpen. This path starts in jsdoc_docs_dir, instead of the root directory.
-jsdoc_clone_config_repo = "https://github.com/Zeioth/vim-typedoc-template.git" -- repo to clone if auto_setup.
+jsdoc_clone_config_repo = "https://github.com/Zeioth/vim-jsdoc-template.git"   -- repo to clone if auto_setup.
 jsdoc_clone_to_dir = "vim-typedoc-template"                                    -- clone into this dir.
 jsdoc_clone_cmd_post = ""                                                      -- runs a command after cloning. If you set this option manually, make sure you copy 'typedoc.json' from 'typedoc_clone_to_dir', into the root directory here.
 
 -- rustdoc specific settings
-rustdoc_filetypes = { "typescript" }                                           -- for this filetypes use rustdoc
-rustdoc_docs_dir = "docs"                                                      -- the typedoc dir.
-rustdoc_html_file = "index.html"                                               -- html file to open with :DookuOpen. This path starts in rustdoc_docs_dir, instead of the root directory.
+rustdoc_filetypes = { "rust" }                                                 -- for this filetypes use rustdoc
+rustdoc_docs_dir = "target/doc"                                                -- the typedoc dir.
+rustdoc_html_file = "index.html"                                               -- html file to open with :DookuOpen. This path starts in rustdoc_docs_dir/crate_name, instead of the root directory. crate_name value will be the name of the project root.
 rustdoc_args = ""                                                              -- optional args to pass to "cargo doc"
 ```
 
