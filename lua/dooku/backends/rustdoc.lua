@@ -14,12 +14,17 @@ function M.generate(is_autocmd)
   local cargo_file = utils.os_path(cwd .. "/Cargo.toml")
   local cargo_file_exists = vim.loop.fs_stat(cargo_file) and vim.loop.fs_stat(cargo_file).type == 'file' or false
 
-  -- Generate html docs
   if cargo_file_exists then
+    -- Generate html docs
     if opts.on_generate_notification then
       vim.notify("Generating rustdoc html docs...", vim.log.levels.INFO)
     end
-    vim.fn.jobstart("cargo rustdoc " .. opts.cargo_rustdoc_args .. " -- " .. opts.rustdoc_args, { cwd = cwd, detach = true })
+
+    if job then uv.process_kill(job, 9) end -- Running already? kill it
+    job = uv.spawn(
+      "cargo",
+      { args = { "rustdoc", opts.cargo_rustdoc_args, "--", opts.rustdoc_args }, cwd = cwd, detach = true }
+    )
 
     -- Open html docs
     if not is_autocmd and opts.on_generate_open then M.open() end
