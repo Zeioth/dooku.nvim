@@ -52,13 +52,4 @@ function M.find_project_root(roots)
   return nil -- If no root directory is found, return nil
 end
 
---- Converts string to string[]
-function M.string_to_array(input_string)
-    local cmd_array = {}
-    for str in input_string:gmatch("%S+") do
-        table.insert(cmd_array, str)
-    end
-    return cmd_array
-end
-
 return M

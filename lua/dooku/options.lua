@@ -91,13 +91,12 @@ function M.set(ctx)
   M.rustdoc_filetypes = ctx.rustdoc_filetypes or { 'rust' }
 
   -- Open on browser
-  M.rustdoc_html_file = ctx.rustdoc_html_file or "./html/index.html"
+  -- Defaults: crate name is auto-detected from project root name.
+  M.rustdoc_docs_dir = ctx.rustdoc_htmldocs_dir or utils.os_path("target/doc")
+  M.rustdoc_html_file = ctx.rustdoc_html_file or "index.html"
 
-  -- auto setup (clone Doxyfile from a git repository)
-  M.rustdoc_clone_config_repo = ctx.rustdoc or "https://github.com/Zeioth/vim-doxygen-template.git"
-  M.rustdoc_clone_destiny_dir = ctx.rustdoc or "./doxygen"
-  M.rustdoc_clone_cmd_post = ctx.rustdoc_clone_cmd_post or ""
-
+  -- args for rustdoc
+  M.rustdoc_args = ctx.rustdoc_args or ""
 
 
   -- [GODOC] ---------------------------------------------------------------

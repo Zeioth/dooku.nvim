@@ -26,6 +26,8 @@ function M.generate(is_autocmd)
     M.require_backend("typedoc").generate(is_autocmd)
   elseif utils.exists_in_table(filetype, options.jsdoc_filetypes) then
     M.require_backend("jsdoc").generate(is_autocmd)
+  elseif utils.exists_in_table(filetype, options.rustdoc_filetypes) then
+    M.require_backend("rustdoc").generate(is_autocmd)
   else
     vim.notify(
       "The filetype "
@@ -46,6 +48,8 @@ function M.open()
     M.require_backend("typedoc").open()
   elseif utils.exists_in_table(filetype, options.jsdoc_filetypes) then
     M.require_backend("jsdoc").open()
+  elseif utils.exists_in_table(filetype, options.rustdoc_filetypes) then
+    M.require_backend("rustdoc").open()
   else
     vim.notify(
       "The filetype "
@@ -66,6 +70,8 @@ function M.auto_setup()
     M.require_backend("typedoc").auto_setup()
   elseif utils.exists_in_table(filetype, options.jsdoc_filetypes) then
     M.require_backend("jsdoc").auto_setup()
+  elseif utils.exists_in_table(filetype, options.rustdoc_filetypes) then
+    M.require_backend("rustdoc").auto_setup()
   else
     vim.notify(
       "The filetype "
