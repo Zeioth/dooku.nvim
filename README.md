@@ -21,7 +21,7 @@ Their purpose is quite different:
 | `php` | doxygen |
 | `javascript` | jsdoc |
 | `typescript` | typedoc |
-| `rust` | rustdoc  (coming soon) |
+| `rust` | rustdoc |
 | `go`| godoc (coming soon) |
 
 # Not supported yet
@@ -71,7 +71,7 @@ vim.api.nvim_buf_set_keymap(0, 'n', '<F3>', "<cmd>DookuOpen<cr>", { noremap = tr
 |--|--|
 | `:DookuGenerate` | Generate the HTML documentation using the adecuated generator for the current filetype. |
 | `:DookuOpen` | Open the HTML documentation using the specified program, or the default internet browser. |
-| `:DookuAutoSetup` | It will download a config file in your project root directory, so you can run `:DookuGenerate` without having to configure anything. |
+| `:DookuAutoSetup` | It will download a config file in your project root directory, so you can run `:DookuGenerate` without having to configure anything. Not necessary for `rust` and `go`. |
 
 ## Basic configuration options
 ```lua
@@ -100,11 +100,26 @@ doxygen_clone_cmd_post = ""                                                     
 -- typedoc specific settings
 typedoc_filetypes = { "typescript" }                                             -- for this filetypes use typedoc
 typedoc_docs_dir = "docs"                                                        -- the typedoc dir.
-typedoc_html_file = "index.html"                                                 -- html file to open with :DookuOpen. This path starts in doxygen_docs_dir, instead of the root directory.
+typedoc_html_file = "index.html"                                                 -- html file to open with :DookuOpen. This path starts in typedoc_docs_dir, instead of the root directory.
 typedoc_clone_config_repo = "https://github.com/Zeioth/vim-typedoc-template.git" -- repo to clone if auto_setup.
 typedoc_clone_to_dir = "vim-typedoc-template"                                    -- clone into this dir.
 typedoc_clone_cmd_post = ""                                                      -- runs a command after cloning. If you set this option manually, make sure you copy 'typedoc.json' from 'typedoc_clone_to_dir', into the root directory here.
+
+-- jsdoc specific settings
+jsdoc_filetypes = { "typescript" }                                             -- for this filetypes use jsdoc
+jsdoc_docs_dir = "docs"                                                        -- the typedoc dir.
+jsdoc_html_file = "index.html"                                                 -- html file to open with :DookuOpen. This path starts in jsdoc_docs_dir, instead of the root directory.
+jsdoc_clone_config_repo = "https://github.com/Zeioth/vim-typedoc-template.git" -- repo to clone if auto_setup.
+jsdoc_clone_to_dir = "vim-typedoc-template"                                    -- clone into this dir.
+jsdoc_clone_cmd_post = ""                                                      -- runs a command after cloning. If you set this option manually, make sure you copy 'typedoc.json' from 'typedoc_clone_to_dir', into the root directory here.
+
+-- rustdoc specific settings
+rustdoc_filetypes = { "typescript" }                                           -- for this filetypes use rustdoc
+rustdoc_docs_dir = "docs"                                                      -- the typedoc dir.
+rustdoc_html_file = "index.html"                                               -- html file to open with :DookuOpen. This path starts in rustdoc_docs_dir, instead of the root directory.
+rustdoc_args = ""                                                              -- optional args to pass to "cargo doc"
 ```
+
 ## Troubleshooting
 If you have the option `auto_setup` enabled, and you are running `:DookuGenerate` on your project for the first time, you will have to run the command two times. One for auto setup to kick in, and a second one to actually generate the docs.
 
@@ -118,7 +133,7 @@ This is a lua port of the vim plugin [vim-dooku](https://github.com/Zeioth/vim-d
 ## Roadmap
 * ~~MVP: doxygen~~
 * ~~Windows support.~~
-* Port the other backends: ~~typedoc~~, ~jsdoc~, rustdoc, godoc
+* Port the other backends: ~~typedoc~~, ~~jsdoc~~, ~~rustdoc~~, godoc
 * ~~Porting the manual from vim-doooku, so we can use :help dooku.~~
 * ~~Writing health file, so we can check if dependencies are fulfilled.~~
 
