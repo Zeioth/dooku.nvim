@@ -38,7 +38,7 @@ You need the dependencies in order for dooku.nvim to be able to call the documen
 sudo pacman -S doxygen
 npm install -g jdoc typedoc
 ```
-To check if all the dependencies are correctly installed, run `:checkhealth dooku`
+To check if all the dependencies are correctly installed, run `lua require("dooku")` to ensure the plugin is loaded, and then`:checkhealth dooku`.
 
 ## How to instal
 lazy.nvim
