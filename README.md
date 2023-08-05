@@ -115,7 +115,7 @@ jsdoc_clone_cmd_post = ""                                                      -
 
 -- rustdoc specific settings
 rustdoc_filetypes = { "rust" }                                                 -- for this filetypes use rustdoc
-rustdoc_docs_dir = "target/doc"                                                -- the typedoc dir.
+rustdoc_docs_dir = "target/doc"                                                -- the rustdoc dir. for rust, this options is only for opening the docs. If you want to change the location where the target directory is created, use the option rustdoc_args.
 rustdoc_html_file = "index.html"                                               -- html file to open with :DookuOpen. This path starts in rustdoc_docs_dir/crate_name, instead of the root directory. crate_name value will be the name of the project root.
 rustdoc_args = ""                                                              -- optional args to pass to "cargo doc"
 ```
