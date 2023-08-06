@@ -124,7 +124,7 @@ godoc_html_url = "localhost:6060"                                              -
 godocdoc_args = ""                                                             -- optional args to pass to the command "godoc". If you change the url, make sure to also change it on godoc_html_url.
 ```
 
-## Troubleshooting
+## Aditional information
 If you have the option `auto_setup` enabled, and you are running `:DookuGenerate` on your project for the first time, you will have to run the command two times. One for auto setup to kick in, and a second one to actually generate the docs.
 
 If you have the option `on_generate_open` enabled, and it's your first time running `:DookuGenerate` on a project, you will have to run `:DookuGenerate` twice. One for generating the docs, and another one to open them.
