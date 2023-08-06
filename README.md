@@ -22,7 +22,7 @@ Their purpose is quite different:
 | `javascript` | jsdoc |
 | `typescript` | typedoc |
 | `rust` | rustdoc |
-| `go`| godoc (coming soon) |
+| `go`| godoc |
 
 # Not supported yet
 Pull requests are welcome.
@@ -118,6 +118,11 @@ rustdoc_docs_dir = "target/doc"                                                -
 rustdoc_html_file = "index.html"                                               -- html file to open with :DookuOpen. This path starts in rustdoc_docs_dir/crate_name, instead of the root directory. crate_name value will be the name of the project root.
 cargo_rustdoc_args = ""                                                        -- optional args to pass after "cargo rustdoc". They will be passed as "cargo rustdoc cargo_rustdoc_args -- rustdoc_args"
 rustdoc_args = ""                                                              -- optional rustdoc args to pass after "cargo rustdoc". They will be passed as "cargo rustdoc cargo_rustdoc_args -- rustdoc_args". WARNING: Be aware some rustdoc_args do not work correctly and will cause failure. This is a rust thing, not ours. It's a good idea to always run the command manually on the terminal to check if it works correctly with the arguments you are trying to pass before passing them here. That way you can debug it easier.
+
+-- godoc specific settings
+godoc_filetypes = { "go" }                                                     -- for this filetypes use godoc.
+godoc_html_url = "localhost:6060"                                              -- url of the godoc server to open with :DookuOpen. When you use :DookuGenerate at least once, the godoc server will keep running until neovin is closed (unless you manually kill the godoc process first).
+godocdoc_args = ""                                                             -- optional args to pass to the command "godoc". If you change the url, make sure to also change it on godoc_html_url.
 ```
 
 ## Troubleshooting
