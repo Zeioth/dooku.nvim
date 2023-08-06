@@ -43,7 +43,7 @@ To check if all the dependencies are correctly installed, run `lua require("dook
 
 If you've installed the dependencies, but `:checkhealth dooku` still show warnings, that means your executables were not correctly added to your path. Make sure you can manually run the commands `doxygen`, `typedoc`, `jsdoc`, `cargo`, and `godoc` on the terminal.
 
-## How to instal
+## How to install
 lazy.nvim
 ```lua
 {
