@@ -105,8 +105,7 @@ function M.set(ctx)
   M.godoc_filetypes = ctx.godoc_filetypes or { 'go' }
 
   -- Open on browser
-  M.godoc_docs_dir = ctx.godoc_htmldocs_dir or utils.os_path("doc")
-  M.godoc_html_file = ctx.godoc_html_file or "index.html"
+  M.godoc_html_url = ctx.godoc_html_file or "localhost:6060"
 
   -- args for godoc
   M.godoc_args = ctx.godoc_args or ""

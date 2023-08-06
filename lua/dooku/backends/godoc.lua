@@ -1,5 +1,7 @@
--- Actions to perform if the backend is rustdoc.
+-- Actions to perform if the backend is godoc.
 local M = {}
+local augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
 local uv = vim.uv or vim.loop
 local utils = require "dooku.utils"
 local opts = require "dooku.options"
@@ -11,51 +13,48 @@ local job
 ---                            ignore the option on_generate_open.
 function M.generate(is_autocmd)
   local cwd = utils.os_path(utils.find_project_root(opts.project_root))
-  local cargo_file = utils.os_path(cwd .. "/Cargo.toml")
-  local cargo_file_exists = vim.loop.fs_stat(cargo_file) and vim.loop.fs_stat(cargo_file).type == 'file' or false
+  local gomod_file = utils.os_path(cwd .. "/go.mod")
+  local gomod_file_exists = vim.loop.fs_stat(gomod_file) and vim.loop.fs_stat(gomod_file).type == 'file' or false
 
-  -- Generate html docs
-  if cargo_file_exists then
+  if gomod_file_exists then
+    -- Generate html docs
     if opts.on_generate_notification then
-      vim.notify("Generating rustdoc html docs...", vim.log.levels.INFO)
+      vim.notify("Generating godoc html docs...", vim.log.levels.INFO)
     end
-    vim.fn.jobstart("cargo doc " .. opts.rustdoc_args, { cwd = cwd, detach = true })
+
+    job = vim.fn.jobstart('godoc ' .. opts.godoc_args, { cwd = cwd })
+    autocmd("VimLeavePre", {
+      desc = "Stop godoc when exiting vim",
+      group = augroup("dooku_stop_godoc", { clear = true }),
+      callback = function()  vim.fn.jobstop(job) end,
+    })
 
     -- Open html docs
     if not is_autocmd and opts.on_generate_open then M.open() end
   else
-    vim.notify("Cargo.toml doesn't exist in your project:\nRun 'cargo init' first.", vim.log.levels.INFO)
+    vim.notify("go.mod doesn't exist in your project:\nRun 'go mod init your_module_name' first.", vim.log.levels.INFO)
   end
 end
 
 --- It opens the html documentation in the specified internet browser.
 M.open = function()
-  local crate_name = vim.fn.fnamemodify(utils.find_project_root(opts.project_root), ":t")
-  local cwd = utils.os_path(
-    utils.find_project_root(opts.project_root)
-    .. "/"
-    .. opts.rustdoc_docs_dir
-  )
-  local html_file = cwd .. "/" .. crate_name .. "/" .. opts.rustdoc_html_file
-  local html_file_exists = vim.loop.fs_stat(html_file) and vim.loop.fs_stat(html_file).type == 'file' or false
+  local cwd = utils.os_path(utils.find_project_root(opts.project_root))
 
-  if opts.on_open_notification and html_file_exists then
-    vim.notify("Opening rustdoc html docs...", vim.log.levels.INFO)
-  elseif opts.on_open_notification then
-    vim.notify("HTML file not found:\nTry running :DookuGenerate", vim.log.levels.INFO)
+  if opts.on_open_notification then
+    vim.notify("Opening godoc html docs...", vim.log.levels.INFO)
   end
 
   uv.spawn(opts.browser_cmd, {
-    args = { html_file },
+    args = { opts.godoc_html_url },
     cwd = cwd,
     detach = true,
   })
 end
 
---- It shows a notification, as this is not necessary for rust.
+--- It shows a notification, as this is not necessary for go.
 M.auto_setup = function()
   vim.notify(
-    ":DookuAutoSetup is not necessary for rust.",
+    ":DookuAutoSetup is not necessary for go.",
     vim.log.levels.INFO
   )
 end

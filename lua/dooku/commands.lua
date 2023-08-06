@@ -29,7 +29,7 @@ function M.generate(is_autocmd)
   elseif utils.exists_in_table(filetype, options.rustdoc_filetypes) then
     M.require_backend("rustdoc").generate(is_autocmd)
   elseif utils.exists_in_table(filetype, options.godoc_filetypes) then
-    M.require_backend("godoc").generate(is_autocmd)
+    if is_autocmd then return else M.require_backend("godoc").generate(is_autocmd) end
   else
     vim.notify(
       "The filetype "
