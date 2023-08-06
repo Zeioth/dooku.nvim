@@ -35,8 +35,9 @@ Pull requests are welcome.
 ## Required dependencies
 You need the dependencies in order for dooku.nvim to be able to call the documentation generators. In this example I install them on Arch Linux using pacman and npm, but you can find them on any distro.
 ```sh
-sudo pacman -S doxygen
-npm install -g jdoc typedoc
+sudo pacman -S doxygen rust go
+npm install -g typedoc jdoc
+go install golang.org/x/tools/cmd/godoc@latest
 ```
 To check if all the dependencies are correctly installed, run `lua require("dooku")` to ensure the plugin is loaded, and then `:checkhealth dooku`.
 
@@ -135,6 +136,7 @@ This is only necessary the first time, and the reason is we run all tasks asynch
 ## FAQ
 * **(ADVANCED) Explain `:DookuAutoSetup` to me in detail**: All this command do is to clone a repo `clone_config_repo` into a dir `clone_to_dir` inside your project root, and then run a command `clone_cmd_post` to copy the files from the cloned repo to another location, if needed. Normally you don't need to touch any of these options.
 * **How can I add support for a new language?** On the `backends` directory, copy the file `doxygen.lua`, and and use it as base to add your new documentation generator. On `options.lua`, copy all the doxygen specific options, and rename them to the language you are adding. Finally, on `commands.lua`, add your language to the if condition of the functions `generate`, `open`, and `auto_setup`, so your backend is recognized and loaded. Don't forget to send your PR so everyone can benefit from it!
+* **I can't make it work**: In order to run `typedoc`, `jsdoc`, and `godoc`, make sure you've added these languages to your path. Be aware if you can't manually call these commands on the terminal, dooku.nvim won't be able either.
 
 ## Credits
 This is a lua port of the vim plugin [vim-dooku](https://github.com/Zeioth/vim-dooku).
