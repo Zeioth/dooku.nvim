@@ -22,7 +22,7 @@ Their purpose is quite different:
 | `javascript` | jsdoc |
 | `typescript` | typedoc |
 | `rust` | rustdoc |
-| `go`| godoc (coming soon) |
+| `go`| godoc |
 
 # Not supported yet
 Pull requests are welcome.
@@ -33,14 +33,17 @@ Pull requests are welcome.
 | `ruby` | yard |
 
 ## Required dependencies
-You need the dependencies in order for dooku.nvim to be able to call the documentation generators. In this example I install them on Arch Linux using pacman and npm, but you can find them on any distro.
+You need the dependencies in order for `dooku.nvim` to be able to call the documentation generators. In this example I install them on Arch Linux using `pacman`, and `npm`, but you can find them on any distro.
 ```sh
-sudo pacman -S doxygen
-npm install -g jdoc typedoc
+sudo pacman -S doxygen rust go
+npm install -g typedoc jdoc
+go install golang.org/x/tools/cmd/godoc@latest
 ```
-To check if all the dependencies are correctly installed, run `lua require("dooku")` to ensure the plugin is loaded, and then `:checkhealth dooku`.
+To check if all the dependencies are correctly installed, run `lua require("dooku")` to ensure the plugin is loaded, and then `:checkhealth dooku`. 
 
-## How to instal
+If you've installed the dependencies, but `:checkhealth dooku` still show warnings, that means your executables were not correctly added to your path. Make sure you can manually run the commands `doxygen`, `typedoc`, `jsdoc`, `cargo`, and `godoc` on the terminal.
+
+## How to install
 lazy.nvim
 ```lua
 {
@@ -118,6 +121,11 @@ rustdoc_docs_dir = "target/doc"                                                -
 rustdoc_html_file = "index.html"                                               -- html file to open with :DookuOpen. This path starts in rustdoc_docs_dir/crate_name, instead of the root directory. crate_name value will be the name of the project root.
 cargo_rustdoc_args = ""                                                        -- optional args to pass after "cargo rustdoc". They will be passed as "cargo rustdoc cargo_rustdoc_args -- rustdoc_args"
 rustdoc_args = ""                                                              -- optional rustdoc args to pass after "cargo rustdoc". They will be passed as "cargo rustdoc cargo_rustdoc_args -- rustdoc_args". WARNING: Be aware some rustdoc_args do not work correctly and will cause failure. This is a rust thing, not ours. It's a good idea to always run the command manually on the terminal to check if it works correctly with the arguments you are trying to pass before passing them here. That way you can debug it easier.
+
+-- godoc specific settings
+godoc_filetypes = { "go" }                                                     -- for this filetypes use godoc.
+godoc_html_url = "localhost:6060"                                              -- url of the godoc server to open with :DookuOpen. When you use :DookuGenerate at least once, the godoc server will keep running until neovin is closed (unless you manually kill the godoc process first).
+godocdoc_args = ""                                                             -- optional args to pass to the command "godoc". If you change the url, make sure to also change it on godoc_html_url.
 ```
 
 ## Troubleshooting
@@ -128,18 +136,11 @@ If you have the option `on_generate_open` enabled, and it's your first time runn
 This is only necessary the first time, and the reason is we run all tasks asynchronously.
 
 ## FAQ
-* **(ADVANCED) Explain `:DookuAutoSetup` to me in detail**: All this command do is to clone a repo `clone_config_repo` into a dir `clone_to_dir` inside your project root, and then run a command `clone_cmd_post` to copy the files from the cloned repo to another location, if needed. Normally you don't need to touch any of these options.
 * **How can I add support for a new language?** On the `backends` directory, copy the file `doxygen.lua`, and and use it as base to add your new documentation generator. On `options.lua`, copy all the doxygen specific options, and rename them to the language you are adding. Finally, on `commands.lua`, add your language to the if condition of the functions `generate`, `open`, and `auto_setup`, so your backend is recognized and loaded. Don't forget to send your PR so everyone can benefit from it!
+* **(ADVANCED) Explain `:DookuAutoSetup` to me in detail**: All this command do is to clone a repo `clone_config_repo` into a dir `clone_to_dir` inside your project root, and then run a command `clone_cmd_post` to copy the files from the cloned repo to another location, if needed. Normally you don't need to touch any of these options.
 
 ## Credits
 This is a lua port of the vim plugin [vim-dooku](https://github.com/Zeioth/vim-dooku).
-
-## Roadmap
-* ~~MVP: doxygen~~
-* ~~Windows support.~~
-* Port the other backends: ~~typedoc~~, ~~jsdoc~~, ~~rustdoc~~, godoc
-* ~~Porting the manual from vim-doooku, so we can use :help dooku.~~
-* ~~Writing health file, so we can check if dependencies are fulfilled.~~
 
 ## Where do that cheesy name come from?
 From [Star Wars](https://starwars.fandom.com/wiki/Dooku).
