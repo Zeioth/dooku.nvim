@@ -44,7 +44,7 @@ To check if all the dependencies are correctly installed, run `lua require("dook
 If you've installed the dependencies, but `:checkhealth dooku` still show warnings, that means your executables were not correctly added to your path. Make sure you can manually run the commands `doxygen`, `typedoc`, `jsdoc`, `cargo`, and `godoc` on the terminal.
 
 ## How to install
-lazy.nvim
+This example is for the lazy.nvim package manager.
 ```lua
 {
   "Zeioth/dooku.nvim",
@@ -61,11 +61,7 @@ By default the option `auto_setup` is enabled, so you won't have to manually set
 
 ## Recommended mappings
 ```lua
--- Dooku generate
-vim.api.nvim_buf_set_keymap(0, 'n', '<F2>', "<cmd>DookuGenerate<cr>", { noremap = true, silent = true })
-
--- Dooku open
-vim.api.nvim_buf_set_keymap(0, 'n', '<F3>', "<cmd>DookuOpen<cr>", { noremap = true, silent = true })
+vim.api.nvim_buf_set_keymap(0, 'n', '<F1>', "<cmd>DookuGenerate<cr>", { noremap = true, silent = true })
 ```
 
 ## Available commands
