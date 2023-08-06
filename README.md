@@ -19,8 +19,8 @@ Their purpose is quite different:
 | `java` | doxygen | 
 | `python` | doxygen |
 | `php` | doxygen |
-| `javascript` | jsdoc |
 | `typescript` | typedoc |
+| `javascript` | jsdoc |
 | `rust` | rustdoc |
 | `go`| godoc |
 
