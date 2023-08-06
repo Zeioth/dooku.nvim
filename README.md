@@ -33,7 +33,7 @@ Pull requests are welcome.
 | `ruby` | yard |
 
 ## Required dependencies
-You need the dependencies in order for dooku.nvim to be able to call the documentation generators. In this example I install them on Arch Linux using pacman and npm, but you can find them on any distro.
+You need the dependencies in order for `dooku.nvim` to be able to call the documentation generators. In this example I install them on Arch Linux using `pacman`, and `npm`, but you can find them on any distro.
 ```sh
 sudo pacman -S doxygen rust go
 npm install -g typedoc jdoc
@@ -41,7 +41,7 @@ go install golang.org/x/tools/cmd/godoc@latest
 ```
 To check if all the dependencies are correctly installed, run `lua require("dooku")` to ensure the plugin is loaded, and then `:checkhealth dooku`. 
 
-If you are certain the dependencies are installed, but checkhealth still show warnings, that means your executables were not correctly added to your path. Make sure you can manually run the commands `doxygen`, `typedoc`, `jsdoc`, `cargo`, and `godoc` on the terminal.
+If you've installed the dependencies, but `:checkhealth dooku` still show warnings, that means your executables were not correctly added to your path. Make sure you can manually run the commands `doxygen`, `typedoc`, `jsdoc`, `cargo`, and `godoc` on the terminal.
 
 ## How to instal
 lazy.nvim
