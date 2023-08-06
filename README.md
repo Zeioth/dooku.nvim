@@ -38,7 +38,7 @@ You need the dependencies in order for dooku.nvim to be able to call the documen
 sudo pacman -S doxygen
 npm install -g jdoc typedoc
 ```
-To check if all the dependencies are correctly installed, run `:checkhealth dooku`
+To check if all the dependencies are correctly installed, run `lua require("dooku")` to ensure the plugin is loaded, and then `:checkhealth dooku`.
 
 ## How to instal
 lazy.nvim
@@ -114,7 +114,7 @@ jsdoc_clone_cmd_post = ""                                                      -
 
 -- rustdoc specific settings
 rustdoc_filetypes = { "rust" }                                                 -- for this filetypes use rustdoc
-rustdoc_docs_dir = "target/doc"                                                -- the rustdoc dir. for rust, this options is only for opening the docs. If you want to change the location where the target directory is created, use the option rustdoc_args.
+rustdoc_docs_dir = "target/doc"                                                -- the rustdoc dir. for rust, this options is only for opening the docs. If you want to change the location where the target directory is created, use the option cargo_rustdoc_args.
 rustdoc_html_file = "index.html"                                               -- html file to open with :DookuOpen. This path starts in rustdoc_docs_dir/crate_name, instead of the root directory. crate_name value will be the name of the project root.
 cargo_rustdoc_args = ""                                                        -- optional args to pass after "cargo rustdoc". They will be passed as "cargo rustdoc cargo_rustdoc_args -- rustdoc_args"
 rustdoc_args = ""                                                              -- optional rustdoc args to pass after "cargo rustdoc". They will be passed as "cargo rustdoc cargo_rustdoc_args -- rustdoc_args". WARNING: Be aware some rustdoc_args do not work correctly and will cause failure. This is a rust thing, not ours. It's a good idea to always run the command manually on the terminal to check if it works correctly with the arguments you are trying to pass before passing them here. That way you can debug it easier.
