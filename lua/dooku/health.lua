@@ -1,3 +1,4 @@
+
 -- On neovim you can run
 -- :checkhealth dooku
 -- To know possible causes in case dooku.nvim is nor working correctly.
@@ -38,27 +39,27 @@ function M.check()
     {
       cmd = { "doxygen" },
       type = "warn",
-      msg = "to call, it doxygen needs to be accessible on your terminal",
+      msg = "to call it, doxygen needs to be accessible on your terminal",
     },
     {
       cmd = { "jsdoc" },
       type = "warn",
-      msg = "to call, it jsdoc needs to be accessible on your terminal",
+      msg = "to call it, jsdoc needs to be accessible on your terminal",
     },
     {
       cmd = { "typedoc" },
       type = "warn",
-      msg = "to call, it typedoc needs to be accessible on your terminal",
+      msg = "to call it, typedoc needs to be accessible on your terminal",
     },
     {
       cmd = { "cargo" },
       type = "warn",
-      msg = "to call, it cargo needs to be accessible on your terminal",
+      msg = "to call it, cargo needs to be accessible on your terminal",
     },
     {
-      cmd = { "go" },
+      cmd = { "godoc" },
       type = "warn",
-      msg = "to call, it go needs to be accessible on your terminal",
+      msg = "to call it, go needs to be accessible on your terminal",
     },
   }
 
