@@ -34,7 +34,7 @@ Pull requests are welcome.
 | `ruby` | yard |
 
 ## Required dependencies
-You need the dependencies in order for `dooku.nvim` to be able to call the documentation generators. In this example I install them on Arch Linux using `pacman`, and `npm`, but you can find them on any distro.
+You need the dependencies in order for `dooku.nvim` to be able to call the documentation generators. In this example I install them on Arch Linux using `pacman`, and `npm`, but you can find them on any operative system.
 ```sh
 sudo pacman -S doxygen rust go
 npm install -g typedoc jdoc
