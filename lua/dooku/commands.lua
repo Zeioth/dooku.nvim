@@ -1,4 +1,4 @@
--- Commands used in init.lua commands
+-- Commands used in init.lua
 local options = require "dooku.options"
 local utils = require "dooku.utils"
 local M = {}
