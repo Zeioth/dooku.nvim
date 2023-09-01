@@ -1,19 +1,20 @@
--- Commands used in init.lua commands
+-- Commands used in init.lua
 local options = require "dooku.options"
 local utils = require "dooku.utils"
 local M = {}
 
 
 --- Programatically require the backend for the current language.
----@return module language If languages/<filetype>.lua doesn't exist,
+---@param backend string Name of the backend file.
+---@return table|nil language If languages/<filetype>.lua doesn't exist,
 --         send a notification and return nil.
 function M.require_backend(backend)
   local localPath = debug.getinfo(1, "S").source:sub(2)
   local localPathDir = localPath:match "(.*[/\\])"
   local moduleFilePath = localPathDir .. "backends/" .. backend .. ".lua"
-  local success, backend = pcall(dofile, moduleFilePath)
+  local success, language = pcall(dofile, moduleFilePath)
 
-  if success then return backend else return nil end
+  if success then return language else return nil end
 end
 
 --- Generate the HTML documentation.

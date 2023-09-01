@@ -5,7 +5,7 @@ local M = {}
 --- Given a string, convert 'slash' to 'inverted slash' if on windows, and vice versa on UNIX.
 -- Then return the resulting string.
 ---@param path string
----@return string
+---@return string|nil,nil
 function M.os_path(path)
   if path == nil then return nil end
   -- Get the platform-specific path separator
