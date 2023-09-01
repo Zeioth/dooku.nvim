@@ -50,6 +50,7 @@ function M.set(ctx)
 
 
 
+  
   -- [TYPEDOC] -------------------------------------------------------------
   M.typedoc_filetypes = ctx.typedoc_filetypes or { 'typescript' }
 
@@ -68,6 +69,8 @@ function M.set(ctx)
   M.typedoc_clone_cmd_post = ctx.typedoc_clone_cmd_post or (is_windows and "&& copy " .. M.typedoc_clone_to_dir .. "\\typedoc.json .\\typedoc.json && rmdir \\s \\q " .. M.typedoc_clone_to_dir) or ("&& cp " .. M.typedoc_clone_to_dir .. "/typedoc.json ./typedoc.json && " .. " rm -rf " .. M.typedoc_clone_to_dir)
 
 
+
+  
   -- [JSDOC] ---------------------------------------------------------------
   M.jsdoc_filetypes = ctx.jsdoc_filetypes or { 'javascript' }
 
@@ -85,6 +88,7 @@ function M.set(ctx)
   M.jsdoc_clone_to_dir = ctx.jsdoc_clone_to_dir or M.jsdoc_clone_config_repo:match(".+/(.-)%.git") -- URL's repo name
   M.jsdoc_clone_cmd_post = ctx.jsdoc_clone_cmd_post or (is_windows and "&& copy " .. M.jsdoc_clone_to_dir .. "\\jsdoc.json .\\jsdoc.json && rmdir \\s \\q " .. M.jsdoc_clone_to_dir) or ("&& cp " .. M.jsdoc_clone_to_dir .. "/jsdoc.json ./jsdoc.json && " .. " rm -rf " .. M.jsdoc_clone_to_dir)
 
+  
 
 
   -- [RUSTDOC] -------------------------------------------------------------
@@ -100,6 +104,8 @@ function M.set(ctx)
   M.cargo_rustdoc_args = ctx.cargo_rustdoc_args or ""
   M.rustdoc_args = ctx.rustdoc_args or ""
 
+
+  
 
   -- [GODOC] ---------------------------------------------------------------
   M.godoc_filetypes = ctx.godoc_filetypes or { 'go' }

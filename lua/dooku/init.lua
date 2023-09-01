@@ -9,7 +9,6 @@ local commands = require("dooku.commands")
 local M = {}
 
 function M.setup(ctx)
-
   opts.set(ctx)
 
   cmd("DookuGenerate", function() commands.generate() end,

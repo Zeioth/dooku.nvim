@@ -1,12 +1,19 @@
 # dooku.nvim
 Generate and open your HTML code documentation inside Neovim.
 
+<div align="center">
+  <a href="https://discord.gg/ymcMaSnq7d" rel="nofollow">
+      <img src="https://img.shields.io/discord/1121138836525813760?color=azure&labelColor=6DC2A4&logo=discord&logoColor=black&label=Join the discord server&style=for-the-badge" data-canonical-src="https://img.shields.io/discord/1121138836525813760">
+    </a>
+</div>
+
 ## Should I use doge or dooku?
 Their purpose is quite different:
 
-* [Doge.vim](https://github.com/kkoomen/vim-doge): Helper to write code comments inside your code.
-* [Dooku.nvim](https://github.com/Zeioth/dooku.nvim): It generates the actual `html` documentation, and open it on your internet browser. Depending the language it will use `doxygen`, `typedoc`, `rustdoc`, `godoc`, or any other.
+* [vim-doge](https://github.com/kkoomen/vim-doge): Helper to write code comments inside your code.
+* [dooku.nvim](https://github.com/Zeioth/dooku.nvim): It generates the actual `html` documentation, and open it on your internet browser. Depending the language it will use `doxygen`, `typedoc`, `jsdoc`, `rustdoc`, `godoc`, or any other.
 
+![screenshot_2023-08-07_18-56-31_067791379](https://github.com/Zeioth/dooku.nvim/assets/3357792/6e601100-7886-43d3-b15d-f104c2329974)
 
 ## Supported languages 
 
@@ -19,8 +26,8 @@ Their purpose is quite different:
 | `java` | doxygen | 
 | `python` | doxygen |
 | `php` | doxygen |
-| `javascript` | jsdoc |
 | `typescript` | typedoc |
+| `javascript` | jsdoc |
 | `rust` | rustdoc |
 | `go`| godoc |
 
@@ -33,7 +40,7 @@ Pull requests are welcome.
 | `ruby` | yard |
 
 ## Required dependencies
-You need the dependencies in order for `dooku.nvim` to be able to call the documentation generators. In this example I install them on Arch Linux using `pacman`, and `npm`, but you can find them on any distro.
+You need the dependencies in order for `dooku.nvim` to be able to call the documentation generators. In this example I install them on Arch Linux using `pacman`, and `npm`, but you can find them on any operative system.
 ```sh
 sudo pacman -S doxygen rust go
 npm install -g typedoc jdoc
