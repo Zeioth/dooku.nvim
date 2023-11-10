@@ -2,7 +2,7 @@
 local M = {}
 local uv = vim.uv or vim.loop
 local utils = require "dooku.utils"
-local opts = require "dooku.options"
+local config = require "dooku.config"
 
 local job
 
@@ -12,19 +12,19 @@ local job
 --- @param is_autocmd boolean if explicitely setted to true, this function will
 ---                            ignore the option on_generate_open.
 function M.generate(is_autocmd)
-  local cwd = utils.os_path(utils.find_project_root(opts.project_root))
-  local doxygen_dir = utils.os_path(cwd .. "/" .. opts.doxygen_docs_dir)
+  local cwd = utils.os_path(utils.find_project_root(config.project_root))
+  local doxygen_dir = utils.os_path(cwd .. "/" .. config.doxygen_docs_dir)
   local doxyfile = utils.os_path(doxygen_dir .. "/Doxyfile")
   local doxyfile_exists = vim.loop.fs_stat(doxyfile) and vim.loop.fs_stat(doxyfile).type == 'file' or false
 
   -- Auto setup doxygen
-  if opts.auto_setup and not doxyfile_exists then
+  if config.auto_setup and not doxyfile_exists then
     M.auto_setup()
     return
   end
 
   -- Generate html docs
-  if opts.on_generate_notification then
+  if config.on_generate_notification then
     vim.notify("Generating doxygen html docs...", vim.log.levels.INFO)
   end
 
@@ -35,27 +35,27 @@ function M.generate(is_autocmd)
   )
 
   -- Open html docs
-  if not is_autocmd and opts.on_generate_open then M.open() end
+  if not is_autocmd and config.on_generate_open then M.open() end
 end
 
 --- It opens the html documentation in the specified internet browser.
 M.open = function()
   local cwd = utils.os_path(
-    utils.find_project_root(opts.project_root)
+    utils.find_project_root(config.project_root)
     .. "/"
-    .. opts.doxygen_docs_dir
+    .. config.doxygen_docs_dir
   )
-  local html_file = cwd .. "/" .. opts.doxygen_html_file
+  local html_file = cwd .. "/" .. config.doxygen_html_file
   local html_file_exists = vim.loop.fs_stat(html_file) and vim.loop.fs_stat(html_file).type == 'file' or false
 
-  if opts.on_open_notification and html_file_exists then
+  if config.on_open_notification and html_file_exists then
     vim.notify("Opening doxygen html docs...", vim.log.levels.INFO)
-  elseif opts.on_open_notification then
+  elseif config.on_open_notification then
     vim.notify("HTML file not found:\nTry running :DookuGenerate", vim.log.levels.INFO)
   end
 
-  uv.spawn(opts.browser_cmd, {
-    args = { opts.doxygen_html_file },
+  uv.spawn(config.browser_cmd, {
+    args = { config.doxygen_html_file },
     cwd = cwd,
     detach = true,
   })
@@ -63,8 +63,8 @@ end
 
 --- It downloads a config template in the project root.
 M.auto_setup = function()
-  local cwd = utils.os_path(utils.find_project_root(opts.project_root))
-  local doxygen_dir = utils.os_path(cwd .. "/" .. opts.doxygen_docs_dir)
+  local cwd = utils.os_path(utils.find_project_root(config.project_root))
+  local doxygen_dir = utils.os_path(cwd .. "/" .. config.doxygen_docs_dir)
   local doxyfile = utils.os_path(doxygen_dir .. "/Doxyfile")
   local doxyfile_exists = vim.loop.fs_stat(doxyfile) and vim.loop.fs_stat(doxyfile).type == 'file' or false
 
@@ -78,17 +78,17 @@ M.auto_setup = function()
 
   vim.notify(
     "Auto setup is enabled. Creating:\n"
-    .. utils.os_path(cwd .. "/" .. opts.doxygen_clone_to_dir)
+    .. utils.os_path(cwd .. "/" .. config.doxygen_clone_to_dir)
     .. "\n\nYou can run the command now.",
     vim.log.levels.INFO
   )
   vim.fn.jobstart(
     "git clone --single-branch --depth 1 "
-    .. opts.doxygen_clone_config_repo
+    .. config.doxygen_clone_config_repo
     .. " "
-    .. opts.doxygen_clone_to_dir
+    .. config.doxygen_clone_to_dir
     .. " "
-    .. opts.doxygen_clone_cmd_post,
+    .. config.doxygen_clone_cmd_post,
     { cwd = cwd, detach = true }
   )
 end
