@@ -147,3 +147,12 @@ This is a lua port of the vim plugin [vim-dooku](https://github.com/Zeioth/vim-d
 
 ## Where do that cheesy name come from?
 From [Star Wars](https://starwars.fandom.com/wiki/Dooku).
+
+## Roadmap
+We could add better QA
+
+* Better troubleshooting section.
+* If no backend is detected, notify the user.
+* We could poll for a a period of time after `DookuGenerate` before timeout, so it is not necessary to run `DookuGenerate` two times the first time you use it on a project.
+* If no project_root detected, and we reach the user directory, report to the user `project_root not found. Make sure you have on of the files defined in the option in your root directory`. Alternatevily we could just wipe project_root and take the current working directory as default root.
+
