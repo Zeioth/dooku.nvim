@@ -138,7 +138,7 @@ function M.set(opts)
   -- [GENERAL]
   ---------------------------------------------------------------
   M = utils.sanitize_config(M) -- convert "" vales to nil
-  vim.g.dooku_config = M
+  vim.g.dooku_config = M       -- expose the config as global
 end
 
 return M

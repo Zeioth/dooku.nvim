@@ -52,7 +52,7 @@ function M.find_project_root(roots)
   return nil -- If no root directory is found, return nil
 end
 
----Given a table, return it back, converting every "" value to nil.
+---Given a table, return it back after converting every "" value to nil.
 --
 --This allow config values to be used on uv.spawn() args in the backend
 --without having to check one by one.

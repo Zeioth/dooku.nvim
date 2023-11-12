@@ -11,7 +11,6 @@ local job
 ---                            ignore the option on_generate_open.
 function M.generate(is_autocmd)
   local cwd = utils.os_path(utils.find_project_root(config.project_root))
-  local args = {"rustdoc", config.cargo_rustdoc_args, "--", config.rustdoc_args}
   local cargo_file = utils.os_path(cwd .. "/Cargo.toml")
   local cargo_file_exists = vim.loop.fs_stat(cargo_file) and vim.loop.fs_stat(cargo_file).type == 'file' or false
 
@@ -25,7 +24,7 @@ function M.generate(is_autocmd)
     if job then uv.process_kill(job, 9) end -- Running already? kill it
     job = uv.spawn(
       "cargo",
-      { args = args, cwd = cwd, detach = true }
+      { args = {"rustdoc", config.cargo_rustdoc_args, "--", config.rustdoc_args}, cwd = cwd, detach = true }
     )
 
     -- Open html docs
@@ -51,8 +50,6 @@ M.open = function()
   elseif config.on_open_notification then
     vim.notify("HTML file not found:\nTry running :DookuGenerate", vim.log.levels.INFO)
   end
-
-  print(config.browser_cmd .. " " .. html_file)
 
   uv.spawn(config.browser_cmd, {
     args = { html_file },
