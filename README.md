@@ -90,46 +90,8 @@ auto_setup = true            -- auto download a config for the generator if it d
 browser_cmd = "xdg-open"     -- write your internet browser here. If unset, it will attempt to detect it automatically.
 ```
 
-## Advanced configuration options
-99% of the time you won't need these advanced options. This is only for people who want more flexibility.
-
-``` lua
--- doxygen specific settings
-doxygen_filetypes = { 'c', 'cpp', 'cs', 'python', 'd', 'fortran', 'java', 'perl', 'vhdl', 'objc', 'php' } -- for this filetypes use doxygen
-doxygen_docs_dir = "doxygen"                                                     -- the doxigen dir.
-doxygen_html_file = "html/index.html"                                            -- html file to open with :DookuOpen. This path starts in doxygen_docs_dir, instead of the root directory.
-doxygen_clone_config_repo = "https://github.com/Zeioth/vim-doxygen-template.git" -- repo to clone if auto_setup.
-doxygen_clone_to_dir = "doxygen"                                                 -- clone into this dir.
-doxygen_clone_cmd_post = ""                                                      -- runs a command after cloning.
-
--- typedoc specific settings
-typedoc_filetypes = { "typescript" }                                             -- for this filetypes use typedoc
-typedoc_docs_dir = "docs"                                                        -- the typedoc dir.
-typedoc_html_file = "index.html"                                                 -- html file to open with :DookuOpen. This path starts in typedoc_docs_dir, instead of the root directory.
-typedoc_clone_config_repo = "https://github.com/Zeioth/vim-typedoc-template.git" -- repo to clone if auto_setup.
-typedoc_clone_to_dir = "vim-typedoc-template"                                    -- clone into this dir.
-typedoc_clone_cmd_post = ""                                                      -- runs a command after cloning. If you set this option manually, make sure you copy 'typedoc.json' from 'typedoc_clone_to_dir', into the root directory here.
-
--- jsdoc specific settings
-jsdoc_filetypes = { "javascript" }                                             -- for this filetypes use jsdoc
-jsdoc_docs_dir = "docs"                                                        -- the typedoc dir.
-jsdoc_html_file = "index.html"                                                 -- html file to open with :DookuOpen. This path starts in jsdoc_docs_dir, instead of the root directory.
-jsdoc_clone_config_repo = "https://github.com/Zeioth/vim-jsdoc-template.git"   -- repo to clone if auto_setup.
-jsdoc_clone_to_dir = "vim-typedoc-template"                                    -- clone into this dir.
-jsdoc_clone_cmd_post = ""                                                      -- runs a command after cloning. If you set this option manually, make sure you copy 'typedoc.json' from 'typedoc_clone_to_dir', into the root directory here.
-
--- rustdoc specific settings
-rustdoc_filetypes = { "rust" }                                                 -- for this filetypes use rustdoc
-rustdoc_docs_dir = "target/doc"                                                -- the rustdoc dir. for rust, this options is only for opening the docs. If you want to change the location where the target directory is created, use the option cargo_rustdoc_args.
-rustdoc_html_file = "index.html"                                               -- html file to open with :DookuOpen. This path starts in rustdoc_docs_dir/crate_name, instead of the root directory. crate_name value will be the name of the project root.
-cargo_rustdoc_args = ""                                                        -- optional args to pass after "cargo rustdoc". They will be passed as "cargo rustdoc cargo_rustdoc_args -- rustdoc_args"
-rustdoc_args = ""                                                              -- optional rustdoc args to pass after "cargo rustdoc". They will be passed as "cargo rustdoc cargo_rustdoc_args -- rustdoc_args". WARNING: Be aware some rustdoc_args do not work correctly and will cause failure. This is a rust thing, not ours. It's a good idea to always run the command manually on the terminal to check if it works correctly with the arguments you are trying to pass before passing them here. That way you can debug it easier.
-
--- godoc specific settings
-godoc_filetypes = { "go" }                                                     -- for this filetypes use godoc.
-godoc_html_url = "localhost:6060"                                              -- url of the godoc server to open with :DookuOpen. When you use :DookuGenerate at least once, the godoc server will keep running until neovin is closed (unless you manually kill the godoc process first).
-godocdoc_args = ""                                                             -- optional args to pass to the command "godoc". If you change the url, make sure to also change it on godoc_html_url.
-```
+* These options can be accessed in execution time with `vim.g.dooku_config`.
+* We also expose [advanced options](https://github.com/Zeioth/dooku.nvim/wiki/advanced_options) to control how the plugin work internally.
 
 ## Troubleshooting
 If you have the option `auto_setup` enabled, and you are running `:DookuGenerate` on your project for the first time, you will have to run the command two times. One for auto setup to kick in, and a second one to actually generate the docs.
