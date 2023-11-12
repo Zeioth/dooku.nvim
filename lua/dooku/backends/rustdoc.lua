@@ -20,10 +20,12 @@ function M.generate(is_autocmd)
       vim.notify("Generating rustdoc html docs...", vim.log.levels.INFO)
     end
 
+    print(cwd)
+    print("cargo " .. "rustdoc " .. config.cargo_rustdoc_args .. " -- " .. config.rustdoc_args )
     if job then uv.process_kill(job, 9) end -- Running already? kill it
     job = uv.spawn(
       "cargo",
-      { args = { "rustdoc", config.cargo_rustdoc_args, "--", config.rustdoc_args }, cwd = cwd, detach = true }
+      { args = { "rustdoc" }, cwd = cwd, detach = true }
     )
 
     -- Open html docs
@@ -49,6 +51,8 @@ M.open = function()
   elseif config.on_open_notification then
     vim.notify("HTML file not found:\nTry running :DookuGenerate", vim.log.levels.INFO)
   end
+
+  print(config.browser_cmd .. " " .. html_file)
 
   uv.spawn(config.browser_cmd, {
     args = { html_file },
