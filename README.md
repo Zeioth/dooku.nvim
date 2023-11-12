@@ -104,9 +104,9 @@ on_open_notification = true
 ## Basic usage
 Run the commands in this order
 
-* `:DookuAutoSetup` to auto setup your project docs generator.
-* `:DookuGenerate` to generate the html documentation of your project.
-* `:DookuOpen` to open it on your internet browser. 
+* `:DookuAutoSetup`
+* `:DookuGenerate`
+* `:DookuOpen`
 
 By default `auto_setup` and `on_generate_open` are enabled, so you can just run `:DookuGenerate` repeteadly until your see the docs.
 
