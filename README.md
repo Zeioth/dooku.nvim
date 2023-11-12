@@ -109,12 +109,12 @@ on_open_notification = true
 By default `auto_setup` and `on_generate_open` are enabled, so you can just run `:DookuGenerate` repeteadly until your see the docs.
 
 ## FAQ
-* **It doesn't work** Make sure you have installed the [required dependencies](https://github.com/Zeioth/dooku.nvim/edit/main/README.md#required-dependencies)
-* **It still doesn't work** If you are on `rust / go` You must initialize your project with any of these commands `cargo new your_project_name` or `go mod init your_module_name`.
-* **It STILL doesn't work** Then congratulations, you found a bug. Please [report it here](https://github.com/Zeioth/dooku.nvim/issues) so I can fix it.
-* **How can I add support for a new language?** On the `backends` directory, copy the file `doxygen.lua`, and and use it as base to add your new documentation generator. On `options.lua`, copy all the doxygen specific options, and rename them to the language you are adding. Finally, on `commands.lua`, add your language to the if condition of the functions `generate`, `open`, and `auto_setup`, so your backend is recognized and loaded. Don't forget to send your PR so everyone can benefit from it!
+* **It doesn't work?** Make sure you have installed the [required dependencies](https://github.com/Zeioth/dooku.nvim/edit/main/README.md#required-dependencies)
+* **It still doesn't work?** If you are on `rust / go` You must initialize your project with any of these commands `cargo new your_project_name` or `go mod init your_module_name`.
+* **It STILL doesn't work?** Then congratulations, you found a bug. Please [report it here](https://github.com/Zeioth/dooku.nvim/issues) so I can fix it.
 * **Where do that cheesy name come from?** From [Star Wars](https://starwars.fandom.com/wiki/Dooku).
 * **Is this plugin based on some other** This is a lua port of the vim plugin [vim-dooku](https://github.com/Zeioth/vim-dooku).
+* **How can I add support for a new language?** On the `backends` directory, copy the file `doxygen.lua`, and and use it as base to add your new documentation generator. On `options.lua`, copy all the doxygen specific options, and rename them to the language you are adding. Finally, on `commands.lua`, add your language to the if condition of the functions `generate`, `open`, and `auto_setup`, so your backend is recognized and loaded. Don't forget to send your PR so everyone can benefit from it!
 
 ## Roadmap
 We could add better QA
