@@ -114,9 +114,3 @@ Or if you prefer run `:DookuGenerate` three times. This is only necessary the fi
 * **Where do that cheesy name come from?** From [Star Wars](https://starwars.fandom.com/wiki/Dooku).
 * **Is this plugin based on some other** This is a lua port of the vim plugin [vim-dooku](https://github.com/Zeioth/vim-dooku).
 * **How can I add support for a new language?** On the `backends` directory, copy the file `doxygen.lua`, and and use it as base to add your new documentation generator. On `options.lua`, copy all the doxygen specific options, and rename them to the language you are adding. Finally, on `commands.lua`, add your language to the if condition of the functions `generate`, `open`, and `auto_setup`, so your backend is recognized and loaded. Don't forget to send your PR so everyone can benefit from it!
-
-## Roadmap
-We could add better QA
-
-* If no project_root detected, and we reach the user directory, report to the user `project_root not found. Make sure you have one of the files defined in the option in your root directory`. Alternatevily we could just wipe project_root and take the current working directory as default root, so it is more intuitive.
-
