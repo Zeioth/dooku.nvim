@@ -44,8 +44,7 @@ To setup, generate, and open your HTML code documentation with a single key pres
 | `rust` | rustdoc |
 | `go`| godoc |
 
-# Not supported yet
-Pull requests are welcome.
+Not supported yet → Pull requests are welcome
 
 | Language | Generator |
 |--|--|
