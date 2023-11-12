@@ -107,7 +107,7 @@ on_open_notification = true
 * `:DookuGenerate` to generate the html documentation of your project.
 * `:DookuOpen` to open it on your internet browser. 
 
-**Cool trick**: By default `auto_setup` and `on_generate_open` are enabled, so you can just run `:DookuGenerate` repeteadly until it works.
+By default `auto_setup` and `on_generate_open` are enabled, so you can just run `:DookuGenerate` repeteadly until your see the docs.
 
 ## FAQ
 * **It doesn't work** Make sure you have installed the [required dependencies](https://github.com/Zeioth/dooku.nvim/edit/main/README.md#required-dependencies)
