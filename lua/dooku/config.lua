@@ -135,7 +135,7 @@ function M.set(opts)
   -- args for godoc
   M.godoc_args = opts.godoc_args or ""
 
-  -- [GENERAL]
+  -- After setting the config
   ---------------------------------------------------------------
   M = utils.sanitize_config(M) -- convert "" vales to nil
   vim.g.dooku_config = M       -- expose the config as global
