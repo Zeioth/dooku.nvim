@@ -2,8 +2,8 @@
 local M = {}
 
 
---- Given a string, convert 'slash' to 'inverted slash' if on windows, and vice versa on UNIX.
--- Then return the resulting string.
+---Given a string, convert 'slash' to 'inverted slash' if on windows, and vice versa on UNIX.
+---Then return the resulting string.
 ---@param path string
 ---@return string|nil,nil
 function M.os_path(path)
@@ -24,8 +24,8 @@ function M.exists_in_table(obj, tbl)
   return false
 end
 
---- Function to find the project root based on a given list of files/directories.
---  Compatible with UNIX and Windows.
+---Function to find the project root based on a given list of files/directories.
+---Compatible with UNIX and Windows.
 function M.find_project_root(roots)
   local path = vim.fn.expand "%:p:h" -- Get the directory of the current buffer
 
@@ -50,6 +50,24 @@ function M.find_project_root(roots)
   end
 
   return nil -- If no root directory is found, return nil
+end
+
+---Given a table, return it back, converting every "" value to nil.
+--
+--This allow config values to be used on uv.spawn() args in the backend
+--without having to check one by one.
+---@param tbl table A table {}
+---@return table result The original table without nil or "" values.
+function M.sanitize_config(tbl)
+  local result = {}
+  for key, value in pairs(tbl) do
+    if type(value) == "string" and value == "" then
+      result[key] = nil
+    else
+      result[key] = value
+    end
+  end
+  return result
 end
 
 return M

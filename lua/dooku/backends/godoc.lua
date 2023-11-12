@@ -4,7 +4,7 @@ local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 local uv = vim.uv or vim.loop
 local utils = require "dooku.utils"
-local config = require "dooku.config"
+local config = vim.g.dooku_config
 
 local job
 

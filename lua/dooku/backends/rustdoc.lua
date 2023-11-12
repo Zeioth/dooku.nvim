@@ -2,7 +2,7 @@
 local M = {}
 local uv = vim.uv or vim.loop
 local utils = require "dooku.utils"
-local config = require "dooku.config"
+local config = vim.g.dooku_config
 
 local job
 
@@ -11,21 +11,21 @@ local job
 ---                            ignore the option on_generate_open.
 function M.generate(is_autocmd)
   local cwd = utils.os_path(utils.find_project_root(config.project_root))
+  local args = {"rustdoc", config.cargo_rustdoc_args, "--", config.rustdoc_args}
   local cargo_file = utils.os_path(cwd .. "/Cargo.toml")
   local cargo_file_exists = vim.loop.fs_stat(cargo_file) and vim.loop.fs_stat(cargo_file).type == 'file' or false
 
   if cargo_file_exists then
+
     -- Generate html docs
     if config.on_generate_notification then
       vim.notify("Generating rustdoc html docs...", vim.log.levels.INFO)
     end
 
-    print(cwd)
-    print("cargo " .. "rustdoc " .. config.cargo_rustdoc_args .. " -- " .. config.rustdoc_args )
     if job then uv.process_kill(job, 9) end -- Running already? kill it
     job = uv.spawn(
       "cargo",
-      { args = { "rustdoc" }, cwd = cwd, detach = true }
+      { args = args, cwd = cwd, detach = true }
     )
 
     -- Open html docs
