@@ -60,16 +60,12 @@ This example is for the lazy.nvim package manager.
     -- your config options here
   },
 },
+
 ```
 ## How to use
 Use `:DookuGenerate` to generate the html documentation of your project. Then `:DookuOpen` to open it on your internet browser. 
 
 By default the option `auto_setup` is enabled, so you won't have to manually setup the documentation for your project. If you prefer to do it manually, disable this option.
-
-## Recommended mappings
-```lua
-vim.api.nvim_buf_set_keymap(0, 'n', '<F1>', "<cmd>DookuGenerate<cr>", { noremap = true, silent = true })
-```
 
 ## Available commands
 | Command | Description|
@@ -78,7 +74,7 @@ vim.api.nvim_buf_set_keymap(0, 'n', '<F1>', "<cmd>DookuGenerate<cr>", { noremap 
 | `:DookuOpen` | Open the HTML documentation using the specified program, or the default internet browser. |
 | `:DookuAutoSetup` | It will download a config file in your project root directory, so you can run `:DookuGenerate` without having to configure anything. Not necessary for `rust` and `go`. |
 
-## Basic configuration options
+## Available options
 ```lua
 -- General settings
 project_root = { '.git', '.hg', '.svn', '.bzr', '_darcs', '_FOSSIL_', '.fslckout' } -- when one of these files is found, consider the directory the project root. Search starts from the current buffer.
@@ -90,8 +86,8 @@ auto_setup = true            -- auto download a config for the generator if it d
 browser_cmd = "xdg-open"     -- write your internet browser here. If unset, it will attempt to detect it automatically.
 ```
 
-* These options can be accessed in execution time with `vim.g.dooku_config`.
-* We also expose [advanced options](https://github.com/Zeioth/dooku.nvim/wiki/advanced_options) to control how the plugin work internally.
+* (Optional) These options can also be accessed with `vim.g.dooku_config`.
+* (Optional) We also expose [advanced options](https://github.com/Zeioth/dooku.nvim/wiki/advanced_options) to control how the plugin work internally.
 
 ## Troubleshooting
 If you have the option `auto_setup` enabled, and you are running `:DookuGenerate` on your project for the first time, you will have to run the command two times. One for auto setup to kick in, and a second one to actually generate the docs.
@@ -113,8 +109,5 @@ From [Star Wars](https://starwars.fandom.com/wiki/Dooku).
 ## Roadmap
 We could add better QA
 
-* Better troubleshooting section.
-* If no backend is detected, notify the user.
-* We could poll for a a period of time after `DookuGenerate` before timeout, so it is not necessary to run `DookuGenerate` two times the first time you use it on a project.
 * If no project_root detected, and we reach the user directory, report to the user `project_root not found. Make sure you have on of the files defined in the option in your root directory`. Alternatevily we could just wipe project_root and take the current working directory as default root, so it is more intuitive.
 
