@@ -25,7 +25,6 @@ Generate and open your HTML code documentation inside Neovim.
 To setup/generate/open your HTML code documentation with a single key press.
 
 ## Should I use doge or dooku?
-Their purpose is quite different
 
 * [vim-doge](https://github.com/kkoomen/vim-doge): Helper to write code comments inside your code.
 * [dooku.nvim](https://github.com/Zeioth/dooku.nvim): It generates the actual `html` documentation, and open it on your internet browser. Depending the language it will use `doxygen`, `typedoc`, `jsdoc`, `rustdoc`, `godoc`, or any other.
