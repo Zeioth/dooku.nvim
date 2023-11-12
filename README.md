@@ -54,7 +54,7 @@ Pull requests are welcome.
 | `lua` | ldoc |
 | `ruby` | yard |
 
-## Required dependencies
+## Required system dependencies
 ```sh
 sudo pacman -S doxygen rust go
 npm install -g typedoc jdoc
