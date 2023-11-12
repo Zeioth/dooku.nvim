@@ -105,7 +105,7 @@ Run the commands in this order
 * `:DookuGenerate`
 * `:DookuOpen`
 
-Or if you prefer run `:DookuGenerate` repeteadly until your see the docs. This is possible because by default the options `auto_setup` and `on_generate_open` are `true`.
+Or if you prefer run `:DookuGenerate` three times. This is only necessary the first time.
 
 ## FAQ
 * **Doesn't work?** Make sure you have installed the [required dependencies](https://github.com/Zeioth/dooku.nvim/edit/main/README.md#required-dependencies)
