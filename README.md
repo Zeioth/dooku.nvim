@@ -111,7 +111,7 @@ By default `auto_setup` and `on_generate_open` are enabled, so you can just run 
 
 ## FAQ
 * **It doesn't work** Make sure you have installed the [required dependencies](https://github.com/Zeioth/dooku.nvim/edit/main/README.md#required-dependencies)
-* ** It still doesn't work** If you are on `rust / go` You must initialize your project with any of these commands `cargo new your_project_name` or `go mod init your_module_name`.
+* **It still doesn't work** If you are on `rust / go` You must initialize your project with any of these commands `cargo new your_project_name` or `go mod init your_module_name`.
 * **It STILL doesn't work** Then congratulations, you found a bug. Please [report it here](https://github.com/Zeioth/dooku.nvim/issues) so I can fix it.
 * **How can I add support for a new language?** On the `backends` directory, copy the file `doxygen.lua`, and and use it as base to add your new documentation generator. On `options.lua`, copy all the doxygen specific options, and rename them to the language you are adding. Finally, on `commands.lua`, add your language to the if condition of the functions `generate`, `open`, and `auto_setup`, so your backend is recognized and loaded. Don't forget to send your PR so everyone can benefit from it!
 * **(ADVANCED) Explain `:DookuAutoSetup` to me in detail**: All this command do is to clone a repo `clone_config_repo` into a dir `clone_to_dir` inside your project root, and then run a command `clone_cmd_post` to copy the files from the cloned repo to another location, if needed. Normally you don't need to touch any of these options.
