@@ -108,15 +108,10 @@ Run the commands in this order
 Or if you prefer run `:DookuGenerate` three times. This is only necessary the first time.
 
 ## FAQ
-* **Doesn't work?** Make sure you have installed the [required dependencies](https://github.com/Zeioth/dooku.nvim/edit/main/README.md#required-dependencies)
-* **Still doesn't work?** If you are on `rust / go` you must initialize your project with any of these commands `cargo new your_project_name` or `go mod init your_module_name`.
+* **Doesn't work?** Make sure you have installed the [required dependencies](https://github.com/Zeioth/dooku.nvim/edit/main/README.md#required-dependencies).
+* **Still doesn't work?** Make sure you have one of the files defined in the option `project_root` in your project root directory, or dooku.nvim might up on the wrong directory silently.
+* **Still doesn't work?** If you are on `rust / go` you must initialize your project with `cargo new your_project_name` or `go mod init your_module_name`.
 * **STILL doesn't work?** Then congratulations, you found a bug. Please [report it here](https://github.com/Zeioth/dooku.nvim/issues) so I can fix it.
 * **Where do that cheesy name come from?** From [Star Wars](https://starwars.fandom.com/wiki/Dooku).
 * **Is this plugin based on some other** This is a lua port of the vim plugin [vim-dooku](https://github.com/Zeioth/vim-dooku).
 * **How can I add support for a new language?** On the `backends` directory, copy the file `doxygen.lua`, and and use it as base to add your new documentation generator. On `options.lua`, copy all the doxygen specific options, and rename them to the language you are adding. Finally, on `commands.lua`, add your language to the if condition of the functions `generate`, `open`, and `auto_setup`, so your backend is recognized and loaded. Don't forget to send your PR so everyone can benefit from it!
-
-## Roadmap
-We could add better QA
-
-* If no project_root detected, and we reach the user directory, report to the user `project_root not found. Make sure you have one of the files defined in the option in your root directory`. Alternatevily we could just wipe project_root and take the current working directory as default root, so it is more intuitive.
-
