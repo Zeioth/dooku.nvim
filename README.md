@@ -67,7 +67,7 @@ lazy.nvim
 ```lua
 {
   "Zeioth/dooku.nvim",
-  cmd = { "DookuGenerate", "DookuOpen", "DookuAutoSetup" },
+  event = "VeryLazy",
   opts = {
     -- your config options here
   },
