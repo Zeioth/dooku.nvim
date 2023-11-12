@@ -99,7 +99,7 @@ on_generate_notification = true
 on_open_notification = true
 ```
 
-* (Optional) These options can also be accessed with `vim.g.dooku_config`.
+* (Optional) These options can be accessed from anywhere with `vim.g.dooku_config`.
 * (Optional) We also expose [advanced options](https://github.com/Zeioth/dooku.nvim/wiki/advanced_options) to control how the plugin work internally.
 
 ## Basic usage
