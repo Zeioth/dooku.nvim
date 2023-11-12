@@ -60,9 +60,9 @@ npm install -g typedoc jdoc
 go install golang.org/x/tools/cmd/godoc@latest
 ```
 
-* You need the dependencies in order for `dooku.nvim` to be able to call the documentation generators. In this example I install them on Arch Linux using `pacman`, and `npm`, but you can find them on any operative system.
-* To check if all the dependencies are correctly installed, run `lua require("dooku")` to ensure the plugin is loaded, and then `:checkhealth dooku`. 
-* If you've installed the dependencies, but `:checkhealth dooku` still show warnings, that means you don't have your path correctly configured for the language you are using. Make sure you can manually run the commands `doxygen`, `typedoc`, `jsdoc`, `cargo`, and `godoc` on the terminal.
+* `dooku.nvim` need these to be able to call the documentation generators. Use the command above if you are on arch linux, or your distro equivalent if you are in any other.
+* To check if all the dependencies are correctly installed, run `:lua require("dooku")` to ensure the plugin is loaded, and then `:checkhealth dooku`. 
+* If `:checkhealth dooku` still show warnings, you might not have your path correctly configured for the language you are using. Make sure you can manually run the commands `doxygen`, `typedoc`, `jsdoc`, `cargo`, and `godoc` on the terminal.
 
 ## How to install
 lazy.nvim
