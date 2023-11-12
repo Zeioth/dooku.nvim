@@ -1,6 +1,7 @@
 # dooku.nvim
 Generate and open your HTML code documentation inside Neovim.
 
+![screenshot_2023-08-07_18-56-31_067791379](https://github.com/Zeioth/dooku.nvim/assets/3357792/6e601100-7886-43d3-b15d-f104c2329974)
 <div align="center">
   <a href="https://discord.gg/ymcMaSnq7d" rel="nofollow">
       <img src="https://img.shields.io/discord/1121138836525813760?color=azure&labelColor=6DC2A4&logo=discord&logoColor=black&label=Join the discord server&style=for-the-badge" data-canonical-src="https://img.shields.io/discord/1121138836525813760">
@@ -13,7 +14,6 @@ Their purpose is quite different:
 * [vim-doge](https://github.com/kkoomen/vim-doge): Helper to write code comments inside your code.
 * [dooku.nvim](https://github.com/Zeioth/dooku.nvim): It generates the actual `html` documentation, and open it on your internet browser. Depending the language it will use `doxygen`, `typedoc`, `jsdoc`, `rustdoc`, `godoc`, or any other.
 
-![screenshot_2023-08-07_18-56-31_067791379](https://github.com/Zeioth/dooku.nvim/assets/3357792/6e601100-7886-43d3-b15d-f104c2329974)
 
 ## Table of contents
 
