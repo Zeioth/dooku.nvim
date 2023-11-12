@@ -23,7 +23,7 @@ Their purpose is quite different:
 - [How to install](#how-to-install)
 - [Commands](#commands)
 - [Options](#options)
-- [Basic usage](#how-to-use-basic-usage)
+- [Basic usage](#basic-usage)
 - [Quick start](#quick-start)
 - [FAQ](#faq)
 
