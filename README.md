@@ -18,7 +18,6 @@ Generate and open your HTML code documentation inside Neovim.
 - [Commands](#commands)
 - [Options](#options)
 - [Basic usage](#basic-usage)
-- [Quick start](#quick-start)
 - [FAQ](#faq)
 
 ## Why
