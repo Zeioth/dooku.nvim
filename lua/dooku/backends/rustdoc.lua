@@ -18,7 +18,8 @@ function M.generate(is_autocmd)
 
     -- Generate html docs
     if config.on_generate_notification then
-      vim.notify("Generating rustdoc html docs...", vim.log.levels.INFO)
+      vim.notify("Generating rustdoc html docs...",
+        vim.log.levels.INFO, {title="dooku.nvim"})
     end
 
     if job then uv.process_kill(job, 9) end -- Running already? kill it
@@ -30,7 +31,8 @@ function M.generate(is_autocmd)
     -- Open html docs
     if not is_autocmd and config.on_generate_open then M.open() end
   else
-    vim.notify("Cargo.toml doesn't exist in your project:\nRun 'cargo init' first.", vim.log.levels.INFO)
+    vim.notify("Cargo.toml doesn't exist in your project:\nRun 'cargo init' first.",
+      vim.log.levels.INFO, {title="dooku.nvim"})
   end
 end
 
@@ -46,9 +48,11 @@ M.open = function()
   local html_file_exists = vim.loop.fs_stat(html_file) and vim.loop.fs_stat(html_file).type == 'file' or false
 
   if config.on_open_notification and html_file_exists then
-    vim.notify("Opening rustdoc html docs...", vim.log.levels.INFO)
+    vim.notify("Opening rustdoc html docs...",
+      vim.log.levels.INFO, {title="dooku.nvim"})
   elseif config.on_open_notification then
-    vim.notify("HTML file not found:\nTry running :DookuGenerate", vim.log.levels.INFO)
+    vim.notify("HTML file not found:\nTry running :DookuGenerate",
+      vim.log.levels.INFO, {title="dooku.nvim"})
   end
 
   uv.spawn(config.browser_cmd, {
@@ -62,7 +66,7 @@ end
 M.auto_setup = function()
   vim.notify(
     ":DookuAutoSetup is not necessary for rust.",
-    vim.log.levels.INFO
+    vim.log.levels.INFO, {title="dooku.nvim"}
   )
 end
 

@@ -26,6 +26,7 @@ end
 
 ---Function to find the project root based on a given list of files/directories.
 ---Compatible with UNIX and Windows.
+---@param roots table A table of strings.
 function M.find_project_root(roots)
   local path = vim.fn.expand "%:p:h" -- Get the directory of the current buffer
 
@@ -49,6 +50,12 @@ function M.find_project_root(roots)
     path = vim.fn.fnamemodify(path, ":h")
   end
 
+  -- notify the user
+  vim.notify(
+    "Your project root directory has not been detected." ..
+    "\nCheck the option `project_root` for more info.",
+    vim.log.levels.WARN, {title = "dooku.nvim"}
+  )
   return nil -- If no root directory is found, return nil
 end
 

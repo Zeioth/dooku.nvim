@@ -24,7 +24,8 @@ function M.generate(is_autocmd)
 
   -- Generate html docs
   if config.on_generate_notification then
-    vim.notify("Generating jsdoc html docs...", vim.log.levels.INFO)
+    vim.notify("Generating jsdoc html docs...",
+      vim.log.levels.INFO, {title="dooku.nvim"})
   end
 
   if job then uv.process_kill(job, 9) end -- Running already? kill it
@@ -47,9 +48,11 @@ M.open = function()
   local html_file_exists = vim.loop.fs_stat(html_file) and vim.loop.fs_stat(html_file).type == 'file' or false
 
   if config.on_open_notification and html_file_exists then
-    vim.notify("Opening jsdoc html docs...", vim.log.levels.INFO)
+    vim.notify("Opening jsdoc html docs...",
+      vim.log.levels.INFO, {title="dooku.nvim"})
   elseif config.on_open_notification then
-    vim.notify("HTML file not found:\nTry running :DookuGenerate", vim.log.levels.INFO)
+    vim.notify("HTML file not found:\nTry running :DookuGenerate",
+      vim.log.levels.INFO, {title="dooku.nvim"})
   end
 
   uv.spawn(config.browser_cmd, {
@@ -68,7 +71,7 @@ M.auto_setup = function()
   if jsdoc_file_exists then
     vim.notify(
       "The fie 'jsdoc.json' already exists in the project root dir:\nNothing to be done.",
-      vim.log.levels.INFO
+      vim.log.levels.INFO, {title="dooku.nvim"}
     )
     return
   end
@@ -77,7 +80,7 @@ M.auto_setup = function()
     "Auto setup is enabled. Creating:\n"
     .. utils.os_path(cwd .. "/" .. config.jsdoc_docs_dir)
     .. "\n\nYou can run the command now.",
-    vim.log.levels.INFO
+    vim.log.levels.INFO, {title="dooku.nvim"}
   )
   vim.fn.jobstart(
     "git clone --single-branch --depth 1 "

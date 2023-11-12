@@ -19,7 +19,8 @@ function M.generate(is_autocmd)
   if gomod_file_exists then
     -- Generate html docs
     if config.on_generate_notification then
-      vim.notify("Generating godoc html docs...", vim.log.levels.INFO)
+      vim.notify("Generating godoc html docs...",
+        vim.log.levels.INFO, {title="dooku.nvim"})
     end
 
     job = vim.fn.jobstart('godoc ' .. config.godoc_args, { cwd = cwd })
@@ -32,7 +33,8 @@ function M.generate(is_autocmd)
     -- Open html docs
     if not is_autocmd and config.on_generate_open then M.open() end
   else
-    vim.notify("go.mod doesn't exist in your project:\nRun 'go mod init your_module_name' first.", vim.log.levels.INFO)
+    vim.notify("go.mod doesn't exist in your project:\nRun 'go mod init your_module_name' first.",
+      vim.log.levels.INFO, {title="dooku.nvim"})
   end
 end
 
@@ -41,7 +43,8 @@ M.open = function()
   local cwd = utils.os_path(utils.find_project_root(config.project_root))
 
   if config.on_open_notification then
-    vim.notify("Opening godoc html docs...", vim.log.levels.INFO)
+    vim.notify("Opening godoc html docs...",
+      vim.log.levels.INFO, {title="dooku.nvim"})
   end
 
   uv.spawn(config.browser_cmd, {
@@ -55,7 +58,7 @@ end
 M.auto_setup = function()
   vim.notify(
     ":DookuAutoSetup is not necessary for go.",
-    vim.log.levels.INFO
+    vim.log.levels.INFO, {title="dooku.nvim"}
   )
 end
 
