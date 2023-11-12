@@ -109,6 +109,7 @@ Or if you prefer run `:DookuGenerate` three times. This is only necessary the fi
 
 ## FAQ
 * **Doesn't work?** Make sure you have installed the [required dependencies](https://github.com/Zeioth/dooku.nvim/edit/main/README.md#required-dependencies)
+* **Still doesn't work?** Make sure you have one of the files defined in the option `project_root` in your project root directory, or dooku.nvim might up on the wrong directory silently.
 * **Still doesn't work?** If you are on `rust / go` you must initialize your project with any of these commands `cargo new your_project_name` or `go mod init your_module_name`.
 * **STILL doesn't work?** Then congratulations, you found a bug. Please [report it here](https://github.com/Zeioth/dooku.nvim/issues) so I can fix it.
 * **Where do that cheesy name come from?** From [Star Wars](https://starwars.fandom.com/wiki/Dooku).
