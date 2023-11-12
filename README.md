@@ -22,7 +22,7 @@ Generate and open your HTML code documentation inside Neovim.
 - [FAQ](#faq)
 
 ## Why
-So you can open your documentation with a single key press.
+So you can generate and open your HTML code documentation with a single key press.
 
 ## Should I use doge or dooku?
 Their purpose is quite different
