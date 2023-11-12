@@ -53,8 +53,8 @@ Not supported yet → Pull requests are welcome
 
 ## Required system dependencies
 ```sh
-# Pacman is arch linux package manager.
-# Use the equivalent command for your distro.
+# Pacman is the arch linux package manager.
+# Use the equivalent command of your distro.
 sudo pacman -S doxygen rust go
 npm install -g typedoc jdoc
 go install golang.org/x/tools/cmd/godoc@latest
