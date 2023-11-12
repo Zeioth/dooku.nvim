@@ -54,14 +54,13 @@ Pull requests are welcome.
 
 ## Required system dependencies
 ```sh
+# Pacman is arch linux package manager.
+# Use the equivalent command for your distro.
 sudo pacman -S doxygen rust go
 npm install -g typedoc jdoc
 go install golang.org/x/tools/cmd/godoc@latest
 ```
-
-* `dooku.nvim` need these to be able to call the documentation generators. Use the command above if you are on arch linux, or your distro equivalent if you are in any other.
-* To check if all the dependencies are correctly installed, run `:lua require("dooku")` to ensure the plugin is loaded, and then `:checkhealth dooku`. 
-* If `:checkhealth dooku` still show warnings, you might not have your path correctly configured for the language you are using. Make sure you can manually run the commands `doxygen`, `typedoc`, `jsdoc`, `cargo`, and `godoc` on the terminal.
+Then run `:checkhealth dooku` to check if everything is OK.
 
 ## How to install
 lazy.nvim
@@ -73,7 +72,6 @@ lazy.nvim
     -- your config options here
   },
 },
-
 ```
 
 ## Commands
