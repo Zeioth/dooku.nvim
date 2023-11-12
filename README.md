@@ -102,6 +102,8 @@ on_open_notification = true
 * (Optional) We also expose [advanced options](https://github.com/Zeioth/dooku.nvim/wiki/advanced_options) to control how the plugin work internally.
 
 ## Basic usage
+Run the commands in this order
+
 * `:DookuAutoSetup` to auto setup your project docs generator.
 * `:DookuGenerate` to generate the html documentation of your project.
 * `:DookuOpen` to open it on your internet browser. 
