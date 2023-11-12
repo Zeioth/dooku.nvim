@@ -46,7 +46,7 @@ function M.set(opts)
   M.doxygen_html_file = opts.doxygen_html_file
       or utils.os_path "html/index.html"
 
-  -- auto setup
+  -- Auto setup
   -- Defaults: clone the repo into 'doxygen'.
   M.doxygen_clone_config_repo = opts.doxygen_clone_config_repo
       or "https://github.com/Zeioth/vim-doxygen-template.git"
@@ -63,7 +63,7 @@ function M.set(opts)
   M.typedoc_docs_dir = opts.typedoc_htmldocs_dir or utils.os_path "docs"
   M.typedoc_html_file = opts.typedoc_html_file or utils.os_path "index.html"
 
-  -- auto setup
+  -- Auto setup
   -- Defaults: clone the repo into 'vim-typedoc-template',
   --           copy 'typedoc.json' into the project root,
   --           delete 'vim-typedoc-template'.
@@ -92,7 +92,7 @@ function M.set(opts)
   M.jsdoc_docs_dir = opts.jsdoc_htmldocs_dir or utils.os_path "docs"
   M.jsdoc_html_file = opts.jsdoc_html_file or utils.os_path "index.html"
 
-  -- auto setup
+  -- Auto setup
   -- Defaults: clone the repo into 'vim-jsdoc-template',
   --           copy 'jsdoc.json' into the project root,
   --           delete 'vim-jsdoc-template'.
@@ -132,7 +132,7 @@ function M.set(opts)
   -- Open on browser
   M.godoc_html_url = opts.godoc_html_file or "localhost:6060"
 
-  -- args for godoc
+  -- Args for godoc
   M.godoc_args = opts.godoc_args or ""
 
   -- After setting the config
