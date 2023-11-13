@@ -21,7 +21,7 @@ Generate and open your HTML code documentation inside Neovim.
 - [FAQ](#faq)
 
 ## Why
-To setup, generate, and open your HTML code documentation with a single key press.
+Because the easier it is for you to access you code documentation, the more likely you are to use it. And with this plugin you have one keypress away.
 
 ## Should I use doge or dooku?
 
