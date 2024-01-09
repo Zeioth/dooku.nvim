@@ -137,8 +137,12 @@ function M.set(opts)
 
   -- After setting the config
   ---------------------------------------------------------------
-  M = utils.sanitize_config(M) -- convert "" vales to nil
-  vim.g.dooku_config = M       -- expose the config as global
+  -- Convert empty string to nil where necessary
+  M.cargo_rustdoc_args = utils.sanitize_string(M.cargo_rustdoc_args)
+  M.rustdoc_args = utils.sanitize_string(M.rustdoc_args)
+
+  -- expose the config as global
+  vim.g.dooku_config = M
 end
 
 return M

@@ -30,7 +30,7 @@ function M.generate(is_autocmd)
 
   if job then uv.process_kill(job, 9) end -- Running already? kill it
   job = uv.spawn(
-    "jsdoc", { args = { "-c", "jsconfig.json" }, cwd = cwd, detach = true }
+    "jsdoc", { args = { "-c", "jsdoc.json" }, cwd = cwd, detach = true }
   )
 
   -- Open html docs
@@ -82,14 +82,15 @@ M.auto_setup = function()
     .. "\n\nYou can run the command now.",
     vim.log.levels.INFO, {title="dooku.nvim"}
   )
-   uv.spawn("git", { args = {
-    "clone",
-    "--single-branch",
-    "--depth", "1",
-    config.jsdoc_clone_config_repo,
-    config.jsdoc_clone_to_dir,
-    config.jsdoc_clone_cmd_post
-  }, cwd = cwd, detach = true })
+  vim.fn.jobstart(
+    "git clone --single-branch --depth 1 "
+    .. config.jsdoc_clone_config_repo
+    .. " "
+    .. config.jsdoc_clone_to_dir
+    .. " "
+    .. config.jsdoc_clone_cmd_post,
+    { cwd = cwd, detach = true }
+  )
 end
 
 return M

@@ -59,22 +59,15 @@ function M.find_project_root(roots)
   return nil -- If no root directory is found, return nil
 end
 
----Given a table, return it back after converting every "" value to nil.
---
---This allow config values to be used on uv.spawn() args in the backend
---without having to check one by one.
----@param tbl table A table {}
----@return table result The original table without nil or "" values.
-function M.sanitize_config(tbl)
-  local result = {}
-  for key, value in pairs(tbl) do
-    if type(value) == "string" and value == "" then
-      result[key] = nil
-    else
-      result[key] = value
-    end
+---If value is anything different than a valid string, return nil
+---@param value object A object
+---@return string|nil result of the operation.
+function M.sanitize_string(value)
+  if value == nil or (type(value) == "string" and value:match("^%s*$")) then
+      return nil
+  else
+      return nil
   end
-  return result
 end
 
 return M
