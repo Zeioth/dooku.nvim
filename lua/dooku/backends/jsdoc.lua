@@ -82,15 +82,14 @@ M.auto_setup = function()
     .. "\n\nYou can run the command now.",
     vim.log.levels.INFO, {title="dooku.nvim"}
   )
-  vim.fn.jobstart(
-    "git clone --single-branch --depth 1 "
-    .. config.jsdoc_clone_config_repo
-    .. " "
-    .. config.jsdoc_clone_to_dir
-    .. " "
-    .. config.jsdoc_clone_cmd_post,
-    { cwd = cwd, detach = true }
-  )
+   uv.spawn("git", { args = {
+    "clone",
+    "--single-branch",
+    "--depth", "1",
+    config.jsdoc_clone_config_repo,
+    config.jsdoc_clone_to_dir,
+    config.jsdoc_clone_cmd_post
+  }, cwd = cwd, detach = true })
 end
 
 return M
