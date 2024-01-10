@@ -21,7 +21,7 @@ Generate and open your HTML code documentation inside Neovim.
 - [FAQ](#faq)
 
 ## Why
-Because the easier it is for you to access you code documentation, the more likely you are to use it. And with this plugin you have one keypress away.
+Because the easier it is for you to access you code documentation, the more likely you are to use it. And with this plugin you have it one keypress away.
 
 ## Should I use doge or dooku?
 
@@ -91,8 +91,8 @@ on_generate_open = true      -- auto open when running :DookuGenerate. This opti
 auto_setup = true            -- auto download a config for the generator if it doesn't exist in the project.
 
 -- notifications
-on_generate_notification = true
-on_open_notification = true
+on_generate_notification = false
+on_open_notification = false
 ```
 
 * (Optional) These options can be accessed from anywhere with `vim.g.dooku_config`
