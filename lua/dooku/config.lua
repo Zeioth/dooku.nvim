@@ -3,7 +3,7 @@ local M = {}
 local is_windows = package.config:sub(1, 1) == "\\"
 local utils = require "dooku.utils"
 
----Returns a default value if opt is null.
+---Returns a default value if opt is nil.
 ---@param opt object A option defined by the user.
 ---@param default object A default value.
 local function set_default(opt, default)
