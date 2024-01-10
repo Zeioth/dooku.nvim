@@ -2,8 +2,8 @@
 local M = {}
 
 
----Given a string, convert 'slash' to 'inverted slash' if on windows, and vice versa on UNIX.
----Then return the resulting string.
+---Given a string, convert 'slash' to 'inverted slash' if on windows,
+---and vice versa on UNIX. Then return the resulting string.
 ---@param path string
 ---@return string|nil,nil
 function M.os_path(path)
@@ -13,7 +13,7 @@ function M.os_path(path)
   return string.gsub(path, "[/\\]", separator)
 end
 
---- Returns bool if the object exists on the table.
+---Returns bool if the object exists on the table.
 ---@param obj object
 ---@param tbl table
 ---@return boolean
@@ -39,8 +39,8 @@ function M.find_project_root(roots)
       local root_path = path .. path_separator .. root
 
       if
-        vim.fn.isdirectory(root_path) == 1
-        or vim.fn.filereadable(root_path) == 1
+          vim.fn.isdirectory(root_path) == 1
+          or vim.fn.filereadable(root_path) == 1
       then
         return path
       end
@@ -52,9 +52,10 @@ function M.find_project_root(roots)
 
   -- notify the user
   vim.notify(
-    "Your project root directory has not been detected." ..
-    "\nCheck the option `project_root` for more info.",
-    vim.log.levels.WARN, {title = "dooku.nvim"}
+    "Your project root directory has not been detected."
+    .. "\nCheck the option `project_root` for more info.",
+    vim.log.levels.WARN,
+    { title = "dooku.nvim" }
   )
   return nil -- If no root directory is found, return nil
 end
@@ -63,11 +64,25 @@ end
 ---@param value object Expects string or nil, but accepts any object.
 ---@return string|nil result of the operation.
 function M.sanitize_string(value)
-  if value == nil or (type(value) == "string" and value:match("^%s*$")) then
-      return nil
+  if value == nil or (type(value) == "string" and value:match "^%s*$") then
+    return nil
   else
-      return nil
+    return nil
   end
+end
+
+---Returns the plugin dir of dooku.nvim + a subdir if specified.
+--We use this function to assert tests.
+---@param path string (optional) A subdirectory to append to he returned dir.
+function M.get_dooku_dir(path)
+  local plugin_directory = vim.fn.fnamemodify(
+    vim.fn.fnamemodify(debug.getinfo(1, "S").source:sub(2), ":h"),
+    ":h:h"
+  )
+  if path then
+    plugin_directory = M.os_path(plugin_directory .. "/" .. path)
+  end
+  return plugin_directory
 end
 
 return M
