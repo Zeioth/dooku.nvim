@@ -3,17 +3,25 @@ local M = {}
 local is_windows = package.config:sub(1, 1) == "\\"
 local utils = require "dooku.utils"
 
---- Parse user options, or set the defaults
+---Returns a default value if opt is null.
+---@param opt object A option defined by the user.
+---@param default object A default value.
+local function set_default(opt, default)
+  return opt == nil and default or opt
+end
+
+---Parse user options, or set the defaults
+---@param opts table A table with options to set.
 function M.set(opts)
   -- [GENERAL SETTINGS]
   -- -----------------------------------------------------------------------
   M.project_root = opts.project_root
       or { ".git", ".hg", ".svn", ".bzr", "_darcs", "_FOSSIL_", ".fslckout" }
-  M.on_generate_notification = opts.on_generate_notification or true
-  M.on_open_notification = opts.on_open_notification or true
-  M.on_write_generate = opts.on_write_generate or true
-  M.on_generate_open = opts.on_generate_open or true
-  M.auto_setup = opts.auto_setup or true
+  M.on_generate_notification = set_default(opts.on_generate_notification, false)
+  M.on_open_notification = set_default(opts.on_open_notification, false)
+  M.on_write_generate = set_default(opts.on_write_generate, false)
+  M.on_generate_open = set_default(opts.on_generate_open, true)
+  M.auto_setup = set_default(opts.auto_setup, true)
 
   -- detect default internet browser
   if is_windows then
