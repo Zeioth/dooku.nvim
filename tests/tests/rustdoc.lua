@@ -6,7 +6,7 @@ local ms = 1000 -- wait time
 local rustdoc = require("dooku.backends.rustdoc")
 local example_dir = require("dooku.utils").get_dooku_dir("tests/examples/rust/")
 vim.fn.chdir(example_dir) -- set working_dir
-vim.notify("TEST SUITE: Rustdoc backend", vim.log.levels.INFO)
+vim.notify("TESTING: Rustdoc backend", vim.log.levels.INFO)
 
 
 -- TEST: rustdoc.auto_setup()

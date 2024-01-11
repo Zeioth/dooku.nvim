@@ -7,7 +7,7 @@ local doxygen = require("dooku.backends.doxygen")
 local example_dir = require("dooku.utils").get_dooku_dir("tests/examples/doxygen/")
 
 vim.fn.chdir(example_dir) -- set working_dir
-vim.notify("TEST SUITE: Doxygen backend", vim.log.levels.INFO)
+vim.notify("TESTING: Doxygen backend", vim.log.levels.INFO)
 
 
 -- TEST: doxygen.auto_setup()
