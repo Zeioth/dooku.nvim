@@ -154,7 +154,7 @@ function M.set(opts)
   M.godoc_html_url = opts.godoc_html_file or "localhost:6060"
 
   -- Args for godoc
-  M.godoc_args = opts.godoc_args or ""
+  M.godoc_args = opts.godoc_args or "-index"
 
   -- After setting the config
   ---------------------------------------------------------------
