@@ -23,7 +23,7 @@ config.set({ on_generate_open = false })
 
 -- Run test files
 dofile(tests_dir .. 'doxygen.lua')
--- dofile(tests_dir .. 'rustdoc.lua')
+dofile(tests_dir .. 'rustdoc.lua')
 -- dofile(tests_dir .. 'godoc.lua')
 -- dofile(tests_dir .. 'typedoc.lua')
 -- dofile(tests_dir .. 'jsdoc.lua')
