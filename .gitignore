@@ -3,5 +3,4 @@
 **/typedoc.json
 **/jsdoc.json
 **/target/
-**/Cargo.toml
 **/Cargo.lock
