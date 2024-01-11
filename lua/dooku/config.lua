@@ -72,6 +72,9 @@ function M.set(opts)
           M.doxygen_clone_to_dir .. "/README.md"
       )
 
+  -- Args for godoc
+  M.doxygen_args = opts.doxygen_args or ""
+
   -- [TYPEDOC]
   -- -----------------------------------------------------------------------
   M.typedoc_filetypes = opts.typedoc_filetypes or { "typescript" }
