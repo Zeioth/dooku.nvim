@@ -59,7 +59,18 @@ function M.set(opts)
   M.doxygen_clone_config_repo = opts.doxygen_clone_config_repo
       or "https://github.com/Zeioth/vim-doxygen-template.git"
   M.doxygen_clone_to_dir = opts.doxygen_clone_to_dir or "doxygen"
-  M.doxygen_clone_cmd_post = opts.doxygen_clone_cmd_post or ""
+  M.doxygen_clone_cmd_post = opts.doxygen_clone_cmd_post or
+      (is_windows and
+        "&& rmdir /s /q " .. M.typedoc_clone_to_dir .. "\\.git " ..
+        "&& del /q " .. M.doxygen_clone_to_dir .. "\\LICENSE"  ..
+        "&& del /q " .. M.doxygen_clone_to_dir .. "\\README.md"
+      )
+      or (
+        "&& rm -r " ..
+          M.doxygen_clone_to_dir .. "/.git " ..
+          M.doxygen_clone_to_dir .. "/LICENSE " ..
+          M.doxygen_clone_to_dir .. "/README.md"
+      )
 
   -- [TYPEDOC]
   -- -----------------------------------------------------------------------
@@ -81,7 +92,9 @@ function M.set(opts)
       or M.typedoc_clone_config_repo:match ".+/(.-)%.git" -- URL's repo name
   M.typedoc_clone_cmd_post = opts.typedoc_clone_cmd_post
       or
-      (is_windows and "&& copy " .. M.typedoc_clone_to_dir .. "\\typedoc.json .\\typedoc.json && rmdir \\s \\q " .. M.typedoc_clone_to_dir)
+      (is_windows and
+         "&& copy " .. M.typedoc_clone_to_dir .. "\\typedoc.json .\\typedoc.json " ..
+         "&& rmdir /s /q " .. M.typedoc_clone_to_dir)
       or (
         "&& cp "
         .. M.typedoc_clone_to_dir
