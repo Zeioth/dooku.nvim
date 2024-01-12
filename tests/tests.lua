@@ -15,8 +15,8 @@ local examples_dir = utils.os_path((debug.getinfo(1, 'S').source:sub(2):match '(
 local tests_dir = utils.os_path((debug.getinfo(1, 'S').source:sub(2):match '(.*/)') .. "/tests/")
 
 -- Clean
--- vim.fn.chdir(examples_dir)
--- os.execute("git checkout -- .")
+--vim.fn.chdir(examples_dir)
+--os.execute("git checkout -- .")
 
 -- Disable default opts
 local config = require("dooku.config")
