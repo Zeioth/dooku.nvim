@@ -25,7 +25,7 @@ function M.generate(is_autocmd)
     if job then uv.process_kill(job, 9) end -- Running already? kill it
     job = uv.spawn(
       "cargo",
-      { args = {"rustdoc", config.cargo_rustdoc_args, "--", config.rustdoc_args}, cwd = cwd, detach = true }
+      { args = config.rustdoc_args, cwd = cwd, detach = true }
     )
 
     -- Open html docs

@@ -32,7 +32,7 @@ function M.generate(is_autocmd)
   if job then uv.process_kill(job, 9) end -- Running already? kill it
   job = uv.spawn(
     "doxygen",
-    { args = { "Doxyfile", config.doxygen_args }, cwd = doxygen_dir, detach = true }
+    { args = config.doxygen_args , cwd = doxygen_dir, detach = true }
   )
 
   -- Open html docs

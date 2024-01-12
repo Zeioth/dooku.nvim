@@ -72,8 +72,8 @@ function M.set(opts)
           M.doxygen_clone_to_dir .. "/README.md"
       )
 
-  -- Args for godoc
-  M.doxygen_args = opts.doxygen_args or ""
+  -- Args for doxygen
+  M.doxygen_args = opts.doxygen_args or { "Doxyfile" }
 
   -- [TYPEDOC]
   -- -----------------------------------------------------------------------
@@ -106,6 +106,9 @@ function M.set(opts)
         .. M.typedoc_clone_to_dir
       )
 
+  -- Args for typedoc
+  M.typedoc_args = opts.typedoc_args or { "" }
+
   -- [JSDOC]
   -- -----------------------------------------------------------------------
   M.jsdoc_filetypes = opts.jsdoc_filetypes or { "javascript" }
@@ -135,6 +138,9 @@ function M.set(opts)
         .. M.jsdoc_clone_to_dir
       )
 
+  -- Args for jsdoc
+  M.jsdoc_args = opts.jsdoc_args or { "-c", "jsdoc.json", "--readme", "README.md" }
+
   -- [RUSTDOC]
   -- -----------------------------------------------------------------------
   M.rustdoc_filetypes = opts.rustdoc_filetypes or { "rust" }
@@ -146,8 +152,7 @@ function M.set(opts)
   M.rustdoc_html_file = opts.rustdoc_html_file or "index.html"
 
   -- args for rustdoc
-  M.cargo_rustdoc_args = opts.cargo_rustdoc_args or ""
-  M.rustdoc_args = opts.rustdoc_args or ""
+  M.rustdoc_args = opts.rustdoc_args or { "rustdoc" }
 
   -- [GODOC]
   ---------------------------------------------------------------
@@ -157,13 +162,10 @@ function M.set(opts)
   M.godoc_html_url = opts.godoc_html_file or "localhost:6060"
 
   -- Args for godoc
-  M.godoc_args = opts.godoc_args or "-index"
+  M.godoc_args = opts.godoc_args or { "-index" }
 
   -- After setting the config
   ---------------------------------------------------------------
-  -- Convert empty string to nil where necessary
-  M.cargo_rustdoc_args = utils.sanitize_string(M.cargo_rustdoc_args)
-  M.rustdoc_args = utils.sanitize_string(M.rustdoc_args)
 
   -- expose the config as global
   vim.g.dooku_config = M

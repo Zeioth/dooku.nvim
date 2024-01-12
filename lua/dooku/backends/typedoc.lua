@@ -30,7 +30,7 @@ function M.generate(is_autocmd)
 
   if job then uv.process_kill(job, 9) end -- Running already? kill it
   job = uv.spawn(
-    "typedoc", { cwd = cwd, detach = true }
+    "typedoc", { args = config.typedoc_args, cwd = cwd, detach = true }
   )
 
   -- Open html docs
