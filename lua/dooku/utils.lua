@@ -60,16 +60,6 @@ function M.find_project_root(roots)
   return nil -- If no root directory is found, return nil
 end
 
----If value is anything different than a valid string, return nil.
----@param value object Expects string or nil, but accepts any object.
----@return string|nil result of the operation.
-function M.sanitize_string(value)
-  if value == nil or (type(value) == "string" and value:match "^%s*$") then
-    return nil
-  else
-    return nil
-  end
-end
 
 ---Returns the plugin dir of dooku.nvim + a subdir if specified.
 --We use this function to assert tests.
