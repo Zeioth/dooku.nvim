@@ -107,7 +107,7 @@ function M.set(opts)
       )
 
   -- Args for typedoc
-  M.typedoc_args = opts.typedoc_args or { "" }
+  M.typedoc_args = opts.typedoc_args or { }
 
   -- [JSDOC]
   -- -----------------------------------------------------------------------
