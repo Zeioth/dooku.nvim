@@ -60,7 +60,6 @@ function M.find_project_root(roots)
   return nil -- If no root directory is found, return nil
 end
 
-
 ---Returns the plugin dir of dooku.nvim + a subdir if specified.
 --We use this function to assert tests.
 ---@param path string (optional) A subdirectory to append to he returned dir.

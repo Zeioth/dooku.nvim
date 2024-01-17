@@ -1,6 +1,0 @@
-**/doxygen/
-**/docs/
-**/typedoc.json
-**/jsdoc.json
-**/target/
-**/Cargo.lock

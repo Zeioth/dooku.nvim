@@ -11,16 +11,17 @@
 
 
 local utils = require("dooku.utils")
-local examples_dir = utils.os_path((debug.getinfo(1, 'S').source:sub(2):match '(.*/)') .. "/examples/")
-local tests_dir = utils.os_path((debug.getinfo(1, 'S').source:sub(2):match '(.*/)') .. "/tests/")
-
--- Clean
---vim.fn.chdir(examples_dir)
---os.execute("git checkout -- .")
+local examples_dir = utils.os_path((debug.getinfo(1, 'S').source:sub(2):match '(.*/)') .. "examples/")
+local tests_dir = utils.os_path((debug.getinfo(1, 'S').source:sub(2):match '(.*/)') .. "tests/")
 
 -- Disable default opts
 local config = require("dooku.config")
 config.set({ on_generate_open = false })
+
+-- Clean
+vim.fn.chdir(examples_dir)
+io.popen("git clean -xdf .")
+vim.wait(1000)
 
 -- Run tests
 dofile(tests_dir .. 'doxygen.lua')
