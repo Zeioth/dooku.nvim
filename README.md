@@ -35,7 +35,7 @@ Because the easier it is for you to access you code documentation, the more like
 | `c` | doxygen |
 | `c++` | doxygen |
 | `c# `| doxygen |
-| `objetive-c` | doxygen |
+| `objective-c` | doxygen |
 | `java` | doxygen | 
 | `python` | doxygen |
 | `php` | doxygen |
