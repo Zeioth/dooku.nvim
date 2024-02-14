@@ -30,7 +30,7 @@ function M.generate(is_autocmd)
 
   if job then uv.process_kill(job, 9) end -- Running already? kill it
   job = uv.spawn(
-    "typedoc", { args = config.typedoc_args, cwd = cwd, detach = true }
+    "typedoc", { args = config.typedoc_args, cwd = cwd }
   )
 
   -- Open html docs
@@ -57,8 +57,7 @@ M.open = function()
 
   uv.spawn(config.browser_cmd, {
     args = { config.typedoc_html_file },
-    cwd = cwd,
-    detach = true,
+    cwd = cwd
   })
 end
 
@@ -89,7 +88,7 @@ M.auto_setup = function()
     .. config.typedoc_clone_to_dir
     .. " "
     .. config.typedoc_clone_cmd_post,
-    { cwd = cwd, detach = true }
+    { cwd = cwd }
   )
 end
 

@@ -23,7 +23,7 @@ function M.generate(is_autocmd)
         vim.log.levels.INFO, {title="dooku.nvim"})
     end
 
-    job = uv.spawn("godoc", { args = config.godoc_args, cwd = cwd, detach = true })
+    job = uv.spawn("godoc", { args = config.godoc_args, cwd = cwd })
     autocmd("VimLeavePre", {
       desc = "Stop godoc when exiting vim",
       group = augroup("dooku_stop_godoc", { clear = true }),
@@ -51,8 +51,7 @@ M.open = function()
 
   uv.spawn(config.browser_cmd, {
     args = { config.godoc_html_url },
-    cwd = cwd,
-    detach = true,
+    cwd = cwd
   })
 end
 

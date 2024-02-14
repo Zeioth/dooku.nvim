@@ -32,7 +32,7 @@ function M.generate(is_autocmd)
   if job then uv.process_kill(job, 9) end -- Running already? kill it
   job = uv.spawn(
     "doxygen",
-    { args = config.doxygen_args , cwd = doxygen_dir, detach = true }
+    { args = config.doxygen_args , cwd = doxygen_dir }
   )
 
   -- Open html docs
@@ -59,8 +59,7 @@ M.open = function()
 
   uv.spawn(config.browser_cmd, {
     args = { config.doxygen_html_file },
-    cwd = cwd,
-    detach = true,
+    cwd = cwd
   })
 end
 
@@ -92,7 +91,7 @@ M.auto_setup = function()
     .. config.doxygen_clone_to_dir
     .. " "
     .. config.doxygen_clone_cmd_post,
-    { cwd = cwd, detach = true }
+    { cwd = cwd }
   )
 end
 

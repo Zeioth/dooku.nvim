@@ -30,7 +30,7 @@ function M.generate(is_autocmd)
 
   if job then uv.process_kill(job, 9) end -- Running already? kill it
   job = uv.spawn(
-    "jsdoc", { args = config.jsdoc_args , cwd = cwd, detach = true }
+    "jsdoc", { args = config.jsdoc_args , cwd = cwd }
   )
 
   -- Open html docs
@@ -57,8 +57,7 @@ M.open = function()
 
   uv.spawn(config.browser_cmd, {
     args = { config.jsdoc_html_file },
-    cwd = cwd,
-    detach = true,
+    cwd = cwd
   })
 end
 
@@ -89,7 +88,7 @@ M.auto_setup = function()
     .. config.jsdoc_clone_to_dir
     .. " "
     .. config.jsdoc_clone_cmd_post,
-    { cwd = cwd, detach = true }
+    { cwd = cwd }
   )
 end
 
