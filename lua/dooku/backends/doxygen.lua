@@ -1,6 +1,7 @@
 -- Actions to perform if the backend is Doxygen.
 local M = {}
-local uv = vim.uv or vim.loop
+local jobstart = vim.fn.jobstart
+local jobstop = vim.fn.jobstop
 local utils = require "dooku.utils"
 local config = vim.g.dooku_config
 
@@ -29,11 +30,8 @@ function M.generate(is_autocmd)
       vim.log.levels.INFO, {title="dooku.nvim"})
   end
 
-  if job then uv.process_kill(job, 9) end -- Running already? kill it
-  job = uv.spawn(
-    "doxygen",
-    { args = config.doxygen_args , cwd = doxygen_dir }
-  )
+  if job then jobstop(job) end -- Running already? kill it
+  job = jobstart(config.doxygen_cmd, { cwd = doxygen_dir })
 
   -- Open html docs
   if not is_autocmd and config.on_generate_open then M.open() end
@@ -57,10 +55,12 @@ M.open = function()
       vim.log.levels.INFO, {title="dooku.nvim"})
   end
 
-  uv.spawn(config.browser_cmd, {
-    args = { config.doxygen_html_file },
-    cwd = cwd
-  })
+  if html_file_exists then
+    job = jobstart(
+      table.concat({ config.browser_cmd, html_file }, " "),
+      { cwd = cwd }
+    )
+  end
 end
 
 --- It downloads a config template in the project root.
@@ -84,13 +84,14 @@ M.auto_setup = function()
     .. "\n\nYou can run the command now.",
     vim.log.levels.INFO, {title="dooku.nvim"}
   )
-  vim.fn.jobstart(
-    "git clone --single-branch --depth 1 "
-    .. config.doxygen_clone_config_repo
-    .. " "
-    .. config.doxygen_clone_to_dir
-    .. " "
-    .. config.doxygen_clone_cmd_post,
+
+  jobstart(
+    table.concat({
+      "git clone --single-branch --depth 1",
+      config.doxygen_clone_config_repo,
+      config.doxygen_clone_to_dir,
+      config.doxygen_clone_cmd_post,
+    }, " "),
     { cwd = cwd }
   )
 end

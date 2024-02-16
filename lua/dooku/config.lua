@@ -17,8 +17,8 @@ function M.set(opts)
   -- -----------------------------------------------------------------------
   M.project_root = opts.project_root
       or { ".git", ".hg", ".svn", ".bzr", "_darcs", "_FOSSIL_", ".fslckout" }
-  M.on_generate_notification = set_default(opts.on_generate_notification, false)
-  M.on_open_notification = set_default(opts.on_open_notification, false)
+  M.on_generate_notification = set_default(opts.on_generate_notification, true)
+  M.on_open_notification = set_default(opts.on_open_notification, true)
   M.on_write_generate = set_default(opts.on_write_generate, false)
   M.on_generate_open = set_default(opts.on_generate_open, true)
   M.auto_setup = set_default(opts.auto_setup, true)
@@ -72,8 +72,8 @@ function M.set(opts)
           M.doxygen_clone_to_dir .. "/README.md"
       )
 
-  -- Args for doxygen
-  M.doxygen_args = opts.doxygen_args or { "Doxyfile" }
+  -- Command to run doxygen
+  M.doxygen_cmd = opts.doxygen_cmd or "doxygen Doxyfile"
 
   -- [TYPEDOC]
   -- -----------------------------------------------------------------------
@@ -106,8 +106,8 @@ function M.set(opts)
         .. M.typedoc_clone_to_dir
       )
 
-  -- Args for typedoc
-  M.typedoc_args = opts.typedoc_args or { }
+  -- Command to run typedoc
+  M.typedoc_cmd = opts.typedoc_cmd or "typedoc"
 
   -- [JSDOC]
   -- -----------------------------------------------------------------------
@@ -138,8 +138,8 @@ function M.set(opts)
         .. M.jsdoc_clone_to_dir
       )
 
-  -- Args for jsdoc
-  M.jsdoc_args = opts.jsdoc_args or { "-c", "jsdoc.json", "--readme", "README.md" }
+  -- Command to run jsdoc
+  M.jsdoc_cmd = opts.jsdoc_cmd or "jsdoc -c jsdoc.json --readme README.md"
 
   -- [RUSTDOC]
   -- -----------------------------------------------------------------------
@@ -151,8 +151,8 @@ function M.set(opts)
   M.rustdoc_docs_dir = opts.rustdoc_htmldocs_dir or utils.os_path "target/doc"
   M.rustdoc_html_file = opts.rustdoc_html_file or "index.html"
 
-  -- args for rustdoc
-  M.rustdoc_args = opts.rustdoc_args or { "rustdoc" }
+  -- Command to run rustdoc
+  M.rustdoc_cmd = opts.rustdoc_cmd or "cargo rustdoc"
 
   -- [GODOC]
   ---------------------------------------------------------------
@@ -161,8 +161,8 @@ function M.set(opts)
   -- Open on browser
   M.godoc_html_url = opts.godoc_html_file or "localhost:6060"
 
-  -- Args for godoc
-  M.godoc_args = opts.godoc_args or { "-index" }
+  -- Command to run godoc
+  M.godoc_cmd = opts.godoc_cmd or "godoc -index"
 
   -- After setting the config
   ---------------------------------------------------------------

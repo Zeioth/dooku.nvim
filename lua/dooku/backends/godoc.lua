@@ -1,8 +1,7 @@
 -- Actions to perform if the backend is godoc.
 local M = {}
-local augroup = vim.api.nvim_create_augroup
-local autocmd = vim.api.nvim_create_autocmd
-local uv = vim.uv or vim.loop
+local jobstart = vim.fn.jobstart
+local jobstop = vim.fn.jobstop
 local utils = require "dooku.utils"
 local config = vim.g.dooku_config
 
@@ -23,14 +22,8 @@ function M.generate(is_autocmd)
         vim.log.levels.INFO, {title="dooku.nvim"})
     end
 
-    job = uv.spawn("godoc", { args = config.godoc_args, cwd = cwd })
-    autocmd("VimLeavePre", {
-      desc = "Stop godoc when exiting vim",
-      group = augroup("dooku_stop_godoc", { clear = true }),
-      callback = function()
-        if job then uv.process_kill(job, 9) end
-      end,
-    })
+    if job then jobstop(job) end -- Running already? kill it
+    job = jobstart(config.godoc_cmd, { cwd = cwd })
 
     -- Open html docs
     if not is_autocmd and config.on_generate_open then M.open() end
@@ -49,10 +42,11 @@ M.open = function()
       vim.log.levels.INFO, {title="dooku.nvim"})
   end
 
-  uv.spawn(config.browser_cmd, {
-    args = { config.godoc_html_url },
-    cwd = cwd
-  })
+  jobstart(
+    table.concat({ config.browser_cmd, config.godoc_html_url }, " "),
+    { cwd = cwd }
+  )
+
 end
 
 --- It shows a notification, as this is not necessary for go.

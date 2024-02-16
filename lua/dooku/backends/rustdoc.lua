@@ -1,6 +1,7 @@
 -- Actions to perform if the backend is rustdoc.
 local M = {}
-local uv = vim.uv or vim.loop
+local jobstart = vim.fn.jobstart
+local jobstop = vim.fn.jobstop
 local utils = require "dooku.utils"
 local config = vim.g.dooku_config
 
@@ -22,11 +23,8 @@ function M.generate(is_autocmd)
         vim.log.levels.INFO, {title="dooku.nvim"})
     end
 
-    if job then uv.process_kill(job, 9) end -- Running already? kill it
-    job = uv.spawn(
-      "cargo",
-      { args = config.rustdoc_args, cwd = cwd }
-    )
+    if job then jobstop(job) end -- Running already? kill it
+    job = jobstart(config.rustdoc_cmd, { cwd = cwd })
 
     -- Open html docs
     if not is_autocmd and config.on_generate_open then M.open() end
@@ -55,10 +53,12 @@ M.open = function()
       vim.log.levels.INFO, {title="dooku.nvim"})
   end
 
-  uv.spawn(config.browser_cmd, {
-    args = { html_file },
-    cwd = cwd
-  })
+  if html_file_exists then
+    jobstart(
+      table.concat({ config.browser_cmd, html_file }, " "),
+      { cwd = cwd }
+    )
+  end
 end
 
 --- It shows a notification, as this is not necessary for rust.
