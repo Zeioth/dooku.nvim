@@ -118,4 +118,4 @@ Or if you prefer run `:DookuGenerate` three times. This is only necessary the fi
 
 ## Roadmap
 * In order to ensure windows compatibility we must use `jobstart`and `jobstop`.
-* We could change the `args` options to get a string instead of a array, which is desireable.
+* We could change the `args` options to get a string instead of a table, which is desireable.
