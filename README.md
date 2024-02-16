@@ -86,13 +86,13 @@ project_root = { '.git', '.hg', '.svn', '.bzr', '_darcs', '_FOSSIL_', '.fslckout
 browser_cmd = "xdg-open"     -- write your internet browser here. If unset, it will attempt to detect it automatically.
 
 -- automations
-on_bufwrite_generate = true  -- auto run :DookuGenerate when a buffer is written.
+on_bufwrite_generate = false -- auto run :DookuGenerate when a buffer is written.
 on_generate_open = true      -- auto open when running :DookuGenerate. This options is not triggered by on_bufwrite_generate.
 auto_setup = true            -- auto download a config for the generator if it doesn't exist in the project.
 
 -- notifications
-on_generate_notification = false
-on_open_notification = false
+on_generate_notification = true
+on_open_notification = true
 ```
 
 * (Optional) These options can be accessed from anywhere with `vim.g.dooku_config`
@@ -115,7 +115,3 @@ Or if you prefer run `:DookuGenerate` three times. This is only necessary the fi
 * **How can I add support for a new language?** On the `backends` directory, copy the file `doxygen.lua`, and and use it as base to add your new documentation generator. On `options.lua`, copy all the doxygen specific options, and rename them to the language you are adding. Finally, on `commands.lua`, add your language to the if condition of the functions `generate`, `open`, and `auto_setup`, so your backend is recognized and loaded. Don't forget to send your PR so everyone can benefit from it!
 * **Where do that cheesy name come from?** From [Star Wars](https://starwars.fandom.com/wiki/Dooku).
 * **Is this plugin based on some other** This is a lua port of the vim plugin [vim-dooku](https://github.com/Zeioth/vim-dooku).
-
-## Roadmap
-* In order to ensure windows compatibility we must use `jobstart`and `jobstop`.
-* We could change the `args` options to get a string instead of a table, which is desireable.
