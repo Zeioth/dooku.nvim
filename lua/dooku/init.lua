@@ -21,9 +21,9 @@ function M.setup(opts)
     { desc = "If the project doesn't have the documentation enabled, it does it for you." })
 
   autocmd("BufWritePost", {
-    desc = "If enabled, generate the HTML docs on write",
-    group = augroup("dooku_genearate_on_write", { clear = true }),
-    callback = function() if config.on_write_generate then commands.generate(true) end end,
+    desc = "If enabled, generate the HTML docs on bufwrite",
+    group = augroup("dooku_genearate_on_bufwrite", { clear = true }),
+    callback = function() if config.on_bufwrite_generate then commands.generate(true) end end,
   })
 end
 

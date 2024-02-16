@@ -19,7 +19,7 @@ function M.set(opts)
       or { ".git", ".hg", ".svn", ".bzr", "_darcs", "_FOSSIL_", ".fslckout" }
   M.on_generate_notification = set_default(opts.on_generate_notification, true)
   M.on_open_notification = set_default(opts.on_open_notification, true)
-  M.on_write_generate = set_default(opts.on_write_generate, false)
+  M.on_bufwrite_generate = set_default(opts.on_bufwrite_generate, false)
   M.on_generate_open = set_default(opts.on_generate_open, true)
   M.auto_setup = set_default(opts.auto_setup, true)
 
