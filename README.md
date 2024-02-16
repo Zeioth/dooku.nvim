@@ -86,7 +86,7 @@ project_root = { '.git', '.hg', '.svn', '.bzr', '_darcs', '_FOSSIL_', '.fslckout
 browser_cmd = "xdg-open"     -- write your internet browser here. If unset, it will attempt to detect it automatically.
 
 -- automations
-on_write_generate = false    -- auto run :DookuGenerate when a buffer is written.
+on_bufwrite_generate = false -- auto run :DookuGenerate when a buffer is written.
 on_generate_open = true      -- auto open when running :DookuGenerate. This options is not triggered by on_bufwrite_generate.
 auto_setup = true            -- auto download a config for the generator if it doesn't exist in the project.
 
