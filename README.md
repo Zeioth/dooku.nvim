@@ -108,7 +108,7 @@ Run the commands in this order
 Or if you prefer run `:DookuGenerate` three times. This is only necessary the first time.
 
 ## FAQ
-* **Doesn't work?** Make sure you have installed the [required dependencies](https://github.com/Zeioth/dooku.nvim#required-system-dependencies).
+* **Doesn't work?** Make sure you have installed the [required dependencies](https://github.com/Zeioth/dooku.nvim?tab=readme-ov-file#required-system-dependencies).
 * **Still doesn't work?** Make sure you have one of the items defined in the option `project_root` in your project root directory, or dooku.nvim might end up on the wrong directory silently.
 * **Still doesn't work?** If you are on `rust / go` you must initialize your project with `cargo new your_project_name` or `go mod init your_module_name`. Also ensure the generated `Cargo.toml` or `go.mod` are in the same dir as the `project_root`.
 * **STILL doesn't work?** Then congratulations, you found a bug. Please [report it here](https://github.com/Zeioth/dooku.nvim/issues) so I can fix it.
