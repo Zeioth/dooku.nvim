@@ -9,7 +9,7 @@ local M = {}
 function M.os_path(path)
   if path == nil then return nil end
   -- Get the platform-specific path separator
-  local separator = package.config:sub(1, 1)
+  local separator = string.sub(package.config, 1, 1)
   return string.gsub(path, "[/\\]", separator)
 end
 
@@ -31,7 +31,7 @@ function M.find_project_root(roots)
   local path = vim.fn.expand "%:p:h" -- Get the directory of the current buffer
 
   -- Normalize the path separator based on the platform
-  local path_separator = package.config:sub(1, 1)
+  local path_separator = string.sub(package.config, 1, 1)
   path = path:gsub("[/\\]", path_separator)
 
   while path and path ~= "" do
