@@ -1,6 +1,6 @@
 -- Dooku.nivm plugin options.
 local M = {}
-local is_windows = package.config:sub(1, 1) == "\\"
+local is_windows = vim.fn.has('win32') == 1
 local utils = require "dooku.utils"
 
 ---Returns a default value if opt is nil.
@@ -152,7 +152,7 @@ function M.set(opts)
   M.rustdoc_html_file = opts.rustdoc_html_file or "index.html"
 
   -- Command to run rustdoc
-  M.rustdoc_cmd = opts.rustdoc_cmd or "cargo rustdoc"
+  M.rustdoc_cmd = opts.rustdoc_cmd or "cargo doc"
 
   -- [GODOC]
   ---------------------------------------------------------------
