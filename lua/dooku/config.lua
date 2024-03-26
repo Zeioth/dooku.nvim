@@ -13,6 +13,7 @@ end
 
 ---Parse user options, or set the defaults
 ---@param opts table A table with options to set.
+---@return opts table A table with the options. It is also exposed through vim.g.dooku_config
 function M.set(opts)
   -- [GENERAL SETTINGS]
   -- -----------------------------------------------------------------------
