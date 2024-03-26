@@ -3,7 +3,6 @@ local M = {}
 local utils = require "dooku.utils"
 local jobstop = vim.fn.jobstop
 local jobstart = utils.jobstart
-local config = vim.g.dooku_config
 
 local job
 
@@ -13,6 +12,7 @@ local job
 --- @param is_autocmd boolean if explicitely setted to true, this function will
 ---                            ignore the option on_generate_open.
 function M.generate(is_autocmd)
+  local config = vim.g.dooku_config
   local cwd = utils.os_path(utils.find_project_root(config.project_root))
   local typedoc_file = utils.os_path(cwd .. "/typedoc.json")
   local typedoc_file_exists = vim.loop.fs_stat(typedoc_file) and vim.loop.fs_stat(typedoc_file).type == 'file' or false
@@ -38,6 +38,7 @@ end
 
 --- It opens the html documentation in the specified internet browser.
 M.open = function()
+  local config = vim.g.dooku_config
   local cwd = utils.os_path(
     utils.find_project_root(config.project_root)
     .. "/"
@@ -61,6 +62,7 @@ end
 
 --- It downloads a config template in the project root.
 M.auto_setup = function()
+  local config = vim.g.dooku_config
   local cwd = utils.os_path(utils.find_project_root(config.project_root))
   local typedoc_file = utils.os_path(cwd .. "/typedoc.json")
   local typedoc_file_exists = vim.loop.fs_stat(typedoc_file) and vim.loop.fs_stat(typedoc_file).type == 'file' or false
