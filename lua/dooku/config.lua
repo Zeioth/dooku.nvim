@@ -1,6 +1,7 @@
 -- Dooku.nivm plugin options.
 local M = {}
-local is_windows = vim.fn.has('win32') == 1
+local uv = vim.uv or vim.loop
+local is_windows = uv.os_uname().sysname == "Windows_NT"
 local utils = require "dooku.utils"
 
 ---Returns a default value if opt is nil.
