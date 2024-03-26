@@ -2,14 +2,13 @@
 local cmd = vim.api.nvim_create_user_command
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
-
-local config = require("dooku.config")
 local commands = require("dooku.commands")
 
 local M = {}
 
 function M.setup(opts)
-  config.set(opts)
+  require("dooku.config").set(opts)
+  local config = vim.g.dooku_config
 
   cmd("DookuGenerate", function() commands.generate() end,
     { desc = "Generate the HTML documentation using the adecuated generator for the current filetype" })
