@@ -1,8 +1,8 @@
 -- Actions to perform if the backend is Doxygen.
 local M = {}
-local jobstart = vim.fn.jobstart
-local jobstop = vim.fn.jobstop
 local utils = require "dooku.utils"
+local jobstop = vim.fn.jobstop
+local jobstart = utils.jobstart
 local config = vim.g.dooku_config
 
 local job
@@ -30,7 +30,7 @@ function M.generate(is_autocmd)
   end
 
   if job then jobstop(job) end -- Running already? kill it
-  job = jobstart(config.jsdoc_cmd, { cwd = cwd })
+  job = jobstart(config.jsdoc_cmd, {}, { cwd = cwd })
 
   -- Open html docs
   if not is_autocmd and config.on_generate_open then M.open() end
@@ -55,10 +55,7 @@ M.open = function()
   end
 
   if html_file_exists then
-    jobstart(
-      table.concat({ config.browser_cmd, html_file }, " "),
-      { cwd = cwd }
-    )
+    jobstart(config.browser_cmd, { html_file }, { cwd = cwd })
   end
 end
 
@@ -83,15 +80,12 @@ M.auto_setup = function()
     vim.log.levels.INFO, {title="dooku.nvim"}
   )
 
-  jobstart(
-    table.concat({
-      "git clone --single-branch --depth 1",
-      config.jsdoc_clone_config_repo,
-      config.jsdoc_clone_to_dir,
-      config.jsdoc_clone_cmd_post,
-    }, " "),
-    { cwd = cwd }
-  )
+  jobstart("git", {
+    "clone", "--single-branch", "--depth 1",
+    config.jsdoc_clone_config_repo,
+    config.jsdoc_clone_to_dir,
+    config.jsdoc_clone_cmd_post
+  }, { cwd = cwd })
 end
 
 return M

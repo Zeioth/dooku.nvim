@@ -1,8 +1,8 @@
 -- Actions to perform if the backend is rustdoc.
 local M = {}
-local jobstart = vim.fn.jobstart
-local jobstop = vim.fn.jobstop
 local utils = require "dooku.utils"
+local jobstop = vim.fn.jobstop
+local jobstart = utils.jobstart
 local config = vim.g.dooku_config
 
 local job
@@ -24,7 +24,7 @@ function M.generate(is_autocmd)
     end
 
     if job then jobstop(job) end -- Running already? kill it
-    job = jobstart(config.rustdoc_cmd, { cwd = cwd })
+    job = jobstart(config.rustdoc_cmd, {}, { cwd = cwd })
 
     -- Open html docs
     if not is_autocmd and config.on_generate_open then M.open() end
@@ -54,10 +54,7 @@ M.open = function()
   end
 
   if html_file_exists then
-    jobstart(
-      table.concat({ config.browser_cmd, html_file }, " "),
-      { cwd = cwd }
-    )
+    jobstart(config.browser_cmd, {html_file }, { cwd = cwd })
   end
 end
 
