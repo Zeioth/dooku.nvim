@@ -1,4 +1,3 @@
-
 -- On neovim you can run
 -- :checkhealth dooku
 -- To know possible causes in case dooku.nvim is nor working correctly.
@@ -19,7 +18,7 @@ function M.check()
 
   health.info(
     "Neovim Version: v"
-      .. vim.fn.matchstr(vim.fn.execute "version", "NVIM v\\zs[^\n]*")
+    .. vim.fn.matchstr(vim.fn.execute "version", "NVIM v\\zs[^\n]*")
   )
 
   if vim.version().prerelease then
@@ -86,4 +85,3 @@ function M.check()
 end
 
 return M
-

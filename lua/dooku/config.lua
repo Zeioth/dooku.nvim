@@ -63,14 +63,14 @@ function M.set(opts)
   M.doxygen_clone_cmd_post = opts.doxygen_clone_cmd_post or
       (is_windows and
         "&& rmdir /s /q " .. M.typedoc_clone_to_dir .. "\\.git " ..
-        "&& del /q " .. M.doxygen_clone_to_dir .. "\\LICENSE"  ..
+        "&& del /q " .. M.doxygen_clone_to_dir .. "\\LICENSE" ..
         "&& del /q " .. M.doxygen_clone_to_dir .. "\\README.md"
       )
       or (
         "&& rm -r " ..
-          M.doxygen_clone_to_dir .. "/.git " ..
-          M.doxygen_clone_to_dir .. "/LICENSE " ..
-          M.doxygen_clone_to_dir .. "/README.md"
+        M.doxygen_clone_to_dir .. "/.git " ..
+        M.doxygen_clone_to_dir .. "/LICENSE " ..
+        M.doxygen_clone_to_dir .. "/README.md"
       )
 
   -- Command to run doxygen
@@ -97,8 +97,8 @@ function M.set(opts)
   M.typedoc_clone_cmd_post = opts.typedoc_clone_cmd_post
       or
       (is_windows and
-         "&& copy " .. M.typedoc_clone_to_dir .. "\\typedoc.json .\\typedoc.json " ..
-         "&& rmdir /s /q " .. M.typedoc_clone_to_dir)
+        "&& copy " .. M.typedoc_clone_to_dir .. "\\typedoc.json .\\typedoc.json " ..
+        "&& rmdir /s /q " .. M.typedoc_clone_to_dir)
       or (
         "&& cp "
         .. M.typedoc_clone_to_dir

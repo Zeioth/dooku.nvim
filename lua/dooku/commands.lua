@@ -34,8 +34,8 @@ function M.generate(is_autocmd)
   else
     vim.notify(
       "The filetype "
-        .. vim.bo.filetype
-        .. " is not supported by Dooku.nvim yet.",
+      .. vim.bo.filetype
+      .. " is not supported by Dooku.nvim yet.",
       vim.log.levels.WARN
     )
   end
@@ -58,8 +58,8 @@ function M.open()
   else
     vim.notify(
       "The filetype "
-        .. vim.bo.filetype
-        .. " is not supported by Dooku.nvim yet.",
+      .. vim.bo.filetype
+      .. " is not supported by Dooku.nvim yet.",
       vim.log.levels.WARN
     )
   end
@@ -82,8 +82,8 @@ function M.auto_setup()
   else
     vim.notify(
       "The filetype "
-        .. vim.bo.filetype
-        .. " is not supported by Dooku.nvim yet.",
+      .. vim.bo.filetype
+      .. " is not supported by Dooku.nvim yet.",
       vim.log.levels.WARN
     )
   end
