@@ -120,4 +120,4 @@ Or if you prefer run `:DookuGenerate` three times. This is only necessary the fi
 
 ## Roadmap
 * We MUST allow setting options on the fly. That way users can ser a config repository per-project if they want (for the languages that support it.)
-* Display errors throwed by the generators when you try to run the cmd.
+* Display errors throwed by the generators when you try to run the cmd. → We have this function implemented in NormalNvim, we can just bring it here.
