@@ -118,4 +118,4 @@ Or if you prefer run `:DookuGenerate` three times. This is only necessary the fi
 * **Is this plugin based on some other** This is a lua port of the vim plugin [vim-dooku](https://github.com/Zeioth/vim-dooku).
 
 ## Roadmap
-We MUST allow setting options on the fly. That way users can ser a config repository per-project if they want (for the languages that support it.)
+* We MUST allow setting options on the fly. That way users can ser a config repository per-project if they want (for the languages that support it.)
