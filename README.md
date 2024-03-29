@@ -121,3 +121,4 @@ Or if you prefer run `:DookuGenerate` three times. This is only necessary the fi
 ## Roadmap
 * Ruby yard support.
 * Display errors throwed by the generators when you try to run the cmd. → We have this function implemented in NormalNvim, we can just bring it here.
+* Improve windows compatibility: On windows, use internet explorer instead of xdg-open by default.
