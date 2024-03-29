@@ -1,4 +1,4 @@
--- Actions to perform if the backend is Doxygen.
+-- Actions to perform if the backend is typedoc.
 local M = {}
 local utils = require "dooku.utils"
 local jobstop = vim.fn.jobstop
