@@ -60,6 +60,16 @@ function M.check()
       type = "warn",
       msg = "to call it, go needs to be accessible on your terminal",
     },
+    {
+      cmd = { "ldoc" },
+      type = "warn",
+      msg = "to call it, ldoc needs to be accessible on your terminal",
+    },
+    {
+      cmd = { "yard" },
+      type = "warn",
+      msg = "to call it, yard needs to be accessible on your terminal",
+    },
   }
 
   for _, program in ipairs(programs) do
