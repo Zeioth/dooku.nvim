@@ -149,7 +149,7 @@ function M.set(opts)
   -- Open on browser
   -- Defaults : target/doc/crate_name/index.html
   --            crate_name value will always be 'project root' dir name.
-  M.rustdoc_docs_dir = opts.rustdoc_htmldocs_dir or utils.os_path "target/doc"
+  M.rustdoc_docs_dir = opts.rustdoc_docs_dir or utils.os_path("target/doc")
   M.rustdoc_html_file = opts.rustdoc_html_file or "index.html"
 
   -- Command to run rustdoc
@@ -160,10 +160,42 @@ function M.set(opts)
   M.godoc_filetypes = opts.godoc_filetypes or { "go" }
 
   -- Open on browser
-  M.godoc_html_url = opts.godoc_html_file or "localhost:6060"
+  M.godoc_html_url = opts.godoc_html_url or "localhost:6060"
 
   -- Command to run godoc
   M.godoc_cmd = opts.godoc_cmd or "godoc -index"
+
+  -- [LDOC]
+  ---------------------------------------------------------------
+  M.ldoc_filetypes = opts.ldoc_filetypes or { "lua" }
+
+  -- Open on browser
+  -- Defaults: cd 'docs',
+  --           open './index.html' using the default interner browser.
+  M.ldoc_docs_dir = opts.ldoc_docs_dir or utils.os_path("doc")
+  M.ldoc_html_file = opts.ldoc_html_file or utils.os_path("index.html")
+
+  -- Auto setup
+  -- Defaults: clone the repo into 'vim-ldoc-template',
+  --           copy 'config.ld' into the project root,
+  --           delete 'dooku-ldoc-template'.
+  M.ldoc_clone_config_repo = opts.ldoc_clone_config_repo
+      or "https://github.com/Zeioth/dooku-ldoc-template.git"
+  M.ldoc_clone_to_dir = opts.ldoc_clone_to_dir
+      or M.ldoc_clone_config_repo:match ".+/(.-)%.git" -- URL's repo name
+  M.ldoc_clone_cmd_post = opts.ldoc_clone_cmd_post
+      or
+      (is_windows and "&& copy " .. M.ldoc_clone_to_dir .. "\\config.ld .\\config.ld && rmdir \\s \\q " .. M.ldoc_clone_to_dir)
+      or (
+        "&& cp "
+        .. M.ldoc_clone_to_dir
+        .. "/config.ld ./config.ld && "
+        .. " rm -rf "
+        .. M.ldoc_clone_to_dir
+      )
+
+  -- Command to run ldoc
+  M.ldoc_cmd = opts.ldoc_cmd or "ldoc ."
 
   -- After setting the config
   ---------------------------------------------------------------

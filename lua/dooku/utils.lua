@@ -3,6 +3,49 @@ local M = {}
 local uv = vim.uv or vim.loop
 local is_windows = uv.os_uname().sysname == "Windows_NT"
 
+
+--- Programatically require the backend(s) for the current language.
+---@return table backends Returns a table of backends.
+--- If ./languages/<filetype>.lua doesn't exist,
+--- send a notification and return {}.
+function M.get_backends()
+  local config = require "dooku.config"
+  local filetype = vim.bo.filetype
+  local dooku_backends_dir = M.get_dooku_dir("lua/dooku/backends/")
+  local success = false
+  local backend = nil
+  local backends = {}
+
+  if vim.tbl_contains(config.doxygen_filetypes, filetype) then
+    success, backend = pcall(dofile, dooku_backends_dir .. "doxygen.lua")
+    if success then table.insert(backends, backend) end
+  elseif vim.tbl_contains(config.typedoc_filetypes, filetype) then
+    success, backend = pcall(dofile, dooku_backends_dir .. "typedoc.lua")
+    if success then table.insert(backends, backend) end
+  elseif vim.tbl_contains(config.jsdoc_filetypes, filetype) then
+    success, backend = pcall(dofile, dooku_backends_dir .. "jsdoc.lua")
+    if success then table.insert(backends, backend) end
+  elseif vim.tbl_contains(config.rustdoc_filetypes, filetype) then
+    success, backend = pcall(dofile, dooku_backends_dir .. "rustdoc.lua")
+    if success then table.insert(backends, backend) end
+  elseif vim.tbl_contains(config.godoc_filetypes, filetype) then
+    success, backend = pcall(dofile, dooku_backends_dir .. "godoc.lua")
+    if success then table.insert(backends, backend) end
+  elseif vim.tbl_contains(config.ldoc_filetypes, filetype) then
+    success, backend = pcall(dofile, dooku_backends_dir .. "ldoc.lua")
+    if success then table.insert(backends, backend) end
+  else
+    vim.notify(
+      "The filetype "
+      .. filetype
+      .. " is not supported by Dooku.nvim yet.",
+      vim.log.levels.WARN
+    )
+  end
+
+  return backends
+end
+
 ---Given a string, convert 'slash' to 'inverted slash' if on windows,
 ---and vice versa on UNIX. Then return the resulting string.
 ---@param path string
@@ -49,17 +92,6 @@ function M.get_dooku_dir(path)
   return plugin_directory
 end
 
----Returns bool if the object exists on the table.
----@param obj object
----@param tbl table
----@return boolean
-function M.exists_in_table(obj, tbl)
-  for _, value in ipairs(tbl) do
-    if value == obj then return true end
-  end
-  return false
-end
-
 ---Function to find the project root based on a given list of files/directories.
 ---Compatible with UNIX and Windows.
 ---@param roots table A table of strings.
@@ -94,20 +126,6 @@ function M.find_project_root(roots)
     { title = "dooku.nvim" }
   )
   return nil -- If no root directory is found, return nil
-end
-
----Returns the plugin dir of dooku.nvim + a subdir if specified.
---We use this function to assert tests.
----@param path string (optional) A subdirectory to append to he returned dir.
-function M.get_dooku_dir(path)
-  local plugin_directory = vim.fn.fnamemodify(
-    vim.fn.fnamemodify(debug.getinfo(1, "S").source:sub(2), ":h"),
-    ":h:h"
-  )
-  if path then
-    plugin_directory = M.os_path(plugin_directory .. "/" .. path)
-  end
-  return plugin_directory
 end
 
 return M
