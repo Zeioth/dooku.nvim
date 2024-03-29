@@ -119,5 +119,5 @@ Or if you prefer run `:DookuGenerate` three times. This is only necessary the fi
 * **Is this plugin based on some other** This is a lua port of the vim plugin [vim-dooku](https://github.com/Zeioth/vim-dooku).
 
 ## Roadmap
-* We MUST allow setting options on the fly. That way users can ser a config repository per-project if they want (for the languages that support it.)
+* Ruby yard support.
 * Display errors throwed by the generators when you try to run the cmd. → We have this function implemented in NormalNvim, we can just bring it here.
