@@ -43,12 +43,12 @@ Because the easier it is for you to access you code documentation, the more like
 | `javascript` | jsdoc |
 | `rust` | rustdoc |
 | `go`| godoc |
+| `lua` | ldoc |
 
 Not supported yet → Pull requests are welcome
 
 | Language | Generator |
 |--|--|
-| `lua` | ldoc |
 | `ruby` | yard |
 
 ## Required system dependencies
@@ -116,3 +116,6 @@ Or if you prefer run `:DookuGenerate` three times. This is only necessary the fi
 * **Windows compatibility:** On windows dooku.nvim run directly on the operative system to avoid spawning terminals. So if you find errors when trying to run dooku, make sure you have the doc generators added to the windows PATH.
 * **Where do that cheesy name come from?** From [Star Wars](https://starwars.fandom.com/wiki/Dooku).
 * **Is this plugin based on some other** This is a lua port of the vim plugin [vim-dooku](https://github.com/Zeioth/vim-dooku).
+
+## Roadmap
+We MUST allow setting options on the fly. That way users can ser a config repository per-project if they want (for the languages that support it.)
