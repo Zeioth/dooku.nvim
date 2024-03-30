@@ -44,11 +44,6 @@ Because the easier it is for you to access you code documentation, the more like
 | `rust` | rustdoc |
 | `go`| godoc |
 | `lua` | ldoc |
-
-Not supported yet → Pull requests are welcome
-
-| Language | Generator |
-|--|--|
 | `ruby` | yard |
 
 ## Required system dependencies
