@@ -114,6 +114,6 @@ Or if you prefer run `:DookuGenerate` three times. This is only necessary the fi
 * **Is this plugin based on some other** This is a lua port of the vim plugin [vim-dooku](https://github.com/Zeioth/vim-dooku).
 
 ## Roadmap
-* Ruby yard support.
+* ~~Ruby yard support.~~
 * Display errors throwed by the generators when you try to run the cmd. → We have this function implemented in NormalNvim, we can just bring it here.
 * Improve windows compatibility: On windows, use internet explorer instead of xdg-open by default.
