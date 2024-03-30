@@ -77,7 +77,7 @@ M.auto_setup = function()
 
   vim.notify(
     "Auto setup is enabled. Creating:\n"
-    .. utils.os_path(cwd .. "/" .. config.typedoc_docs_dir)
+    .. utils.os_path(cwd .. "/typedoc.json")
     .. "\n\nYou can run the command now.",
     vim.log.levels.INFO, { title = "dooku.nvim" }
   )

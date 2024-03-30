@@ -79,7 +79,7 @@ M.auto_setup = function()
 
   vim.notify(
     "Auto setup is enabled. Creating:\n"
-    .. utils.os_path(cwd .. "/" .. config.doxygen_clone_to_dir)
+    .. utils.os_path(cwd .. "/" .. config.doxygen_clone_to_dir .. "/Doxyfile")
     .. "\n\nYou can run the command now.",
     vim.log.levels.INFO, { title = "dooku.nvim" }
   )
