@@ -34,6 +34,9 @@ function M.get_backends()
   elseif vim.tbl_contains(config.ldoc_filetypes, filetype) then
     success, backend = pcall(dofile, dooku_backends_dir .. "ldoc.lua")
     if success then table.insert(backends, backend) end
+  elseif vim.tbl_contains(config.yard_filetypes, filetype) then
+    success, backend = pcall(dofile, dooku_backends_dir .. "yard.lua")
+    if success then table.insert(backends, backend) end
   else
     vim.notify(
       "The filetype "

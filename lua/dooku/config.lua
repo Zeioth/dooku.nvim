@@ -170,13 +170,13 @@ function M.set(opts)
   M.ldoc_filetypes = opts.ldoc_filetypes or { "lua" }
 
   -- Open on browser
-  -- Defaults: cd 'docs',
+  -- Defaults: cd 'doc',
   --           open './index.html' using the default interner browser.
   M.ldoc_docs_dir = opts.ldoc_docs_dir or utils.os_path("doc")
   M.ldoc_html_file = opts.ldoc_html_file or utils.os_path("index.html")
 
   -- Auto setup
-  -- Defaults: clone the repo into 'vim-ldoc-template',
+  -- Defaults: clone the repo into 'dooku-ldoc-template',
   --           copy 'config.ld' into the project root,
   --           delete 'dooku-ldoc-template'.
   M.ldoc_clone_config_repo = opts.ldoc_clone_config_repo
@@ -196,6 +196,19 @@ function M.set(opts)
 
   -- Command to run ldoc
   M.ldoc_cmd = opts.ldoc_cmd or "ldoc ."
+
+  -- [YARD]
+  ---------------------------------------------------------------
+  M.yard_filetypes = opts.yard_filetypes or { "ruby" }
+
+  -- Open on browser
+  -- Defaults: cd 'doc',
+  --           open './index.html' using the default interner browser.
+  M.yard_docs_dir = opts.yard_docs_dir or utils.os_path("doc")
+  M.yard_html_file = opts.yard_html_file or utils.os_path("index.html")
+
+  -- Command to run ldoc
+  M.yard_cmd = opts.yard_cmd or "yard"
 
   -- After setting the config
   ---------------------------------------------------------------
