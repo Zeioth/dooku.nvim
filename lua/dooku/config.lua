@@ -26,7 +26,7 @@ function M.set(opts)
 
   -- detect default internet browser
   if is_windows then
-    M.browser_cmd = opts.browser_cmd or "start"
+    M.browser_cmd = opts.browser_cmd or "iexplore.exe"
   else
     M.browser_cmd = opts.browser_cmd or "xdg-open"
   end
