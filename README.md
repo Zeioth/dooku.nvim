@@ -26,7 +26,7 @@ Because the easier it is for you to access you code documentation, the more like
 ## Should I use doge or dooku?
 
 * [What is vim-doge](https://github.com/kkoomen/vim-doge): Helper to write code comments inside your code.
-* [What is dooku.nvim](https://github.com/Zeioth/dooku.nvim): It generates the actual `html` documentation, and open it on your internet browser. Depending the language it will use `doxygen`, `typedoc`, `jsdoc`, `rustdoc`, `godoc`, or any other.
+* [What is dooku.nvim](https://github.com/Zeioth/dooku.nvim): It generates the actual `html` documentation, and open it on your internet browser. Depending the language it will use `doxygen`, `typedoc`, `jsdoc`, `rustdoc`, `godoc`, `ldoc`, or `yard`.
 
 ## Supported languages 
 
