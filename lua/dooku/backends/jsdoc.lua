@@ -1,6 +1,6 @@
 -- Actions to perform if the backend is jsdoc.
 local M = {}
-local utils = require "dooku.utils"
+local utils = require("dooku.utils")
 local jobstop = vim.fn.jobstop
 local jobstart = utils.jobstart
 
