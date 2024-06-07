@@ -2,9 +2,11 @@
 --- @usage :luafile ~/.local/share/nvim/lazy/dooku.nvim/tests/tests/rustdoc.lua
 
 local M = {}
+local utils = require("dooku.utils")
+
 local ms = 2000 -- wait time
 local rustdoc = require("dooku.backends.rustdoc")
-local example_dir = require("dooku.utils").get_dooku_dir("tests/examples/rust/")
+local example_dir = utils.get_dooku_dir("tests/code samples/rust/")
 
 vim.fn.chdir(example_dir) -- set working_dir
 vim.notify("TESTING: Rustdoc backend", vim.log.levels.INFO)
@@ -22,8 +24,8 @@ function M.test_auto_setup()
 
   -- ASSERT
   local config_generated_ok = vim.fn.isdirectory(
-    require("dooku.utils").get_dooku_dir(
-      "tests/examples/rust/target/doc/")) == 1
+    utils.get_dooku_dir(
+      "tests/code samples/rust/target/doc/")) == 1
   if config_generated_ok == false then
     vim.notify(
       "`<project_root>/target/doc/` dir not found. Check `setup()` in the backend.",
@@ -44,8 +46,7 @@ function M.test_generate()
 
   -- ASSERT
   local docs_generated_ok = vim.fn.isdirectory(
-    require(
-      "dooku.utils").get_dooku_dir("tests/examples/rust/target/doc/")) == 1
+    utils.get_dooku_dir("tests/code samples/rust/target/doc/")) == 1
   if docs_generated_ok == false then
     vim.notify(
       "`<project_root>/target/doc` dir not found. Check `generate()` in the backend.",

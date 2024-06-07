@@ -2,9 +2,11 @@
 --- @usage :luafile ~/.local/share/nvim/lazy/dooku.nvim/tests/tests/typedoc.lua
 
 local M = {}
+local utils = require("dooku.utils")
+
 local ms = 2000 -- wait time
 local typedoc = require("dooku.backends.typedoc")
-local example_dir = require("dooku.utils").get_dooku_dir("tests/examples/typescript/")
+local example_dir = utils.get_dooku_dir("tests/code samples/typescript/")
 
 vim.fn.chdir(example_dir) -- set working_dir
 vim.notify("TESTING: typedoc backend", vim.log.levels.INFO)
@@ -22,7 +24,7 @@ function M.test_auto_setup()
 
   -- ASSERT
   local config_generated_ok = vim.fn.filereadable(
-    require("dooku.utils").get_dooku_dir("tests/examples/typescript/")
+    utils.get_dooku_dir("tests/code samples/typescript/")
       .. "typedoc.json"
   ) == 1
   if config_generated_ok == false then
@@ -44,7 +46,7 @@ function M.test_generate()
 
   -- ASSERT
   local docs_generated_ok = vim.fn.isdirectory(
-    require("dooku.utils").get_dooku_dir("tests/examples/typescript/docs/")
+    utils.get_dooku_dir("tests/code samples/typescript/docs/")
   ) == 1
   print(docs_generated_ok)
   if docs_generated_ok == false then

@@ -2,9 +2,11 @@
 --- @usage :luafile ~/.local/share/nvim/lazy/dooku.nvim/tests/tests/ldoc.lua
 
 local M = {}
+local utils = require("dooku.utils")
+
 local ms = 2000 -- wait time
 local ldoc = require("dooku.backends.ldoc")
-local example_dir = require("dooku.utils").get_dooku_dir("tests/examples/lua/")
+local example_dir = utils.get_dooku_dir("tests/code samples/lua/")
 
 vim.fn.chdir(example_dir) -- set working_dir
 vim.notify("TESTING: Ldoc backend", vim.log.levels.INFO)

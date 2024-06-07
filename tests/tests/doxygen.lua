@@ -2,9 +2,11 @@
 --- @usage :luafile ~/.local/share/nvim/lazy/dooku.nvim/tests/tests/doxygen.lua
 
 local M = {}
+local utils = require("dooku.utils")
+
 local ms = 2000 -- wait time
 local doxygen = require("dooku.backends.doxygen")
-local example_dir = require("dooku.utils").get_dooku_dir("tests/examples/doxygen/")
+local example_dir = utils.get_dooku_dir("tests/code samples/doxygen/")
 
 vim.fn.chdir(example_dir) -- set working_dir
 vim.notify("TESTING: Doxygen backend", vim.log.levels.INFO)
@@ -22,8 +24,7 @@ function M.test_auto_setup()
 
   -- ASSERT
   local config_generated_ok = vim.fn.isdirectory(
-    require("dooku.utils").get_dooku_dir(
-      "tests/examples/doxygen/doxygen/")) == 1
+    utils.get_dooku_dir("tests/code samples/doxygen/doxygen/")) == 1
   if config_generated_ok == false then
     vim.notify("`<project_roo>/doxygen/` dir not found. Check `setup()` in the backend.",
       vim.log.levels.ERROR)
@@ -43,8 +44,7 @@ function M.test_generate()
 
   -- ASSERT
   local docs_generated_ok = vim.fn.isdirectory(
-    require(
-      "dooku.utils").get_dooku_dir("tests/examples/doxygen/doxygen/html/")) == 1
+    utils.get_dooku_dir("tests/code samples/doxygen/doxygen/html/")) == 1
   if docs_generated_ok == false then
     vim.notify(
       "`<project_roo>/doxygen/html/` dir not found. Check `generate()` in the backend.",

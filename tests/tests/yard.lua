@@ -2,9 +2,11 @@
 --- @usage :luafile ~/.local/share/nvim/lazy/dooku.nvim/tests/tests/yard.lua
 
 local M = {}
+local utils = require("dooku.utils")
+
 local ms = 2000 -- wait time
 local yard = require("dooku.backends.yard")
-local example_dir = require("dooku.utils").get_dooku_dir("tests/examples/ruby/")
+local example_dir = utils.get_dooku_dir("tests/code samples/ruby/")
 
 vim.fn.chdir(example_dir) -- set working_dir
 vim.notify("TESTING: Yard backend", vim.log.levels.INFO)

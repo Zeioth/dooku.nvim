@@ -11,8 +11,8 @@
 
 
 local utils = require("dooku.utils")
-local examples_dir = utils.os_path((debug.getinfo(1, 'S').source:sub(2):match '(.*/)') .. "examples/")
-local tests_dir = utils.os_path((debug.getinfo(1, 'S').source:sub(2):match '(.*/)') .. "tests/")
+local examples_dir = utils.get_dooku_dir("tests/code samples/")
+local tests_dir = utils.get_dooku_dir("tests/tests/")
 
 -- Disable default opts
 local config = require("dooku.config")
