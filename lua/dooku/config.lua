@@ -26,7 +26,7 @@ function M.set(opts)
 
   -- detect default internet browser
   if is_windows then
-    M.browser_cmd = opts.browser_cmd or "iexplore.exe"
+    M.browser_cmd = opts.browser_cmd or "start"
   else
     M.browser_cmd = opts.browser_cmd or "xdg-open"
   end
@@ -83,8 +83,8 @@ function M.set(opts)
   -- Open on browser
   -- Defaults: cd 'docs',
   --           open './index.html' using the default interner browser.
-  M.typedoc_docs_dir = opts.typedoc_htmldocs_dir or utils.os_path "docs"
-  M.typedoc_html_file = opts.typedoc_html_file or utils.os_path "index.html"
+  M.typedoc_docs_dir = opts.typedoc_htmldocs_dir or utils.os_path("docs")
+  M.typedoc_html_file = opts.typedoc_html_file or utils.os_path("index.html")
 
   -- Auto setup
   -- Defaults: clone the repo into 'vim-typedoc-template',
@@ -117,8 +117,8 @@ function M.set(opts)
   -- Open on browser
   -- Defaults: cd 'docs',
   --           open './index.html' using the default interner browser.
-  M.jsdoc_docs_dir = opts.jsdoc_htmldocs_dir or utils.os_path "docs"
-  M.jsdoc_html_file = opts.jsdoc_html_file or utils.os_path "index.html"
+  M.jsdoc_docs_dir = opts.jsdoc_htmldocs_dir or utils.os_path("docs")
+  M.jsdoc_html_file = opts.jsdoc_html_file or utils.os_path("index.html")
 
   -- Auto setup
   -- Defaults: clone the repo into 'vim-jsdoc-template',
