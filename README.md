@@ -112,6 +112,3 @@ Or if you prefer run `:DookuGenerate` three times. This is only necessary the fi
 * **Windows compatibility:** On windows dooku.nvim run directly on the operative system to avoid spawning terminals. So if you find errors when trying to run dooku, make sure you have the doc generators added to the windows PATH.
 * **Where do that cheesy name come from?** From [Star Wars](https://starwars.fandom.com/wiki/Dooku).
 * **Is this plugin based on some other** This is a lua port of the vim plugin [vim-dooku](https://github.com/Zeioth/vim-dooku).
-
-## Roadmap
-* Display errors throwed by the generators when you try to run the cmd. → We have this function implemented in NormalNvim, we can just bring it here.
