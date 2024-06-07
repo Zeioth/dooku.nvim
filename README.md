@@ -26,7 +26,7 @@ Because the easier it is for you to access you code documentation, the more like
 ## Should I use doge or dooku?
 
 * [What is vim-doge](https://github.com/kkoomen/vim-doge): Helper to write code comments inside your code.
-* [What is dooku.nvim](https://github.com/Zeioth/dooku.nvim): It generates the actual `html` documentation, and open it on your internet browser. Depending the language it will use `doxygen`, `typedoc`, `jsdoc`, `rustdoc`, `godoc`, or any other.
+* [What is dooku.nvim](https://github.com/Zeioth/dooku.nvim): It generates the actual `html` documentation, and open it on your internet browser. Depending the language it will use `doxygen`, `typedoc`, `jsdoc`, `rustdoc`, `godoc`, `ldoc`, or `yard`.
 
 ## Supported languages 
 
@@ -114,6 +114,4 @@ Or if you prefer run `:DookuGenerate` three times. This is only necessary the fi
 * **Is this plugin based on some other** This is a lua port of the vim plugin [vim-dooku](https://github.com/Zeioth/vim-dooku).
 
 ## Roadmap
-* ~~Ruby yard support.~~
 * Display errors throwed by the generators when you try to run the cmd. → We have this function implemented in NormalNvim, we can just bring it here.
-* Improve windows compatibility: On windows, use internet explorer instead of xdg-open by default.
