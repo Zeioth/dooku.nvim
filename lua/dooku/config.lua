@@ -26,7 +26,7 @@ function M.set(opts)
 
   -- detect default internet browser
   if is_windows then
-    M.browser_cmd = opts.browser_cmd or "start"
+    M.browser_cmd = opts.browser_cmd or "iexplore.exe"
   else
     M.browser_cmd = opts.browser_cmd or "xdg-open"
   end
@@ -53,7 +53,7 @@ function M.set(opts)
   --           open './html/index.html' using the default interner browser.
   M.doxygen_docs_dir = opts.doxygen_htmldocs_dir or "doxygen"
   M.doxygen_html_file = opts.doxygen_html_file
-      or utils.os_path "html/index.html"
+      or utils.os_path("html/index.html")
 
   -- Auto setup
   -- Defaults: clone the repo into 'doxygen'.

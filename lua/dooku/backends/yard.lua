@@ -36,7 +36,7 @@ M.open = function()
     .. "/"
     .. config.yard_docs_dir
   )
-  local html_file = cwd .. "/" .. config.yard_html_file
+  local html_file = utils.os_path(cwd .. "/" .. config.yard_html_file)
   local html_file_exists = vim.loop.fs_stat(html_file) and vim.loop.fs_stat(html_file).type == 'file' or false
 
   if config.on_open_notification and html_file_exists then
@@ -48,7 +48,7 @@ M.open = function()
   end
 
   if html_file_exists then
-    jobstart(config.browser_cmd, { html_file }, { cwd = cwd })
+    jobstart(config.browser_cmd, { '"' .. html_file .. '"' }, { cwd = cwd })
   end
 end
 
