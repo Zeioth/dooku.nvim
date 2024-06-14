@@ -12,69 +12,77 @@ vim.fn.chdir(example_dir) -- set working_dir
 vim.notify("TESTING: Rustdoc backend", vim.log.levels.INFO)
 
 
--- TEST: rustdoc.auto_setup()
---=============================================================================
-function M.test_auto_setup()
-  -- ARRANGE
-  vim.notify("Testing `rustdoc.auto_setup()`.", vim.log.levels.INFO)
-
-  -- ACT
-  rustdoc.auto_setup()
-  vim.wait(ms)
-
-  -- ASSERT
-  local config_generated_ok = vim.fn.isdirectory(
-    utils.get_dooku_dir(
-      "tests/code samples/rust/target/doc/")) == 1
-  if config_generated_ok == false then
-    vim.notify(
-      "`<project_root>/target/doc/` dir not found. Check `setup()` in the backend.",
-      vim.log.levels.ERROR)
+coroutine.resume(coroutine.create(function()
+  local co = coroutine.running()
+  local function sleep(_ms)
+    if not _ms then _ms = ms end
+    vim.defer_fn(function() coroutine.resume(co) end, _ms)
+    coroutine.yield()
   end
-end
 
+  -- TEST: rustdoc.auto_setup()
+  --===========================================================================
+  function M.test_auto_setup()
+    -- ARRANGE
+    vim.notify("Testing `rustdoc.auto_setup()`.", vim.log.levels.INFO)
 
--- TEST: rustdoc.generate()
---=============================================================================
-function M.test_generate()
-  -- ARRANGE
-  vim.notify("Testing `rustdoc.generate(false)`.", vim.log.levels.INFO)
+    -- ACT
+    rustdoc.auto_setup()
+    sleep()
 
-  -- ACT
-  rustdoc.generate(false)
-  vim.wait(ms)
-
-  -- ASSERT
-  local docs_generated_ok = vim.fn.isdirectory(
-    utils.get_dooku_dir("tests/code samples/rust/target/doc/")) == 1
-  if docs_generated_ok == false then
-    vim.notify(
-      "`<project_root>/target/doc` dir not found. Check `generate()` in the backend.",
-      vim.log.levels.ERROR)
+    -- ASSERT
+    local config_generated_ok = vim.fn.isdirectory(
+      utils.get_dooku_dir(
+        "tests/code samples/rust/target/doc/")) == 1
+    if config_generated_ok == false then
+      vim.notify(
+        "`<project_root>/target/doc/` dir not found. Check `setup()` in the backend.",
+        vim.log.levels.ERROR)
+    end
   end
-end
 
 
--- TEST: rustdoc.open()
---=============================================================================
-function M.test_open()
-  -- ARRANGE
-  vim.notify("Testing `rustdoc.open()`.", vim.log.levels.INFO)
+  -- TEST: rustdoc.generate()
+  --===========================================================================
+  function M.test_generate()
+    -- ARRANGE
+    vim.notify("Testing `rustdoc.generate(false)`.", vim.log.levels.INFO)
 
-  -- ACT
-  rustdoc.open()
-  vim.wait(ms)
+    -- ACT
+    rustdoc.generate(false)
+    sleep()
 
-  -- ASSERT (This step is currently visually asserted)
-  vim.notify(
-    "Please, check on your internet browser that rustdoc opened correctly.",
-    vim.log.levels.WARN)
-end
+    -- ASSERT
+    local docs_generated_ok = vim.fn.isdirectory(
+      utils.get_dooku_dir("tests/code samples/rust/target/doc/")) == 1
+    if docs_generated_ok == false then
+      vim.notify(
+        "`<project_root>/target/doc` dir not found. Check `generate()` in the backend.",
+        vim.log.levels.ERROR)
+    end
+  end
 
 
--- RUN TESTS
---=======================================================================
-M.test_auto_setup()
-M.test_generate()
-M.test_open()
+  -- TEST: rustdoc.open()
+  --===========================================================================
+  function M.test_open()
+    -- ARRANGE
+    vim.notify("Testing `rustdoc.open()`.", vim.log.levels.INFO)
 
+    -- ACT
+    rustdoc.open()
+    sleep()
+
+    -- ASSERT (This step is currently visually asserted)
+    vim.notify(
+      "Please, check on your internet browser that rustdoc opened correctly.",
+      vim.log.levels.WARN)
+  end
+
+
+  -- RUN TESTS
+  --===========================================================================
+  M.test_auto_setup()
+  M.test_generate()
+  M.test_open()
+end))

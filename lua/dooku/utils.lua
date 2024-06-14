@@ -85,14 +85,11 @@ end
 --We use this function to assert tests.
 ---@param path string (optional) A subdirectory to append to he returned dir.
 function M.get_dooku_dir(path)
-  local plugin_directory = vim.fn.fnamemodify(
-    vim.fn.fnamemodify(debug.getinfo(1, "S").source:sub(2), ":h"),
-    ":h:h"
-  )
+  local plugin_dir = vim.fn.fnamemodify(debug.getinfo(1, "S").source:sub(2), ":p:h:h:h")
   if path then
-    plugin_directory = M.os_path(plugin_directory .. "/" .. path)
+    plugin_dir = M.os_path(plugin_dir .. "/" .. path)
   end
-  return plugin_directory
+  return plugin_dir
 end
 
 ---Function to find the project root based on a given list of files/directories.
