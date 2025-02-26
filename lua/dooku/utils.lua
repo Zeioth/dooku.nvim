@@ -66,7 +66,7 @@ end
 ---so ENV is available, which is mandatory on termux.
 ---
 ---NOTE: In order to work on windows,
----      the executables must be added to path in at windows level.
+---      the executables must be added to path at windows level.
 ---@param cmd string command to run.
 ---@param arguments table arguments to pass to the cmd.
 ---@param opts table opts to pass.
